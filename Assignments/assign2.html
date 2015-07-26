@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <title>Programming Assignment 2</title>
+    <style>
+            body {
+            margin: 0;
+            padding: 0;
+            background: #006000;
+        }
+        
+        #container {
+            margin: auto;
+            width: 924px;
+            height: 650px;
+            text-align: center;
+            background: #f0f0f0;
+        }
+        
+        #webglCanvas {
+            float: left;
+            width: 512px;
+            padding: 0 20px 0px 20px;
+        }
+        
+        #gl-canvas {
+            border: 1px solid #fcfcfc;
+        }
+        
+        #controls {
+            float: left;
+            width: 372px;
+            height: 512px;
+            background: #dddeff;
+        }
+        
+        .sliders {
+            margin: 20px 0px;
+        }
+        
+        .sliders p {
+            color: #44a;
+            font-size: 16px;
+            font-style: bold;
+        }
+        
+        h1 {
+            font-size: 24px;
+            font-family: Ariel, Verdana, San-serif;
+            padding: 24px;
+            color: #44a;
+            #gl-canvas {
+                border: 1px solid #000000;
+            }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="sliders.css">
+    <script type="text/javascript" src="../Common/webgl-utils.js"></script>
+    <script type="text/javascript" src="../Common/initShaders.js"></script>
+    <script type="text/javascript" src="../Common/MV.js"></script>
+    <script type="text/javascript" src="assign2.js"></script>
+
+    <script id="vertex-shader" type="x-shader/x-vertex">
+        attribute vec4 vPosition; 
+        uniform vec2 vSize;
+        
+        void main() { 
+        gl_Position.x = -1.0 + 2.0 * vPosition.x/vSize.x;
+        gl_Position.y = -1.0 + 2.0 * vPosition.y/vSize.y;
+        gl_Position.z = 0.0;
+        gl_Position.w = 1.0; }
+
+    </script>
+    <script id="fragment-shader" type="x-shader/x-fragment">
+        precision mediump float;
+        uniform vec4 fColor;
+        void main() { 
+        gl_FragColor = fColor; 
+        }
+    </script>
+</head>
+
+<body>
+    <div id="container">
+        <header>
+            <h1> WebGL Assignment 2: Line Drawing</h1>
+        </header>
+        <div id="webglCanvas">
+            <canvas id="gl-canvas" width="512" height="512"> Oops ... your browser doesn't support the HTML5 canvas element </canvas>
+        </div>
+        <div id="controls">
+            <div class="sliders">
+                <p>Red</p>
+                0.0
+                <input id="slider1" type="range" min="0" max="255" step="1" value="255" />1.0
+            </div>
+            <div class="sliders">
+                <p>Green</p>
+                0.0
+                <input id="slider2" type="range" min="0" max="255" step="1" value="0" />1.0
+            </div>
+            <div class="sliders">
+                <p>Blue</p>
+                0.0
+                <input id="slider3" type="range" min="0" max="255" step="1" value="0" />1.0
+            </div>
+            <div class="sliders">
+                <p>Line Width</p>
+                1
+                <input id="slider4" type="range" min="1" max="20" step="1" value="5" />20
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>

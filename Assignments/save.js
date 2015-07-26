@@ -1,0 +1,245 @@
+"use strict";
+var canvas;
+var gl;
+var points = [];
+var theta = 0;
+var thetaLoc;
+var numTimesToSubdivide = 0;
+var bufferId;
+var shape = 0;
+
+ var triData = [
+   vec2(Math.sin(2.0 * Math.PI / 3.0 * 0), Math.cos(2.0 * Math.PI / 3.0 * 0)),
+   vec2(Math.sin(2.0 * Math.PI / 3.0 * 1), Math.cos(2.0 * Math.PI / 3.0 * 1)),
+   vec2(Math.sin(2.0 * Math.PI / 3.0 * 2), Math.cos(2.0 * Math.PI / 3.0 * 2))
+    ];
+    
+    var sqrData = [ 
+    vec2(-0.75, -0.75),
+    vec2(0.75, -0.75),
+    vec2(0.75, 0.75),
+    vec2(-0.75, 0.75)
+    ];
+    
+     var penData = [ 
+     vec2(0.0, 1.0),
+     vec2(-Math.sin(2.0 * Math.PI / 5.0 ), Math.cos(2.0 * Math.PI / 5.0 )),
+     vec2(-Math.sin(4.0 * Math.PI / 5.0 ), -Math.cos(1.0 * Math.PI / 5.0 )),
+     vec2(Math.sin(4.0 * Math.PI / 5.0 ), -Math.cos(1.0 * Math.PI / 5.0 )),
+     vec2(Math.sin(2.0 * Math.PI / 5.0 ), Math.cos(2.0 * Math.PI / 5.0 ))
+    ];
+
+function init()
+{
+
+printValue('slider1','rangeValue1');
+printValue('slider2','rangeValue2');
+
+var s1 = document.getElementById("slider1");
+s1.addEventListener("change", function() { eventHandler1(s1) } );
+
+var s2 = document.getElementById("slider2");
+s2.addEventListener("change", function() { eventHandler2(s2) } );
+
+var m = document.getElementById("mymenu");
+m.addEventListener("change", function() { eventHandler3(m) } );
+
+    canvas = document.getElementById( "gl-canvas" );
+
+    gl = WebGLUtils.setupWebGL( canvas );
+    if ( !gl ) { alert( "WebGL isn't available" ); }
+
+    //  Configure WebGL
+    //
+    gl.viewport( 0, 0, canvas.width, canvas.height );
+    gl.clearColor( 1.0, 1.0, 1.0, 1.0 );
+
+    //  Load shaders and initialize attribute buffers
+
+    var program = initShaders( gl, "vertex-shader", "fragment-shader" );
+    gl.useProgram( program );
+
+    // Load the data into the GPU
+
+    bufferId = gl.createBuffer();
+    gl.bindBuffer( gl.ARRAY_BUFFER, bufferId );
+    gl.bufferData( gl.ARRAY_BUFFER, 3*24*Math.pow(4, 5), gl.STATIC_DRAW );
+
+
+    // Associate out shader variables with our data buffer
+
+    var vPosition = gl.getAttribLocation( program, "vPosition" );
+    gl.vertexAttribPointer( vPosition, 2, gl.FLOAT, false, 0, 0 );
+    gl.enableVertexAttribArray( vPosition );
+    
+    thetaLoc = gl.getUniformLocation(program, "theta");
+    subDivideTriangle();
+    render();
+    
+     
+ 
+    // Angle of Rotation
+      document.getElementById("slider2").onchange = function() {
+        theta = event.srcElement.value;  
+        theta =  theta * Math.PI/180.0;
+       if ( shape == 0 ) {
+        subDivideTriangle();
+        render();
+        }
+        else if ( shape == 1 ) {
+        subDivideSquare();
+        render();
+        }
+        else {
+        subDividePentagon();
+        render();
+        }
+      }
+        
+       
+
+  } // init    
+  
+  
+  
+  function eventHandler1(s1) {
+  numTimesToSubdivide = s1.value;
+        numTimesToSubdivide = parseInt(numTimesToSubdivide);
+        if ( shape == 0 ) {
+        subDivideTriangle();
+        render();
+        }
+        else if ( shape == 1 ) {
+        subDivideSquare();
+        render();
+        }
+        else {
+        subDividePentagon();
+        render();
+        }
+        }
+  
+  function eventHandler2(s2) {
+        theta = s2.value;  
+        theta =  theta * Math.PI/180.0;
+       if ( shape == 0 ) {
+        subDivideTriangle();
+        render();
+        }
+        else if ( shape == 1 ) {
+        subDivideSquare();
+        render();
+        }
+        else {
+        subDividePentagon();
+        render();
+        }
+      }
+        
+        
+        
+  
+  
+   function eventHandler3(m) {
+               //alert(m.selectedIndex);
+                switch (m.selectedIndex) {
+                    case 0:
+                    shape = 0;
+                    subDivideTriangle()
+                    render();
+                    //alert(points.length);
+                    break;
+                    
+                    case 1:
+                    shape = 1;
+                    subDivideSquare();
+                    render();
+                    break;
+                    
+                    case 2:
+                    shape=2;
+                    subDividePentagon();
+                    render();
+                    break;
+                }
+                }
+
+        function printValue(sliderId, outputId) {
+          var x = document.getElementById(outputId);
+          var y = document.getElementById(sliderId);
+          x.value = y.value;
+        }
+        
+       
+        
+        function subDivideTriangle() {
+                    points = [];
+                    divideTriangle(triData[0], triData[1], triData[2], numTimesToSubdivide);
+        }
+        
+        function subDivideSquare() {
+                    points = [];
+                    divideTriangle(sqrData[0], sqrData[1], sqrData[2], numTimesToSubdivide);
+                    divideTriangle(sqrData[0], sqrData[2], sqrData[3],numTimesToSubdivide);
+                   
+        }
+        
+        function subDividePentagon() {
+                    points = [];
+                    divideTriangle(penData[0], penData[1], penData[2], numTimesToSubdivide);
+                    divideTriangle(penData[0], penData[2], penData[3], numTimesToSubdivide);
+                    divideTriangle(penData[0], penData[3], penData[4], numTimesToSubdivide);        
+        }
+        
+       
+
+function triangle( a, b, c )
+{
+    points.push( a, b, c );
+}
+
+function divideTriangle( a, b, c, count )
+{
+
+    // check for end of recursion
+
+    if ( count === 0 ) {
+        triangle( a, b, c );
+    }
+    else {
+
+        //bisect the sides
+
+        var ab = mix( a, b, 0.5 );
+        var ac = mix( a, c, 0.5 );
+        var bc = mix( b, c, 0.5 );
+
+        --count;
+
+        // four new triangles
+
+        divideTriangle( a, ab, ac, count );
+        divideTriangle( c, ac, bc, count );
+        divideTriangle( b, bc, ab, count );
+        divideTriangle( ac, ab, bc, count );
+        
+    }
+}
+
+window.onload = init;
+
+function render()
+{
+   
+    //points = [];
+    //  divideTriangle( vertices[0], vertices[1], vertices[2],numTimesToSubdivide);
+
+    gl.bufferSubData(gl.ARRAY_BUFFER, 0, flatten(points));
+    //console.log(numTimesToSubdivide);
+     gl.uniform1f(thetaLoc, theta);
+    gl.clear( gl.COLOR_BUFFER_BIT );
+    gl.drawArrays( gl.TRIANGLES, 0, points.length );
+    points=[];
+   
+    //requestAnimFrame(render);
+}
