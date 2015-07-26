@@ -12,7 +12,15 @@
     <script type="text/javascript" src="../Common/initShaders.js"></script>
     <script type="text/javascript" src="../Common/MV.js"></script>
     <script type="text/javascript" src="hw2.js"></script>
-    
+   
+   <style>
+.text {  color : #44b;
+}  
+    .text p { color : #44a;
+    padding: 5px; 
+    text-align: left;
+    }
+    </style>
 <script>
   $(function() {
     $( "#red, #green, #blue" ).slider({
@@ -91,7 +99,14 @@
             <div id="green"></div>
             <div id="blue"></div>
             <div id="lineWidth"></div>
+            <div>
             <button id="clearCanvas" onclick="clearCanvas()";>Clear Canvas</button>
+            </div>
+            <div class="text">
+            <p>When using Chrome browser if you by chance step out side the canvas while the mouse button is still down, please click it once 
+            before resuming drawing inside the canvas, else the behavior  is inconsistent. 
+            This bug is not present in  Firefox or IE, so they should be  alright.</p>
+            </div>
         </div>
     </div>
 </body>
