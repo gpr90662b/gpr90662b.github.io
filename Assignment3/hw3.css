@@ -60,6 +60,7 @@ margin-top: 10px;
 	padding: 10px;
 	width: 275px;
     background: #eee;
+   
 }
 #transbox {
 	border-radius: 15px;
@@ -171,7 +172,7 @@ margin-top: 10px;
 
 #transX  #transXVal {
   position: absolute;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
   color:  #292c2f;
   width: 160px;
@@ -182,7 +183,7 @@ margin-top: 10px;
 
 #transY  #transYVal {
   position: absolute;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: bold;
   color: ##292c2f;
   width: 160px;
@@ -193,7 +194,7 @@ margin-top: 10px;
 
 #transZ #transZVal {
   position: absolute;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: bold;
   color: #292c2f;
   width: 160px;
@@ -204,7 +205,7 @@ margin-top: 10px;
 
 #rotX  #rotXVal {
   position: absolute;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
   color:  #292c2f;
   width: 160px;
@@ -215,7 +216,7 @@ margin-top: 10px;
 
 #rotY  #rotYVal {
   position: absolute;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
   color:  #292c2f;
   width: 160px;
@@ -225,7 +226,7 @@ margin-top: 10px;
 }
 #rotZ  #rotZVal {
   position: absolute;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: bold;
   color:  #292c2f;
   width: 160px;
@@ -236,7 +237,7 @@ margin-top: 10px;
 
 #scaleX  #scaleXVal {
   position: absolute;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: bold;
   color: ##292c2f;
   width: 160px;
@@ -246,7 +247,7 @@ margin-top: 10px;
 }
 #scaleY  #scaleYVal {
   position: absolute;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: bold;
   color: ##292c2f;
   width: 160px;
@@ -256,7 +257,7 @@ margin-top: 10px;
 }
 #scaleZ  #scaleZVal {
   position: absolute;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: bold;
   color: ##292c2f;
   width: 160px;
@@ -269,3 +270,5 @@ margin-top: 10px;
  background: #eee;
 }
 #mySelect { margin-left:175px; }
+
+.clabel { margin-left:  -20px; }
