@@ -946,7 +946,7 @@ $(document).ready(function() {
 		//console.log(v);
 		for (var i = 0; i < objCount; i++) {
 			if (v == objList[i].id) {
-				if (confirm('Do you want to delete the selected object?')) {
+				if (confirm('Press Cancel to Edit the Selected Object, Ok to Delete it.')) {
 					// delete it 
 					objList.splice(i, 1);
 					objCount = objCount - 1;
