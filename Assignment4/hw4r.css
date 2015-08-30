@@ -2,24 +2,36 @@ body {
 	padding: 0;
 	margin: 0;
     background: #777;
+    
 }
 #container {
 	margin: 0;
-	width : 1200px;
-	height: 650px;
-	background: #aaa;
+	width : 1400px;
+	height: 700px;
+	 background: #efefef;
 }
+
+#leftSide {
+	float: left;
+	width: 250px;
+    height: 700px;
+    padding-left: 10px;
+	margin: 0;
+    background: #efefef;
+}
+
 #webglCanvas {
 	float: left;
 	width: 800px;
+    height: 700px;
 	padding: 0;
 }
 #controls {
 	float: left;
-	width: 380px;
-	height: 650px;
+	width: 275px;
+	height: 700px;
 	margin-left: 20px;
-	background: #aaa;
+	 background: #efefef;
 }
 p {
 	padding: 5px;
@@ -55,10 +67,11 @@ margin-top: 10px;
 }
 
 #objbox {
+    font-size: 80%;
 	border-radius: 15px;
 	border: 2px solid #999;
 	padding: 10px;
-	width: 275px;
+	width: 250px;
     background: #eee;
    
 }
@@ -66,8 +79,8 @@ margin-top: 10px;
 	border-radius: 15px;
 	border: 2px solid #999;
 	padding: 10px;
-	width: 275px;
-	height: 120px;
+	width: 250px;
+    margin-bottom: 15px;
       background: #eee;
 }
 
@@ -109,7 +122,9 @@ margin-top: 10px;
 
 #transX, #transY, #transZ, 
 #rotX, #rotY, #rotZ,
-#scaleX, #scaleY, #scaleZ 
+#scaleX, #scaleY, #scaleZ ,
+#lightX, #lightY, #lightZ, #lightATT
+
 {
   width: 160px;
   position: relative;
@@ -128,7 +143,11 @@ margin-top: 10px;
  #rotZ .ui-slider-handle,
  #scaleX .ui-slider-handle,
  #scaleY .ui-slider-handle,
- #scaleZ .ui-slider-handle
+ #scaleZ .ui-slider-handle,
+ #lightX .ui-slider-handle,
+ #lightY .ui-slider-handle,
+ #lightZ .ui-slider-handle,
+ #lightATT .ui-slider-handle
  {
   position: absolute;
   margin: -3px 0 0 -7px;
@@ -159,7 +178,11 @@ margin-top: 10px;
 #scaleY   .ui-slider-handle:hover,
 #scaleY  .ui-slider-handle:focus,
 #scaleZ  .ui-slider-handle:hover,
-#scaleZ  .ui-slider-handle:focus
+#scaleZ  .ui-slider-handle:focus,
+#lightX.ui-slider-handle:focus,
+#lightY .ui-slider-handle:focus,
+#lightZ .ui-slider-handle:focus,
+#lightATT .ui-slider-handle:focus,
 {
   -webkit-transform: scale(1.1);
   -moz-transform: scale(1.1);
@@ -266,11 +289,66 @@ margin-top: 10px;
   margin-top: -5px;
 }
 
+
+#lightX  #lightXVal {
+  position: absolute;
+  font-size: 13px;
+  font-weight: bold;
+  color:  #292c2f;
+  width: 160px;
+  text-align: center;
+  margin-left: 120px;
+  margin-top: -5px;
+}
+
+#lightY  #lightYVal {
+  position: absolute;
+  font-size: 13px;
+  font-weight: bold;
+  color: ##292c2f;
+  width: 160px;
+  text-align: center;
+  margin-left: 120px;
+  margin-top: -5px;
+}
+
+#lightZ #lightZVal {
+  position: absolute;
+  font-size: 13px;
+  font-weight: bold;
+  color: #292c2f;
+  width: 160px;
+  text-align: center;
+  margin-left: 120px;
+  margin-top: -5px;
+}
+
+#lightATT #lightATTVal {
+  position: absolute;
+  font-size: 13px;
+  font-weight: bold;
+  color: #292c2f;
+  width: 160px;
+  text-align: center;
+  margin-left: 120px;
+  margin-top: -5px;
+}
+
 #panel{
  background: #eee;
 }
 #mySelect { margin-left:175px; }
 
 .clabel { 
+position: absolute;
 margin-left:  -20px;
+margin-top: -8px;
  }
+ 
+
+#leftSide    .ui-spinner {
+    font-size: 80%;
+    width: 55px;
+    }
+#transforms { border: 1px; }
+fieldset { border: 1px }

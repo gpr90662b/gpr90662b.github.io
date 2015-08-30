@@ -628,6 +628,7 @@ function init() {
 			transXYZ[0] = ui.value;
 			objList[objCount - 1].translation[0] = ui.value;
 			$("#transXVal").html(ui.value);
+            drawScene();
 		},
 		change: function(event) {
 			if (event.originalEvent) {
@@ -646,6 +647,7 @@ function init() {
 			transXYZ[1] = ui.value;
 			objList[objCount - 1].translation[1] = ui.value;
 			$("#transYVal").html(ui.value);
+            drawScene();
 		},
 		change: function(event) {
 			if (event.originalEvent) {
@@ -664,6 +666,7 @@ function init() {
 			transXYZ[2] = ui.value;
 			objList[objCount - 1].translation[2] = ui.value;
 			$("#transZVal").html(ui.value);
+            drawScene();
 		},
 		change: function(event) {
 			if (event.originalEvent) {
