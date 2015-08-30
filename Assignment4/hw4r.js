@@ -13,7 +13,6 @@ var gtransXYZ = vec3.fromValues(0, 0, 0);
 var grotXYZ = vec3.fromValues(0, 0, 0);
 var gscaleXYZ = vec3.fromValues(1, 1, 1);
 
-
 var currObjMode = "light";
 
 var tFlag = 0;
@@ -77,7 +76,6 @@ function mvPopMatrix() {
     }
     mvMatrix = mvMatrixStack.pop();
 }
-
 
 //lights
 var MAXLIGHTS = 10;
@@ -207,8 +205,6 @@ function obj(type, id) {
     this.transform = mat4.create();
     //console.log("created "+this.type);
 }
-
-
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 // Computer normal to  a triangle

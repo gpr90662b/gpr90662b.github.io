@@ -339,7 +339,7 @@ margin-top: 10px;
   margin-top: -5px;
 }
 
-#panel{
+#panel {
  background: #eee;
 }
 #mySelect { margin-left:175px; }
@@ -348,14 +348,12 @@ margin-top: 10px;
  width: 400px;
  display:none;
 }
-
 .clabel { 
 position: absolute;
 margin-left:  -20px;
 margin-top: -8px;
  }
  
-
 #leftSide    .ui-spinner {
     font-size: 80%;
     width: 55px;
