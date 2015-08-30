@@ -146,14 +146,15 @@
 <body>
   <div id="container">
   <div id="leftSide"> 
+  
   <p>
-  <button id="setupScene" class="btn" onclick="setupScene();">Preset Scene</button>
+  <button id="setupScene" class="lightbtn" onclick="setupScene();">Preset Scene</button>
   <br />
-  <button id="move_lights" class="btn" onclick="move_lights_demo();">Move Lights</button>
+  <button id="move_lights" class="lightbtn" onclick="move_lights_demo();">Move Lights</button>
   
   <td><button id="stop_lights"  class="btn" onclick="stop_lights();">Stop Lights</button>
   <br />
-  <button id="move_camera" class="btn"  onclick="move_camera_demo();">Move Camera</button>
+  <button id="move_camera" class="lightbtn"  onclick="move_camera_demo();">Move Camera</button>
   <button id="stop_camera"  class="btn"  onclick="stop_camera();">Stop Camera</button>
   <br />
   <button id="resetScene" class="btn" onclick="resetScene();">Reset Scene</button>
@@ -162,10 +163,10 @@
   
   <br />
   <h3>Light Switches </h3>        
-  <input type="checkbox" id="check1" onclick="handleLights(this);"><label for="check1" >1</label>
-  <input type="checkbox" id="check2" onclick="handleLights(this);"><label for="check2" >2</label>
-  <input type="checkbox" id="check3" onclick="handleLights(this);"><label for="check3" >3</label>
-  <input type="checkbox" id="check4" onclick="handleLights(this);"><label for="check4">4</label>
+  <input type="checkbox" id="check1" onclick="handleLights(this);"><label for="check1" >PL 1</label>
+  <input type="checkbox" id="check2" onclick="handleLights(this);"><label for="check2" >DL 2</label>
+  <input type="checkbox" id="check3" onclick="handleLights(this);"><label for="check3" >PL 3</label>
+  <input type="checkbox" id="check4" onclick="handleLights(this);"><label for="check4">DL 4</label>
   <br />
   <br />
    <h3> Select Light To Edit: 
@@ -246,18 +247,18 @@
           <input type="button" button id="cone"  class="btn"    value="Cone"  name="shapeGroup" />
           <input type="button" id="sphere"  class="btn" value="Sphere" name="shapeGroup"  />
           
-           <button id="switch" class="btn">Select/Delete</button><br/>
+           <button id="switch" class="lightbtn">Select/Delete</button><br/>
            <div id="panel" style="display:none"><select id="mySelect"><option>Objects</option></select></div>  
         </div>
        
         <div id="modeSelector">
         <h3 class="secondary"> Render Mode</h3>
-          <input type="radio" id="wire"  value="wire" name="renderModeGroup" checked="checked" />
+          <input type="radio" id="wire"  value="wire" name="renderModeGroup"  />
           <label for="wire">Wire</label>
           <input type="radio" id="solid" value="solid" name="renderModeGroup"  />
           <label for="solid">Solid</label>
-          <input type="radio" id="both" value="both" name="renderModeGroup"  />
-          <label for="both">Light</label>         
+          <input type="radio" id="light" value="light" name="renderModeGroup" checked="checked" />
+          <label for="light">Lighting </label>         
           <!-- <label for="myColor">Color </label><input type="color" id="myColor"> -->
         </div>
      

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+  <title>Assignment 4</title>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="jquery-ui.css">
+  <link rel="stylesheet" href="hw4r.css">
+  <script src="jquery.js"></script>
+  <script src="jquery-ui.min.js"></script>
+  <script  src="webgl-utils.js"></script>
+  <script src="gl-matrix.js"></script>
+  <script src="geometryObjectsr.js"></script> 
+  <script src="hw4r.js"></script>
+  <script src="move_lights.js"></script>
+  <script src="move_camera.js"></script>
+  <style>
+  #lightSwitches {
+  margin:0;
+  padding-top: 100px;
+  }
+    .ui-spinner {
+    font-size: 80%;
+    width: 55px;
+    }
+</style>
+  
+<script>
+function colorchange(id)
+{
+
+  var background = document.getElementById(id).style.backgroundColor;
+
+  if(background == "rgb(255, 145, 0)")
+  {
+  document.getElementById(id).style.backgroundColor = "rgb(26,255,0)";
+  }
+  if(background == "rgb(26, 255, 0)")
+  {
+    document.getElementById(id).style.backgroundColor = "rgb(255,145,0)";
+  }
+
+}
+</script>
+
+</head>
+<body>
+<div id="lightSwitches">
+<input type="button"  name="light0" value="Point" id="light0" onclick="colorchange('light0')" style="background:rgb(255,145,0);"/>
+<input type="button" name="light1" value="Dir" id="light1" onclick="colorchange('light1');" style="background:rgb(255,145,0);"/>
+<input type="button" name="light2" value="Point" id="light2" onclick="colorchange('light2');" style="background:rgb(255,145,0);"/>
+<input type="button" name="light3" value="Dir" id="light3" onclick="colorchange('light3');" style="background:rgb(255,145,0);"/>
+
+<button  name="light0" value="Point" id="light0" onclick="colorchange('light0')" style="background:rgb(255,145,0);"/>
+<input type="button" name="light1" value="Dir" id="light1" onclick="colorchange('light1');" style="background:rgb(255,145,0);"/>
+<input type="button" name="light2" value="Point" id="light2" onclick="colorchange('light2');" style="background:rgb(255,145,0);"/>
+<input type="button" name="light3" value="Dir" id="light3" onclick="colorchange('light3');" style="background:rgb(255,145,0);"/>
+
+</div>
+</body>
+</html>

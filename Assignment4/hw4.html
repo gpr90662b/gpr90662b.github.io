@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+  <title>Assignment 4</title>
+  <link rel="stylesheet" href="reset.css">
+  <link rel="stylesheet" href="jquery-ui.css">
+  <link rel="stylesheet" href="hw4.css">
+  <script src="jquery.js"></script>
+  <script src="jquery-ui.min.js"></script>
+  <script  src="webgl-utils.js"></script>
+  <script src="gl-matrix.js"></script>
+  <script src="geometryObjects.js"></script> 
+  <script src="hw4.js"></script>
+  
+  <script id="shader-fs" type="x-shader/x-fragment">
+     #ifdef GL_FRAGMENT_PRECISION_HIGH
+       precision highp float;
+    #else
+       precision mediump float;
+    #endif
+ 
+    uniform bool uRenderMode; //wire, solid
+    uniform vec4 uColor;
+    
+    //Material property
+    uniform vec4 ambient; 
+    uniform vec4 diffuse; 
+    uniform vec4 specular;    
+    uniform float shininess; 
+    //uniform vec4 emission; 
+    
+    const int numLights = 10; 
+    uniform bool lightFlag; // lighting
+    uniform vec4 lightPosition[numLights]; // positions of lights 
+    uniform vec4 lightColor[numLights]; // colors of lights
+    uniform int numUsed;     // number of lights used
+    
+    uniform mat4 normalMatrix;
+    
+    varying vec3 myNormal; 
+    varying vec3 myVertex; 
+    varying vec4 vColor;
+ //  
+    void main(void) {
+     gl_FragColor = uColor;
+        if ( lightFlag == false ) {
+            if ( uRenderMode == true ) {   
+                gl_FragColor = vColor;      
+            }
+            else {
+                gl_FragColor = uColor;
+            }
+        }
+        else {
+         // compute normals eye, after modelview transform  eye=(0,0,0)
+            vec3 eyepos = vec3(0.0, 0.0,0.0);
+            vec3 V = normalize(eyepos-myVertex) ;
+            
+            //vertex Normal, transformed by 3x3 component of modelview-inversed-transposed
+             vec4 _temp = normalMatrix * vec4(myNormal,1) ;
+            vec3 N = normalize(_temp.xyz) ;
+            
+            
+            //init variables
+            vec4  sum = vec4(0,0,0,0);
+            vec3 L = vec3(0,0,0);
+            vec3 H = vec3(0,0,0); //phong and Blinn model
+           
+           for ( int i = 0; i < 10; i++) {
+                if ( lightPosition[i].w == 0.0 ) {  // directional light   
+                    vec3 L = lightPosition[i].xyz;
+                    
+                    L = normalize(L);
+                    
+                } else {
+                    vec3 lightPos = lightPosition[i].xyz / lightPosition[i].w ;
+                    L = normalize (lightPos - myVertex) ; // no attenuation
+                    
+                }
+                 //diffuse               
+                float nDotL = dot(N,L)  ;
+                vec4 lambert = diffuse * lightColor[i] * max (nDotL, 0.0) ;  
+                
+                //specular
+                H = normalize( L + V ) ;
+                float nDotH = dot(N,H) ;
+                vec4 phong =  specular * lightColor[i] * pow (max(nDotH, 0.0), shininess) ;
+                //add diffuse + specular
+                sum  = sum +  lambert + phong ;
+                if ( i == numUsed-1 )
+                    break;
+                }
+                sum = sum + ambient;
+                gl_FragColor = clamp(sum, vec4(0), vec4(1));
+                // gl_FragColor =   sum;  
+                //gl_FragColor = diffuse;
+ 
+        }
+    }
+  </script>
+  
+  <script id="shader-vs" type="x-shader/x-vertex">
+  
+    attribute vec3 aVertexPosition;
+    attribute vec3 aVertexNormal;
+    attribute vec4 aVertexColor;
+    uniform mat4 mvMatrix;
+    uniform mat4 pMatrix;
+    
+    varying vec3 myVertex ; 
+    varying vec3 myNormal ; 
+    varying vec4 vColor;
+
+    void main(void) {
+        vec4 coords = vec4(aVertexPosition,1.0);
+        vec4 eyeCoords = mvMatrix * coords;
+        gl_Position = pMatrix * eyeCoords;
+        
+        vColor = aVertexColor;
+        myNormal = normalize(aVertexNormal);
+        myVertex = eyeCoords.xyz/eyeCoords.w; // (Note: eyeCoords.w is 1 unless modelview is weird)
+     
+    }
+  </script>
+</head>
+
+<body>
+  <div id="container">
+    <div id="webglCanvas">
+      <canvas id="gl-canvas" width="800" height="600"> Oops ... your browser doesn't support the HTML5 canvas element </canvas>
+    </div>
+    <div id="controls">
+      <div id="objbox">
+        <h3> Create Object  </h3>
+        <div id="shapeSelector">
+          <input type="button"  id="cylinder" class="btn" value="Cylinder"   name="shapeGroup" />
+          <input type="button" button id="cone"  class="btn"    value="Cone"  name="shapeGroup" />
+          <input type="button" id="sphere"  class="btn" value="Sphere" name="shapeGroup"  />
+          
+           <button id="switch" class="lightbtn">Select/Delete</button><br/>
+           <div id="panel" style="display:none"><select id="mySelect"><option>Objects</option></select></div>
+          
+          
+        </div>
+       
+        <div id="modeSelector">
+        <h3 class="secondary"> Render Mode</h3>
+          <input type="radio" id="wire"  value="wire" name="renderModeGroup" checked="checked" />
+          <label for="wire">Wire</label>
+          <input type="radio" id="solid" value="solid" name="renderModeGroup"  />
+          <label for="solid">Solid</label>
+          <input type="radio" id="both" value="both" name="renderModeGroup"  />
+          <label for="both">Light</label>
+          
+          <!-- <label for="myColor">Color </label><input type="color" id="myColor"> -->
+          
+        </div>
+     
+      
+      <!--- -->
+        <h3>Scaling</h3>
+        <div id="scaleX"><span class="clabel">x</span><span id="scaleXVal"></span></div>
+         <div id="scaleY"><span class="clabel">y</span><span id="scaleYVal"></span></div>
+          <div id="scaleZ"><span class="clabel">z</span><span id="scaleZVal"></span></div>
+    
+      <!--- -->
+     
+        <h3>Rotation</h3>
+        <div id="rotX"><span class="clabel">x</span><span id="rotXVal"></span></div>
+        <div id="rotY"><span class="clabel">y</span><span id="rotYVal"></span></div>
+        <div id="rotZ"><span class="clabel">z</span><span id="rotZVal"></span></div>
+     <!--- -->
+      
+        <h3>Translation</h3>
+        <div id="transX"><span class="clabel">x</span><span id="transXVal"></span></div>
+        <div id="transY"><span class="clabel">y</span><span id="transYVal"></span></div>
+        <div id="transZ"><span class="clabel">z</span><span id="transZVal"></span></div>
+     <!--- -->
+    
+   
+    </div>  <!--- objbox-->
+       <div id="transbox">
+        <h3>Projection Type</h3>
+         <input type="radio" id="pers"  value="Perspective" name="viewGroup" checked="checked" />
+          <label for="pers">Perspective</label>
+          <input type="radio" id="ortho" value="Orthogonal" name="viewGroup"  />
+          <label for="ortho">Orthogonal</label>
+          <h3>Light Switches </h3>
+          <div id="format">
+  <input type="checkbox" id="check1"><label for="check1">1</label>
+  <input type="checkbox" id="check2"><label for="check2">2</label>
+  <input type="checkbox" id="check3"><label for="check3">3</label>
+  <input type="checkbox" id="check4"><label for="check4">4</label>
+  <input type="checkbox" id="check5"><label for="check5">5</label>
+</div>
+          
+     </div>
+    </div>
+    <!-- controls -->
+    <header>
+      <h1> WebGL Assignment 3: A Geometric CAD Like Application</h1>
+    </header>
+    
+  </div>
+  <!-- container -->
+</body>
+</html>
