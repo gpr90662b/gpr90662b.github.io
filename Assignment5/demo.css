@@ -1,0 +1,49 @@
+body {
+    background-color: #999;
+    -webkit-user-select: none; 
+    -moz-user-select: none;    
+    -ms-user-select: none;     
+    -o-user-select: none;    
+    user-select: none;
+}
+
+#content > h3 {
+    margin-left: 70px;
+    margin-top: 5px;
+    margin-bottom: 8pt;
+    color: #f0f0f0;
+}
+
+#canvas-holder {
+    float:left;
+    margin-right:10px;
+    border: 1px solid black;
+}
+
+canvas {
+    display: block;
+}
+
+#tools {
+    float:left;
+    background-color:#efefef;
+    border: 1px solid black;
+    margin: 0pt;
+    padding: 8px
+}
+
+#tools h3 {
+    margin-top: 0pt;
+    margin-bottom: 8pt;
+}
+
+select { 
+    background: #efefef;
+    }
+
+.ins {
+font-weight: bold;
+color: #fff;
+ background:  rgb(0,149,239);
+ }
+ 
