@@ -508,6 +508,7 @@ function loadPicture() {
 var pictureURLs = [
  "pics/petrified-wood.jpg",
  "pics/Earth-1024x512.jpg",
+ "pics/moon.jpg",
  "pics/earth_lights.jpg"
 ];
 
@@ -697,57 +698,61 @@ function init() {
     }
     
  }
+ window.onload=init;
 </script>
 </head>
 
 
-<body onload="init()">
-
+<body>
 <div id="content">
+    <h3>WebGL Assignment 5: Texture Mapping</h3>
 
-<h3>WebGL Assignment 5: Texture Mapping</h3>
+    <div id="canvas-holder">
+        <canvas id="webglcanvas" width="600" height="600"></canvas>
+    </div>
+    <div id="tools">
+        <p><label><b>Objects:</b><br>
+        <select id="object">
+            <option value="0">Sphere</option>
+            <option value="1">Cylinder</option>
+            <option value="2">Cone</option>
+        </select></label></p>
+        <p><label><b>Image Texture:</b><br> 
+        <select id="pics">
+            <option value="0">Petrified Wood</option>
+            <option value="1">Earth</option>
+            <option value="2">Earth Lights</option>
+            <option value="3">Moon</option>
+        </select></label></p>
+        
+        <p><label><b>Computed Texture:</b><br> 
+        <select id="texture">
+            <option value="0">Checkerboard 2D</option>
+            <option value="1">Checkerboard 3D</option>
+            <option value="2">Triangle Function</option>
+        </select></label></p>
+        
+        <p><label><b>Texture Scale:</b><br> <select id="scale">
+            <option>20.0</option>
+            <option>16.0</option>
+            <option>12.0</option>
+            <option>10.0</option>
+            <option>8.0</option>
+            <option>4.0</option>
+            <option>2.0</option>
+        </select></label></p>
 
-<div id="canvas-holder">
-<canvas id="webglcanvas" width="600" height="600"></canvas>
-</div>
+        <p><label><b>Environment Map:</b><br> 
+        <select id="env">
+            <option value="0">Scene 1</option>
+        </select></label></p>
+            
+        <p><button id="reset">Reset Scene</button></p>
+        <p class="ins"> Use Mouse To Rotate</p>
+        <p class="notes"> The texture images may take a few seconds load or little more in case of Enviroment mapping,
+        please be patient!</p>
+    </div>
 
-<div id="tools">
-<p><label><b>Objects:</b><br>
-<select id="object">
-    <option value="0">Sphere</option>
-    <option value="1">Cylinder</option>
-    <option value="2">Cone</option>
-    </select></label></p>
-<p><label><b>Image Texture:</b><br> 
-<select id="pics">
-    <option value="0">Petrified Wood</option>
-    <option value="1">Earth</option>
-    <option value="2">Earth Lights</option>
-</select></label></p>
-<p><label><b>Computed Texture:</b><br> 
-<select id="texture">
-    <option value="0">Checkerboard 2D</option>
-    <option value="1">Checkerboard 3D</option>
-    <option value="2">Triangle Function</option>
-</select></label></p>
-<p><label><b>Texture Scale:</b><br> <select id="scale">
-    <option>20.0</option>
-    <option>16.0</option>
-    <option>12.0</option>
-    <option>10.0</option>
-    <option>8.0</option>
-    <option>4.0</option>
-    <option>2.0</option>
-</select>
-
-<p><label><b>Environment Map:</b><br> 
-<select id="env">
-    <option value="0">Scene 1</option>
-    </select></label></p>
-    
-<p><button id="reset">Reset Scene</button></p>
-<p class="ins"> Use Mouse To Rotate</p>
-</div>
 <div id="headline" style="display:none"></div>
 </div>
 
