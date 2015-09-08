@@ -245,7 +245,7 @@ function draw_proc() {
 // Draw environmental map
 ///////////////////////////////////////////////////////////////////////////////////
  function draw_envmap() {
-    gl.clearColor(0,0,0,1);
+    gl.clearColor(0.3,0.3,0.3,1);
     gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
      gl.useProgram(prog_RM);
         gl.enableVertexAttribArray(a_coords_loc_RM);
@@ -508,8 +508,8 @@ function loadPicture() {
 var pictureURLs = [
  "pics/petrified-wood.jpg",
  "pics/Earth-1024x512.jpg",
- "pics/moon.jpg",
- "pics/earth_lights.jpg"
+ "pics/earth_lights.jpg",
+ "pics/moon.jpg"
 ];
 
 
