@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu & Order | Zest & Sip Juice Co.</title>
+    <style>
+        :root { --primary: #2e7d32; --secondary: #ffa000; --light: #f9f9f9; --dark: #212121; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; color: var(--dark); background: var(--light); }
+        header { background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 24px; font-weight: bold; color: var(--primary); text-decoration: none; }
+        nav a { margin-left: 20px; text-decoration: none; color: var(--dark); font-weight: 500; }
+        nav a:hover, nav a.active { color: var(--primary); }
+        .container { display: flex; max-width: 1200px; margin: 30px auto; padding: 0 20px; gap: 30px; }
+        .menu-section { flex: 2; }
+        .cart-section { flex: 1; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); height: fit-content; position: sticky; top: 100px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; }
+        .item-card { background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 5px rgba(0,0,0,0.05); text-align: center; padding-bottom: 15px; }
+        .item-card img { width: 100%; height: 180px; object-fit: cover; }
+        .item-card h3 { margin: 10px 0 5px; font-size: 18px; }
+        .item-card p { color: #666; font-size: 14px; padding: 0 10px; margin: 0 0 10px; }
+        .price { font-weight: bold; color: var(--primary); font-size: 16px; margin-bottom: 10px; }
+        .btn-sm { background: var(--primary); color: white; border: none; padding: 8px 15px; border-radius: 15px; cursor: pointer; font-weight: bold; }
+        .btn-sm:hover { background: #1b5e20; }
+        .cart-item { display: flex; justify-content: space-between; margin-bottom: 10px; padding-bottom: 10px; border-bottom: 1px solid #eee; }
+        .total-row { font-weight: bold; display: flex; justify-content: space-between; font-size: 18px; margin: 20px 0; }
+        .btn-checkout { background: var(--secondary); color: white; width: 100%; padding: 12px; border: none; border-radius: 25px; font-weight: bold; font-size: 16px; cursor: pointer; }
+        .btn-checkout:hover { background: #ff8f00; }
+        footer { background: var(--dark); color: white; text-align: center; padding: 30px 5%; font-size: 14px; margin-top: 50px; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">🥤 Zest & Sip Co.</a>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="menu.html" class="active">Menu & Order</a>
+            <a href="about.html">Our Story</a>
+            <a href="contact.html">Find Us</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="menu-section">
+            <h2>Our Cold-Pressed Menu</h2>
+            <div class="grid">
+                <div class="item-card">
+                    <img src="https://placehold.co/250x180/81c784/ffffff?text=Green+Glow" alt="Green Glow">
+                    <h3>Green Glow</h3>
+                    <p>Kale, spinach, green apple, cucumber, lemon, and ginger.</p>
+                    <div class="price">$8.50</div>
+                    <button class="btn-sm" onclick="addToCart('Green Glow', 8.50)">Add to Cart</button>
+                </div>
+                <div class="item-card">
+                    <img src="https://placehold.co/250x180/ffb74d/ffffff?text=Citrus+Blast" alt="Citrus Blast">
+                    <h3>Citrus Blast</h3>
+                    <p>Orange, grapefruit, carrot, turmeric, and cayenne.</p>
+                    <div class="price">$8.00</div>
+                    <button class="btn-sm" onclick="addToCart('Citrus Blast', 8.00)">Add to Cart</button>
+                </div>
+                <div class="item-card">
+                    <img src="https://placehold.co/250x180/e57373/ffffff?text=Berry+Boost" alt="Berry Boost">
+                    <h3>Berry Boost</h3>
+                    <p>Strawberries, blueberries, raspberries, apple, and mint.</p>
+                    <div class="price">$9.00</div>
+                    <button class="btn-sm" onclick="addToCart('Berry Boost', 9.00)">Add to Cart</button>
+                </div>
+                <div class="item-card">
+                    <img src="https://placehold.co/250x180/ffe082/ffffff?text=Ginger+Shot" alt="Ginger Shot">
+                    <h3>Immunity Shot</h3>
+                    <p>Pure ginger root, lemon juice, and raw local honey.</p>
+                    <div class="price">$4.00</div>
+                    <button class="btn-sm" onclick="addToCart('Immunity Shot', 4.00)">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="cart-section">
+            <h3>Your Basket</h3>
+            <div id="cart-items">
+                <p style="color:#999; font-style:italic;">Your cart is empty.</p>
+            </div>
+            <div class="total-row">
+                <span>Total:</span>
+                <span id="cart-total">$0.00</span>
+            </div>
+            <button class="btn-checkout" onclick="goToCheckout()">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        function addToCart(name, price) {
+            cart.push({name, price});
+            renderCart();
+        }
+        function renderCart() {
+            const container = document.getElementById('cart-items');
+            const totalEl = document.getElementById('cart-total');
+            if(cart.length === 0) {
+                container.innerHTML = '<p style="color:#999; font-style:italic;">Your cart is empty.</p>';
+                totalEl.innerText = '$0.00';
+                return;
+            }
+            container.innerHTML = '';
+            let total = 0;
+            cart.forEach(item => {
+                total += item.price;
+                container.innerHTML += `<div class="cart-item"><span>${item.name}</span><span>$${item.price.toFixed(2)}</span></div>`;
+            });
+            totalEl.innerText = `$${total.toFixed(2)}`;
+            localStorage.setItem('juiceCart', JSON.stringify(cart));
+        }
+        function goToCheckout() {
+            if(cart.length === 0) { alert('Please add items to your cart first!'); return; }
+            window.location.href = 'checkout.html';
+        }
+    </script>
+    <footer>
+        <p>&copy; 2026 Zest & Sip Juice Co. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

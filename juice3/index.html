@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zest & Sip Juice Co. | Fresh Pressed Juices</title>
+    <style>
+        :root { --primary: #2e7d32; --secondary: #ffa000; --light: #f9f9f9; --dark: #212121; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; color: var(--dark); background: var(--light); }
+        header { background: white; box-shadow: 0 2px 5px rgba(0,0,0,0.1); padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+        .logo { font-size: 24px; font-weight: bold; color: var(--primary); text-decoration: none; }
+        nav a { margin-left: 20px; text-decoration: none; color: var(--dark); font-weight: 500; }
+        nav a:hover, nav a.active { color: var(--primary); }
+        .hero { background: linear-gradient(rgba(46,125,50,0.1), rgba(46,125,50,0.2)), url('https://placehold.co/1200x500/e8f5e9/2e7d32?text=Fresh+Pressed+Juice+Banner') no-repeat center/cover; padding: 100px 5%; text-align: center; }
+        .hero h1 { font-size: 48px; color: var(--primary); margin-bottom: 20px; }
+        .hero p { font-size: 20px; max-width: 600px; margin: 0 auto 30px; }
+        .btn { background: var(--secondary); color: white; padding: 12px 30px; text-decoration: none; font-weight: bold; border-radius: 25px; transition: 0.3s; display: inline-block; border: none; cursor: pointer; }
+        .btn:hover { background: #ff8f00; }
+        .features { display: flex; justify-content: space-around; padding: 50px 5%; background: white; text-align: center; }
+        .feature-card { flex: 1; margin: 0 20px; padding: 20px; }
+        .feature-card img { width: 80px; height: 80px; border-radius: 50%; margin-bottom: 15px; }
+        footer { background: var(--dark); color: white; text-align: center; padding: 30px 5%; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo">🥤 Zest & Sip Co.</a>
+        <nav>
+            <a href="index.html" class="active">Home</a>
+            <a href="menu.html">Menu & Order</a>
+            <a href="about.html">Our Story</a>
+            <a href="contact.html">Find Us</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Raw, Fresh, Vibrant Juices</h1>
+        <p>100% organic cold-pressed juices crafted daily to fuel your lifestyle. Visit our physical store or get it delivered fresh to your doorstep!</p>
+        <a href="menu.html" class="btn">Order Online Now</a>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <img src="https://placehold.co/80x80/2e7d32/ffffff?text=Shop" alt="Storefront">
+            <h3>Visit Our Shop</h3>
+            <p>Come say hi! Enjoy our cozy juice bar experience and seasonal specials made on the spot.</p>
+        </div>
+        <div class="feature-card">
+            <img src="https://placehold.co/80x80/ffa000/ffffff?text=Truck" alt="Delivery">
+            <h3>Fast Local Delivery</h3>
+            <p>Freshly pressed, packed in ice, and delivered straight to your home or office environment.</p>
+        </div>
+        <div class="feature-card">
+            <img src="https://placehold.co/80x80/4caf50/ffffff?text=Leaf" alt="Organic">
+            <h3>100% Organic</h3>
+            <p>No added sugars, no preservatives. Just pure, nutrient-dense fruits and vegetables.</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Zest & Sip Juice Co. All Rights Reserved. Built for online ordering & pickup.</p>
+    </footer>
+</body>
+</html>
