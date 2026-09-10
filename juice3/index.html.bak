@@ -220,7 +220,7 @@
                         
                         <!-- Main Feature Card -->
                         <div class="relative bg-white p-4 rounded-3xl shadow-2xl border border-slate-100 overflow-hidden transform lg:rotate-1 hover:rotate-0 transition-transform duration-500">
-                            <img src="https://images.unsplash.com/photo-1618046364546-81e9d03d39a6?auto=format&fit=crop&w=800&q=80" alt="Fresh Custom Juice" class="w-full h-80 sm:h-96 object-cover rounded-2xl">
+                            <img src="https://images.unsplash.com/photo-1622597467836-f3285f2131b7?auto=format&fit=crop&w=800&q=80" alt="Fresh Custom Juice" class="w-full h-80 sm:h-96 object-cover rounded-2xl">
                             
                             <!-- Floating Badge 1 -->
                             <div class="absolute top-8 left-8 bg-glass p-3 rounded-2xl shadow-lg border border-white/60 flex items-center gap-3">
