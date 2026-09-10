@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="site-document-title">Squeeze & Soul - Homemade Fresh Juice Delivery</title>
+    <title id="site-title">Custom Juice - Homemade Cold-Pressed Juice Delivery</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -11,7 +11,7 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -26,11 +26,13 @@
                             orangeHover: '#E85A26',
                             green: '#10B981',
                             greenHover: '#059669',
-                            purple: '#8B5CF6',
-                            cream: '#FFFDF9',
-                            creamDark: '#F7F3E9',
+                            emerald: '#047857',
                             amber: '#F59E0B',
-                            dark: '#1E293B',
+                            cream: '#FFFDF9',
+                            creamDark: '#F4EFE6',
+                            purple: '#8B5CF6',
+                            dark: '#0F172A',
+                            yellow: '#FACC15',
                         }
                     },
                     fontFamily: {
@@ -41,6 +43,7 @@
                         'soft': '0 10px 30px -5px rgba(0, 0, 0, 0.05)',
                         'glow-orange': '0 10px 25px -5px rgba(255, 107, 53, 0.35)',
                         'glow-green': '0 10px 25px -5px rgba(16, 185, 129, 0.35)',
+                        'glow-amber': '0 10px 25px -5px rgba(245, 158, 11, 0.35)',
                     }
                 }
             }
@@ -52,153 +55,146 @@
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: #FFFDF9;
             color: #334155;
+            overflow-x: hidden;
         }
 
         h1, h2, h3, h4, .font-heading {
             font-family: 'Outfit', sans-serif;
         }
 
-        /* Glassmorphism card effects */
+        /* Modern Glassmorphism Card Effects */
         .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px solid rgba(255, 255, 255, 0.7);
         }
 
         .glass-card-orange {
-            background: rgba(255, 247, 237, 0.9);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(254, 215, 170, 0.6);
+            background: rgba(255, 247, 237, 0.92);
+            backdrop-filter: blur(14px);
+            border: 1px solid rgba(254, 215, 170, 0.7);
         }
 
-        .glass-card-green {
-            background: rgba(240, 253, 244, 0.9);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(187, 247, 208, 0.6);
+        .glass-card-dark {
+            background: rgba(15, 23, 42, 0.92);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(51, 65, 85, 0.8);
         }
 
         /* Custom Scrollbars */
         ::-webkit-scrollbar {
             width: 8px;
+            height: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #F7F3E9;
+            background: #F4EFE6;
         }
         ::-webkit-scrollbar-thumb {
             background: #FF6B35;
             border-radius: 9999px;
         }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #E85A26;
+        }
 
-        /* Floating Animation */
+        /* Pulsing & Floating Animations */
         @keyframes gentleFloat {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-8px) rotate(1deg); }
+            50% { transform: translateY(-6px) rotate(1deg); }
         }
         .animate-float {
             animation: gentleFloat 4s ease-in-out infinite;
+        }
+
+        /* Custom Badge Pulse */
+        @keyframes subtlePulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.85; transform: scale(1.03); }
+        }
+        .animate-subtle-pulse {
+            animation: subtlePulse 2.5s infinite;
         }
     </style>
 </head>
 <body class="relative min-h-screen flex flex-col selection:bg-brand-orange selection:text-white">
 
-    <!-- OWNER CUSTOMIZER TOOLBAR -->
-    <div id="owner-toolbar" class="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-11/12 max-w-4xl bg-slate-900/95 text-white p-3 sm:p-4 rounded-2xl shadow-2xl backdrop-blur-md border border-slate-700 transition-all duration-300">
-        <div class="flex items-center justify-between gap-3">
-            <div class="flex items-center gap-2 text-brand-orange">
-                <i data-lucide="settings" class="w-5 h-5 animate-spin-slow"></i>
-                <span class="text-xs sm:text-sm font-bold uppercase tracking-wider hidden md:inline">Owner Toolbar</span>
-            </div>
-
-            <!-- Inputs inside toolbar -->
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 flex-1 max-w-2xl text-xs">
-                <div>
-                    <label class="block text-[10px] text-slate-400 font-semibold mb-0.5">Business Name</label>
-                    <input type="text" id="owner-biz-name" value="Squeeze & Soul" oninput="updateOwnerConfig()" class="w-full bg-slate-800 border border-slate-700 rounded px-2 py-1 text-white focus:outline-none focus:border-brand-orange">
-                </div>
-                <div>
-                    <label class="block text-[10px] text-slate-400 font-semibold mb-0.5">Phone Number</label>
-                    <input type="text" id="owner-phone" value="(555) 019-2834" oninput="updateOwnerConfig()" class="w-full bg-slate-800 border border-slate-700 rounded px-2 py-1 text-white focus:outline-none focus:border-brand-orange">
-                </div>
-                <div>
-                    <label class="block text-[10px] text-slate-400 font-semibold mb-0.5">Free Delivery Min ($)</label>
-                    <input type="number" id="owner-min-delivery" value="25" oninput="updateOwnerConfig()" class="w-full bg-slate-800 border border-slate-700 rounded px-2 py-1 text-white focus:outline-none focus:border-brand-orange">
-                </div>
-                <div>
-                    <label class="block text-[10px] text-slate-400 font-semibold mb-0.5">Allowed ZIPs (comma)</label>
-                    <input type="text" id="owner-zips" value="90210, 90211, 10001, 30301, 60601, 75001" oninput="updateOwnerConfig()" class="w-full bg-slate-800 border border-slate-700 rounded px-2 py-1 text-white focus:outline-none focus:border-brand-orange">
-                </div>
-            </div>
-
-            <button onclick="toggleToolbarCollapse()" id="toolbar-toggle-btn" title="Toggle Panel" class="p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs flex items-center gap-1 shrink-0">
-                <i data-lucide="chevron-down" id="toolbar-chevron" class="w-4 h-4"></i>
-                <span class="hidden sm:inline">Minimize</span>
-            </button>
-        </div>
-    </div>
-
     <!-- ANNOUNCEMENT BAR -->
-    <div class="bg-gradient-to-r from-brand-orange via-amber-500 to-brand-orange text-white py-2 px-4 text-center text-xs sm:text-sm font-semibold tracking-wide flex items-center justify-center gap-2 shadow-sm">
-        <span class="flex h-2 w-2 rounded-full bg-white animate-pulse"></span>
-        <span>🍊 Made Fresh Daily in Small Batches! Order by Phone for Same-Day Home Delivery.</span>
+    <div class="bg-gradient-to-r from-brand-orange via-amber-500 to-brand-green text-white py-2 px-4 text-center text-xs sm:text-sm font-bold tracking-wide flex items-center justify-center gap-2 shadow-sm relative z-50">
+        <span class="flex h-2.5 w-2.5 rounded-full bg-white animate-pulse"></span>
+        <span>🥤 <strong class="bind-biz-name">Custom Juice</strong>: 100% Cold-Pressed On Order • Doorstep Chilled Delivery!</span>
+        <a href="tel:5550192834" class="bind-phone-link underline ml-2 font-black hover:text-amber-200 hidden sm:inline">Call/Text Us To Order</a>
     </div>
 
-    <!-- STICKY HEADER NAV -->
-    <header class="sticky top-0 z-40 bg-brand-cream/90 backdrop-blur-md border-b border-amber-100/80 transition-all">
+    <!-- STICKY MAIN HEADER -->
+    <header class="sticky top-0 z-40 bg-brand-cream/95 backdrop-blur-md border-b border-amber-200/60 shadow-xs transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
             
-            <!-- Brand Logo -->
-            <a href="#home" class="flex items-center gap-3 group">
-                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-orange to-amber-400 flex items-center justify-center text-white shadow-glow-orange group-hover:scale-105 transition-transform">
-                    <i data-lucide="citrus" class="w-6 h-6"></i>
+            <!-- Logo & Brand Name -->
+            <a href="#home" class="flex items-center gap-3 group shrink-0">
+                <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-orange via-amber-500 to-brand-green flex items-center justify-center text-white shadow-glow-orange group-hover:scale-105 transition-transform duration-300">
+                    <i data-lucide="cup-soda" class="w-6 h-6"></i>
                 </div>
                 <div>
-                    <span class="bind-biz-name font-heading text-xl sm:text-2xl font-black text-slate-900 tracking-tight block leading-tight">Squeeze & Soul</span>
-                    <span class="text-[11px] font-bold text-brand-green tracking-widest uppercase block -mt-1">Homemade Juices</span>
+                    <span class="bind-biz-name font-heading text-xl sm:text-2xl font-black text-slate-900 tracking-tight block leading-none">Custom Juice</span>
+                    <span class="text-[10px] font-extrabold text-brand-green tracking-widest uppercase block mt-1">Homemade Delivery</span>
                 </div>
             </a>
 
             <!-- Desktop Nav Links -->
-            <nav class="hidden lg:flex items-center gap-7 text-sm font-semibold text-slate-700">
+            <nav class="hidden xl:flex items-center gap-6 text-xs font-bold text-slate-700 uppercase tracking-wider">
                 <a href="#menu" class="hover:text-brand-orange transition-colors">Juice Menu</a>
+                <a href="#custom-builder" class="hover:text-brand-orange transition-colors">Build Custom Juice</a>
                 <a href="#how-it-works" class="hover:text-brand-orange transition-colors">How To Order</a>
                 <a href="#delivery" class="hover:text-brand-orange transition-colors">Delivery Area</a>
-                <a href="#about" class="hover:text-brand-orange transition-colors">Our Process</a>
-                <a href="#catering" class="hover:text-brand-orange transition-colors">Catering & Special</a>
+                <a href="#process" class="hover:text-brand-orange transition-colors">Process & Storage</a>
+                <a href="#catering" class="hover:text-brand-orange transition-colors">Catering</a>
                 <a href="#faq" class="hover:text-brand-orange transition-colors">FAQ</a>
             </nav>
 
-            <!-- Action Buttons -->
-            <div class="flex items-center gap-3">
-                <!-- Phone Call Button CTA -->
-                <a href="tel:5550192834" class="bind-phone-link hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brand-orange hover:bg-brand-orangeHover text-white font-bold text-sm shadow-glow-orange hover:-translate-y-0.5 transition-all">
+            <!-- Actions Header Group -->
+            <div class="flex items-center gap-2.5">
+                
+                <!-- OWNER ADMIN TOGGLE BUTTON -->
+                <button onclick="toggleOwnerAdminDrawer(true)" class="px-3 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 text-amber-400 border border-slate-700 font-bold text-xs flex items-center gap-1.5 shadow-sm transition-all hover:scale-105" title="Owner Menu & Business Manager">
+                    <i data-lucide="shield-check" class="w-4 h-4 text-brand-orange"></i>
+                    <span class="hidden sm:inline">Owner Admin</span>
+                </button>
+
+                <!-- CALL CTA BUTTON -->
+                <a href="tel:5550192834" class="bind-phone-link hidden sm:inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-brand-orange hover:bg-brand-orangeHover text-white font-extrabold text-xs shadow-glow-orange hover:-translate-y-0.5 transition-all">
                     <i data-lucide="phone-call" class="w-4 h-4 animate-bounce"></i>
                     <span class="bind-phone-text">(555) 019-2834</span>
                 </a>
 
-                <!-- Cart / Order Helper Drawer Trigger -->
-                <button onclick="toggleCartDrawer(true)" class="relative p-2.5 rounded-xl bg-amber-100/70 hover:bg-amber-200/80 text-slate-800 transition-all flex items-center justify-center">
+                <!-- CART / PHONE ORDER HELPER DRAWER TRIGGER -->
+                <button onclick="toggleCartDrawer(true)" class="relative p-2.5 rounded-xl bg-amber-100 hover:bg-amber-200/80 text-slate-900 transition-all flex items-center justify-center shadow-xs" aria-label="Open Phone Order Helper">
                     <i data-lucide="shopping-bag" class="w-5 h-5 text-brand-orange"></i>
                     <span id="cart-badge" class="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-brand-green text-white text-[10px] font-extrabold flex items-center justify-center shadow-sm">0</span>
                 </button>
 
-                <!-- Mobile Menu Button -->
-                <button onclick="toggleMobileNav()" class="lg:hidden p-2.5 rounded-xl bg-slate-100 text-slate-700">
+                <!-- Mobile Menu Hamburger Button -->
+                <button onclick="toggleMobileNav()" class="xl:hidden p-2.5 rounded-xl bg-slate-100 text-slate-800 hover:bg-slate-200" aria-label="Toggle Navigation">
                     <i data-lucide="menu" class="w-6 h-6"></i>
                 </button>
             </div>
         </div>
 
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobile-nav" class="hidden lg:hidden border-t border-amber-100 bg-brand-cream/95 px-4 pt-3 pb-6 space-y-3 shadow-lg">
-            <a href="#menu" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-slate-800 hover:text-brand-orange">Juice Menu</a>
-            <a href="#how-it-works" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-slate-800 hover:text-brand-orange">How To Order</a>
-            <a href="#delivery" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-slate-800 hover:text-brand-orange">Delivery Area</a>
-            <a href="#about" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-slate-800 hover:text-brand-orange">Our Process</a>
-            <a href="#catering" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-slate-800 hover:text-brand-orange">Catering & Special</a>
-            <a href="#faq" onclick="toggleMobileNav()" class="block py-2 text-sm font-semibold text-slate-800 hover:text-brand-orange">FAQ</a>
-            <div class="pt-2 border-t border-amber-200">
-                <a href="tel:5550192834" class="bind-phone-link w-full py-3 rounded-xl bg-brand-orange text-white font-bold text-center flex items-center justify-center gap-2">
+        <!-- MOBILE MENU DROPDOWN -->
+        <div id="mobile-nav" class="hidden xl:hidden border-t border-amber-200/80 bg-brand-cream/98 px-5 py-4 space-y-3 shadow-xl">
+            <a href="#menu" onclick="toggleMobileNav()" class="block py-2 text-sm font-bold text-slate-800 hover:text-brand-orange">Juice Menu</a>
+            <a href="#custom-builder" onclick="toggleMobileNav()" class="block py-2 text-sm font-bold text-slate-800 hover:text-brand-orange">Build Custom Juice</a>
+            <a href="#how-it-works" onclick="toggleMobileNav()" class="block py-2 text-sm font-bold text-slate-800 hover:text-brand-orange">How To Order</a>
+            <a href="#delivery" onclick="toggleMobileNav()" class="block py-2 text-sm font-bold text-slate-800 hover:text-brand-orange">Delivery Area</a>
+            <a href="#process" onclick="toggleMobileNav()" class="block py-2 text-sm font-bold text-slate-800 hover:text-brand-orange">Process & Storage</a>
+            <a href="#catering" onclick="toggleMobileNav()" class="block py-2 text-sm font-bold text-slate-800 hover:text-brand-orange">Catering & Parties</a>
+            <a href="#faq" onclick="toggleMobileNav()" class="block py-2 text-sm font-bold text-slate-800 hover:text-brand-orange">FAQ</a>
+            <div class="pt-2 border-t border-amber-200 flex flex-col gap-2">
+                <button onclick="toggleMobileNav(); toggleOwnerAdminDrawer(true);" class="w-full py-2.5 rounded-xl bg-slate-900 text-amber-400 font-bold text-xs flex items-center justify-center gap-2">
+                    <i data-lucide="settings" class="w-4 h-4 text-brand-orange"></i>
+                    <span>Open Owner Menu Manager</span>
+                </button>
+                <a href="tel:5550192834" class="bind-phone-link w-full py-3 rounded-xl bg-brand-orange text-white font-extrabold text-center flex items-center justify-center gap-2">
                     <i data-lucide="phone-call" class="w-4 h-4"></i>
                     <span>Call To Order: <span class="bind-phone-text">(555) 019-2834</span></span>
                 </a>
@@ -210,8 +206,8 @@
 
         <!-- HERO SECTION -->
         <section id="home" class="relative pt-8 pb-16 lg:pt-16 lg:pb-24 overflow-hidden">
-            <!-- Background Decorative Blurs -->
-            <div class="absolute top-10 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-tr from-amber-200/40 via-orange-100/50 to-emerald-100/30 rounded-full blur-3xl pointer-events-none -z-10"></div>
+            <!-- Decorative Gradient Background Blurs -->
+            <div class="absolute top-10 left-1/2 -translate-x-1/2 w-full max-w-7xl h-96 bg-gradient-to-tr from-amber-300/30 via-orange-200/40 to-emerald-200/30 rounded-full blur-3xl pointer-events-none -z-10"></div>
 
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="grid lg:grid-cols-12 gap-12 items-center">
@@ -219,55 +215,56 @@
                     <!-- Left Hero Content -->
                     <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
                         
-                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-100/80 border border-amber-200 text-brand-orange font-bold text-xs sm:text-sm shadow-sm">
+                        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100 border border-amber-200 text-brand-orange font-bold text-xs sm:text-sm shadow-xs">
                             <i data-lucide="sparkles" class="w-4 h-4 text-amber-500"></i>
-                            <span>Cold-Pressed Daily • No Added Sugar • Direct Delivery</span>
+                            <span>100% Pure • Unprocessed Cold-Pressed • Phone Orders & Home Delivery</span>
                         </div>
 
-                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.1]">
-                            Fresh, Homemade Juices <br class="hidden sm:inline">
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black text-slate-900 tracking-tight leading-[1.08]">
+                            Fresh Cold-Pressed Juices, <br class="hidden sm:inline">
                             <span class="bg-gradient-to-r from-brand-orange via-amber-500 to-brand-green bg-clip-text text-transparent">
-                                Delivered Right To Your Door
+                                Juiced Fresh On Order & Chilled To Your Door
                             </span>
                         </h1>
 
-                        <p class="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
-                            Craving 100% natural, raw fruit and vegetable juices made in small batches? Select your favorite homemade flavors online, then <strong class="text-slate-800 font-bold">call or text us your order</strong> for fast doorstep delivery!
+                        <p class="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-medium leading-relaxed">
+                            Looking for raw, enzyme-rich fruit & vegetable juices, wellness shots, or custom detox blends made in small batches? Pick your items, <strong class="text-slate-900 font-extrabold">call or text us your phone order</strong>, and we'll deliver chilled bottles straight to your doorstep!
                         </p>
 
-                        <!-- Primary CTA Buttons -->
+                        <!-- Primary CTA Group -->
                         <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
-                            <a href="#menu" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-brand-orange hover:bg-brand-orangeHover text-white font-extrabold text-base shadow-glow-orange hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2 group">
-                                <span>Explore Juice Menu</span>
+                            <a href="#menu" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-brand-orange hover:bg-brand-orangeHover text-white font-extrabold text-base shadow-glow-orange hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2.5 group">
+                                <i data-lucide="cup-soda" class="w-5 h-5"></i>
+                                <span>Browse Juice Menu</span>
                                 <i data-lucide="arrow-down" class="w-5 h-5 group-hover:translate-y-1 transition-transform"></i>
                             </a>
 
-                            <a href="tel:5550192834" class="bind-phone-link w-full sm:w-auto px-8 py-4 rounded-2xl bg-emerald-600 hover:bg-brand-greenHover text-white font-extrabold text-base shadow-glow-green hover:-translate-y-0.5 transition-all flex items-center justify-center gap-3">
-                                <i data-lucide="phone-call" class="w-5 h-5"></i>
-                                <span>Call <span class="bind-phone-text">(555) 019-2834</span></span>
+                            <a href="#custom-builder" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-brand-green hover:bg-brand-greenHover text-white font-extrabold text-base shadow-glow-green hover:-translate-y-0.5 transition-all flex items-center justify-center gap-2.5">
+                                <i data-lucide="sliders" class="w-5 h-5"></i>
+                                <span>Build Custom Juice</span>
                             </a>
                         </div>
 
-                        <!-- Trust Badges Bar -->
-                        <div class="pt-8 border-t border-amber-200/60 grid grid-cols-3 gap-4 text-center lg:text-left">
+                        <!-- Highlights Bar -->
+                        <div class="pt-8 border-t border-amber-200/80 grid grid-cols-3 gap-4 text-center lg:text-left">
                             <div class="flex flex-col items-center lg:items-start gap-1">
                                 <div class="w-10 h-10 rounded-xl bg-orange-100 text-brand-orange flex items-center justify-center">
-                                    <i data-lucide="apple" class="w-5 h-5"></i>
+                                    <i data-lucide="citrus" class="w-5 h-5"></i>
                                 </div>
-                                <span class="text-xs sm:text-sm font-bold text-slate-900 mt-1">100% Raw Fruit</span>
-                                <span class="text-[11px] text-slate-500">Zero artificial additives</span>
+                                <span class="text-xs sm:text-sm font-bold text-slate-900 mt-1">100% Raw Produce</span>
+                                <span class="text-[11px] text-slate-500">No added water or sugar</span>
                             </div>
 
                             <div class="flex flex-col items-center lg:items-start gap-1">
                                 <div class="w-10 h-10 rounded-xl bg-emerald-100 text-brand-green flex items-center justify-center">
                                     <i data-lucide="clock" class="w-5 h-5"></i>
                                 </div>
-                                <span class="text-xs sm:text-sm font-bold text-slate-900 mt-1">Pressed Fresh Daily</span>
-                                <span class="text-[11px] text-slate-500">Made same-day you order</span>
+                                <span class="text-xs sm:text-sm font-bold text-slate-900 mt-1">Juiced After Order</span>
+                                <span class="text-[11px] text-slate-500">Never pre-bottled or stored</span>
                             </div>
 
                             <div class="flex flex-col items-center lg:items-start gap-1">
-                                <div class="w-10 h-10 rounded-xl bg-purple-100 text-brand-purple flex items-center justify-center">
+                                <div class="w-10 h-10 rounded-xl bg-amber-100 text-brand-amber flex items-center justify-center">
                                     <i data-lucide="truck" class="w-5 h-5"></i>
                                 </div>
                                 <span class="text-xs sm:text-sm font-bold text-slate-900 mt-1">Free Local Delivery</span>
@@ -277,59 +274,53 @@
 
                     </div>
 
-                    <!-- Right Visual Mockup Card -->
+                    <!-- Right Hero Visual Card -->
                     <div class="lg:col-span-5 relative">
                         <div class="relative mx-auto max-w-md lg:max-w-none">
                             
-                            <!-- Main Featured Bottle Glass Showcase -->
-                            <div class="glass-card-orange rounded-3xl p-6 sm:p-8 shadow-2xl relative border border-orange-200/80">
+                            <div class="glass-card-orange rounded-3xl p-6 sm:p-7 shadow-2xl relative border border-orange-200">
                                 
                                 <div class="flex items-center justify-between mb-4">
-                                    <span class="px-3 py-1 rounded-full bg-brand-orange text-white text-xs font-bold uppercase tracking-wider">Today's Special</span>
+                                    <span class="px-3 py-1 rounded-full bg-brand-orange text-white text-xs font-bold uppercase tracking-wider">Top Order Recommendation</span>
                                     <span class="text-xs font-bold text-brand-green flex items-center gap-1">
-                                        <i data-lucide="check-circle-2" class="w-4 h-4"></i> In Stock
+                                        <i data-lucide="check-circle-2" class="w-4 h-4"></i> Pressing Today
                                     </span>
                                 </div>
 
-                                <!-- Bottle Illustration/Graphic -->
-                                <div class="relative py-6 flex items-center justify-center">
-                                    <div class="w-44 h-64 rounded-3xl bg-gradient-to-b from-amber-400 via-orange-500 to-red-500 shadow-glow-orange relative overflow-hidden flex flex-col items-center justify-between p-4 border-4 border-white/40 animate-float">
-                                        <div class="w-12 h-4 bg-white/60 rounded-t-lg -mt-4 border border-amber-300"></div>
-                                        <div class="text-center text-white my-auto">
-                                            <i data-lucide="sun" class="w-8 h-8 mx-auto mb-1 animate-spin-slow opacity-90"></i>
-                                            <div class="font-heading font-black text-xl leading-tight">CITRUS BOOST</div>
-                                            <div class="text-[10px] tracking-widest font-semibold uppercase opacity-80 mt-1">Pure Juice</div>
-                                        </div>
-                                        <div class="w-full text-center bg-white/20 backdrop-blur-md rounded-xl py-1 text-[10px] font-bold text-white uppercase">
-                                            500ml • Raw
+                                <div class="relative py-2 flex items-center justify-center">
+                                    <div class="relative w-full h-64 rounded-2xl overflow-hidden shadow-lg border border-orange-200">
+                                        <img src="https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=800&q=80" alt="Custom Glow Signature Juice" class="w-full h-full object-cover">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex flex-col justify-end p-5 text-white">
+                                            <span class="text-[10px] font-bold uppercase tracking-widest text-amber-300">Signature Blend</span>
+                                            <div class="font-heading font-black text-2xl leading-tight">CUSTOM GLOW CITRUS</div>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div class="space-y-3 mt-2">
+                                <div class="space-y-3 mt-3">
                                     <div class="flex justify-between items-baseline">
-                                        <h3 class="font-heading text-xl font-bold text-slate-900">Citrus Sunshine Boost</h3>
-                                        <span class="text-lg font-black text-brand-orange">$8.50</span>
+                                        <h3 class="font-heading text-lg font-bold text-slate-900">Custom Glow Signature</h3>
+                                        <span class="text-lg font-black text-brand-orange">$8.50 (16 oz)</span>
                                     </div>
-                                    <p class="text-xs text-slate-600">Cold-pressed Valencia oranges, organic carrots, fresh ginger, and a dash of turmeric.</p>
+                                    <p class="text-xs text-slate-600">Valencia oranges, organic carrots, fresh ginger root, turmeric, and key lime.</p>
 
-                                    <!-- Quick Add Action -->
+                                    <!-- Quick Hero Add Button -->
                                     <button onclick="quickAddHeroItem()" class="w-full py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md transition-all">
                                         <i data-lucide="plus-circle" class="w-4 h-4 text-brand-orange"></i>
-                                        <span>Add 500ml To Phone Order Helper</span>
+                                        <span>Add 16 oz To Phone Order Helper</span>
                                     </button>
                                 </div>
 
                             </div>
 
-                            <!-- Floating Callout Badge -->
-                            <div class="absolute -top-6 -right-4 bg-white rounded-2xl p-3 shadow-xl border border-amber-100 flex items-center gap-3 animate-bounce" style="animation-duration: 3s;">
-                                <div class="w-10 h-10 rounded-xl bg-emerald-500 text-white flex items-center justify-center">
+                            <!-- Floating Card Badge -->
+                            <div class="absolute -top-6 -right-4 bg-white rounded-2xl p-3 shadow-xl border border-amber-200 flex items-center gap-3 animate-float">
+                                <div class="w-10 h-10 rounded-xl bg-brand-green text-white flex items-center justify-center">
                                     <i data-lucide="heart-handshake" class="w-5 h-5"></i>
                                 </div>
                                 <div class="pr-2">
-                                    <div class="text-xs font-bold text-slate-900">Homemade Quality</div>
-                                    <div class="text-[10px] text-slate-500">Crafted with care</div>
+                                    <div class="text-xs font-black text-slate-900">Custom Made</div>
+                                    <div class="text-[10px] text-slate-500">Juiced strictly upon phone request</div>
                                 </div>
                             </div>
 
@@ -341,47 +332,47 @@
         </section>
 
         <!-- HOW IT WORKS SECTION -->
-        <section id="how-it-works" class="py-16 bg-gradient-to-b from-brand-cream dark:to-amber-50/50 border-y border-amber-200/50">
+        <section id="how-it-works" class="py-16 bg-gradient-to-b from-brand-cream to-amber-50/60 border-y border-amber-200/60">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
                 <div class="text-center max-w-2xl mx-auto space-y-3 mb-12">
-                    <span class="px-3 py-1 rounded-full bg-orange-100 text-brand-orange font-bold text-xs uppercase tracking-wider">Simple & Fast</span>
-                    <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">How To Order in 3 Easy Steps</h2>
-                    <p class="text-slate-600 text-sm sm:text-base">We keep it personal and simple. Browse what you like and call us directly!</p>
+                    <span class="px-3 py-1 rounded-full bg-orange-100 text-brand-orange font-extrabold text-xs uppercase tracking-wider">Fast & Easy</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">How Phone Order Delivery Works</h2>
+                    <p class="text-slate-600 text-sm sm:text-base">We press strictly on order to maximize nutrients and flavor. Follow these 3 simple steps!</p>
                 </div>
 
-                <div class="grid md:grid-cols-3 gap-8 relative">
+                <div class="grid md:grid-cols-3 gap-8">
                     
                     <!-- Step 1 -->
-                    <div class="bg-white rounded-3xl p-8 border border-amber-100 shadow-soft text-center relative group hover:-translate-y-1 transition-all">
-                        <div class="w-16 h-16 rounded-2xl bg-orange-100 text-brand-orange font-heading text-2xl font-black flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:bg-brand-orange group-hover:text-white transition-all shadow-sm">
+                    <div class="bg-white rounded-3xl p-8 border border-amber-200 shadow-soft text-center relative group hover:-translate-y-1 transition-all">
+                        <div class="w-16 h-16 rounded-2xl bg-orange-100 text-brand-orange font-heading text-2xl font-black flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:bg-brand-orange group-hover:text-white transition-all">
                             1
                         </div>
-                        <h3 class="font-heading text-xl font-bold text-slate-900 mb-2">Pick Your Flavors</h3>
+                        <h3 class="font-heading text-xl font-bold text-slate-900 mb-2">Build Your Cart Helper</h3>
                         <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                            Browse our menu of raw fruit juices, detox greens, and immunity shots. Choose bottle sizes (250ml, 500ml, 1L) and add them to your Order Helper.
+                            Select bottles from our menu or create a custom recipe using our interactive builder. Pick your bottle sizes (12 oz, 16 oz, or 32 oz).
                         </p>
                     </div>
 
                     <!-- Step 2 -->
-                    <div class="bg-white rounded-3xl p-8 border border-amber-100 shadow-soft text-center relative group hover:-translate-y-1 transition-all">
-                        <div class="w-16 h-16 rounded-2xl bg-emerald-100 text-brand-green font-heading text-2xl font-black flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:bg-brand-green group-hover:text-white transition-all shadow-sm">
+                    <div class="bg-white rounded-3xl p-8 border border-amber-200 shadow-soft text-center relative group hover:-translate-y-1 transition-all">
+                        <div class="w-16 h-16 rounded-2xl bg-emerald-100 text-brand-green font-heading text-2xl font-black flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:bg-brand-green group-hover:text-white transition-all">
                             2
                         </div>
-                        <h3 class="font-heading text-xl font-bold text-slate-900 mb-2">Call or Text Us</h3>
+                        <h3 class="font-heading text-xl font-bold text-slate-900 mb-2">Call or Text Us Your Order</h3>
                         <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                            Click <strong class="text-brand-orange font-bold">Call Now</strong> or use our 1-click text summary builder to send your order directly to <span class="bind-phone-text font-bold">(555) 019-2834</span>.
+                            Click <strong class="text-brand-orange font-bold">Call Now</strong> or use our 1-click SMS generator to text your formatted order list straight to <span class="bind-phone-text font-bold">(555) 019-2834</span>.
                         </p>
                     </div>
 
                     <!-- Step 3 -->
-                    <div class="bg-white rounded-3xl p-8 border border-amber-100 shadow-soft text-center relative group hover:-translate-y-1 transition-all">
-                        <div class="w-16 h-16 rounded-2xl bg-purple-100 text-brand-purple font-heading text-2xl font-black flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:bg-brand-purple group-hover:text-white transition-all shadow-sm">
+                    <div class="bg-white rounded-3xl p-8 border border-amber-200 shadow-soft text-center relative group hover:-translate-y-1 transition-all">
+                        <div class="w-16 h-16 rounded-2xl bg-amber-100 text-brand-amber font-heading text-2xl font-black flex items-center justify-center mx-auto mb-6 group-hover:scale-110 group-hover:bg-brand-amber group-hover:text-white transition-all">
                             3
                         </div>
-                        <h3 class="font-heading text-xl font-bold text-slate-900 mb-2">Fresh Home Delivery</h3>
+                        <h3 class="font-heading text-xl font-bold text-slate-900 mb-2">Chilled Doorstep Delivery</h3>
                         <p class="text-slate-600 text-xs sm:text-sm leading-relaxed">
-                            We press your juices fresh on the morning of delivery and bring them cold to your doorstep in eco-friendly ice totes.
+                            We cold-press your order fresh and deliver your bottles straight to your front porch in temperature-controlled insulated totes.
                         </p>
                     </div>
 
@@ -390,113 +381,261 @@
             </div>
         </section>
 
-        <!-- JUICE MENU SECTION -->
+        <!-- JUICE MENU SHOWCASE SECTION -->
         <section id="menu" class="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <!-- Section Header -->
-            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <!-- Section Header & Controls -->
+            <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-10">
                 <div>
-                    <span class="px-3 py-1 rounded-full bg-emerald-100 text-brand-green font-bold text-xs uppercase tracking-wider">Our Fresh Selection</span>
-                    <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mt-2">Homemade Juice Menu</h2>
-                    <p class="text-slate-600 text-sm mt-1">Filtered cold-pressed raw juices made with zero sugar or preservatives.</p>
+                    <div class="flex items-center gap-2">
+                        <span class="px-3 py-1 rounded-full bg-emerald-100 text-brand-green font-extrabold text-xs uppercase tracking-wider">Handcrafted Menu</span>
+                        <span class="text-xs text-slate-400 font-semibold" id="menu-item-count-label">6 Live Menu Items</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mt-2"><span class="bind-biz-name">Custom Juice</span> Menu</h2>
+                    <p class="text-slate-600 text-sm mt-1">Filter by category or search your favorite cold-pressed juice recipes!</p>
                 </div>
 
-                <!-- Category Filters -->
-                <div class="flex flex-wrap items-center gap-2" id="category-filter-container">
-                    <button onclick="filterCategory('all')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-900 text-white shadow-md" data-cat="all">All Items</button>
-                    <button onclick="filterCategory('citrus')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white text-slate-700 border border-slate-200 hover:border-brand-orange" data-cat="citrus">🍊 Citrus Boost</button>
-                    <button onclick="filterCategory('green')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white text-slate-700 border border-slate-200 hover:border-brand-green" data-cat="green">🥬 Green Detox</button>
-                    <button onclick="filterCategory('berry')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white text-slate-700 border border-slate-200 hover:border-brand-purple" data-cat="berry">🫐 Berry Delights</button>
-                    <button onclick="filterCategory('shots')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white text-slate-700 border border-slate-200 hover:border-amber-500" data-cat="shots">⚡ Immunity Shots</button>
+                <!-- Search Input Bar -->
+                <div class="w-full lg:w-80 relative">
+                    <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5"></i>
+                    <input type="text" id="menu-search-input" oninput="handleMenuSearch()" placeholder="Search juice, ingredient, benefit..." class="w-full bg-white border border-slate-300 rounded-xl pl-10 pr-4 py-2.5 text-xs text-slate-800 placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-orange shadow-xs">
                 </div>
             </div>
 
-            <!-- Juice Cards Grid -->
+            <!-- Category Filter Tabs Bar -->
+            <div class="flex flex-wrap items-center gap-2 mb-8 border-b border-amber-200/60 pb-4" id="category-filter-container">
+                <button onclick="filterCategory('all')" class="cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all bg-slate-900 text-white shadow-md" data-cat="all">All Items</button>
+                <button onclick="filterCategory('Cold-Pressed Juices')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white text-slate-700 border border-slate-200 hover:border-brand-orange" data-cat="Cold-Pressed Juices">🍊 Cold-Pressed Juices</button>
+                <button onclick="filterCategory('Wellness Shots')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white text-slate-700 border border-slate-200 hover:border-brand-green" data-cat="Wellness Shots">⚡ Wellness Shots</button>
+                <button onclick="filterCategory('Smoothies & Blends')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white text-slate-700 border border-slate-200 hover:border-brand-purple" data-cat="Smoothies & Blends">🥤 Smoothies & Blends</button>
+                <button onclick="filterCategory('Detox Cleanses')" class="cat-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white text-slate-700 border border-slate-200 hover:border-brand-amber" data-cat="Detox Cleanses">🥬 Detox Cleanses</button>
+            </div>
+
+            <!-- Dynamic Juice Cards Grid -->
             <div id="juice-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Dynamically Rendered via JS -->
             </div>
 
+            <!-- Empty Search State -->
+            <div id="no-menu-results" class="hidden text-center py-16 bg-white rounded-3xl border border-amber-200 space-y-3">
+                <i data-lucide="search-x" class="w-12 h-12 text-slate-300 mx-auto"></i>
+                <h3 class="font-heading font-black text-lg text-slate-800">No matching juices found</h3>
+                <p class="text-xs text-slate-500">Try adjusting your search terms or build a custom juice recipe!</p>
+                <button onclick="resetMenuFilter()" class="px-4 py-2 rounded-xl bg-brand-orange text-white text-xs font-bold shadow-md">Reset Search & Filters</button>
+            </div>
+
+        </section>
+
+        <!-- CUSTOM BUILD-YOUR-OWN JUICE TOOL -->
+        <section id="custom-builder" class="py-16 bg-gradient-to-tr from-amber-500/10 via-brand-cream to-emerald-500/10 border-y border-amber-200/80">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                
+                <div class="bg-white rounded-3xl p-6 sm:p-10 border border-amber-200 shadow-2xl relative overflow-hidden">
+                    <div class="absolute -top-12 -right-12 w-48 h-48 bg-amber-200/50 rounded-full blur-2xl pointer-events-none"></div>
+
+                    <div class="max-w-3xl">
+                        <span class="px-3 py-1 rounded-full bg-brand-orange text-white text-xs font-extrabold uppercase tracking-wider">Interactive Customizer</span>
+                        <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight mt-2">Build Your Custom Juice Recipe</h2>
+                        <p class="text-slate-600 text-sm mt-1">Select your liquid base, fresh organic greens, raw fruits, and superfood boosters!</p>
+                    </div>
+
+                    <div class="grid lg:grid-cols-12 gap-8 mt-8 items-start">
+                        
+                        <!-- Builder Controls (Left 8 Columns) -->
+                        <div class="lg:col-span-8 space-y-6">
+                            
+                            <!-- 1. Liquid Base -->
+                            <div>
+                                <label class="block text-xs font-extrabold text-slate-800 uppercase tracking-wider mb-2">1. Choose Liquid Base (Select 1) *</label>
+                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                                    <button type="button" onclick="selectCustomBase('Fresh Coconut Water')" class="custom-base-btn p-3 rounded-xl border text-xs font-bold text-left transition-all border-brand-orange bg-orange-50 text-brand-orange shadow-xs" data-value="Fresh Coconut Water">🥥 Coconut Water</button>
+                                    <button type="button" onclick="selectCustomBase('Crisp Green Apple')" class="custom-base-btn p-3 rounded-xl border text-xs font-bold text-left transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-brand-orange" data-value="Crisp Green Apple">🍏 Green Apple</button>
+                                    <button type="button" onclick="selectCustomBase('Valencia Orange')" class="custom-base-btn p-3 rounded-xl border text-xs font-bold text-left transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-brand-orange" data-value="Valencia Orange">🍊 Valencia Orange</button>
+                                    <button type="button" onclick="selectCustomBase('Hydrating Cucumber Water')" class="custom-base-btn p-3 rounded-xl border text-xs font-bold text-left transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-brand-orange" data-value="Hydrating Cucumber Water">🥒 Cucumber Water</button>
+                                </div>
+                            </div>
+
+                            <!-- 2. Produce & Veggies -->
+                            <div>
+                                <label class="block text-xs font-extrabold text-slate-800 uppercase tracking-wider mb-2">2. Pick Greens & Fruits (Included)</label>
+                                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
+                                    <label class="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-amber-50/60 text-xs font-semibold flex items-center gap-2 cursor-pointer transition-all">
+                                        <input type="checkbox" value="Organic Kale" onchange="updateCustomJuicePreview()" class="custom-ingredient rounded text-brand-orange focus:ring-brand-orange" checked>
+                                        <span>🥬 Organic Kale</span>
+                                    </label>
+                                    <label class="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-amber-50/60 text-xs font-semibold flex items-center gap-2 cursor-pointer transition-all">
+                                        <input type="checkbox" value="Baby Spinach" onchange="updateCustomJuicePreview()" class="custom-ingredient rounded text-brand-orange focus:ring-brand-orange" checked>
+                                        <span>🍃 Baby Spinach</span>
+                                    </label>
+                                    <label class="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-amber-50/60 text-xs font-semibold flex items-center gap-2 cursor-pointer transition-all">
+                                        <input type="checkbox" value="Organic Carrot" onchange="updateCustomJuicePreview()" class="custom-ingredient rounded text-brand-orange focus:ring-brand-orange" checked>
+                                        <span>🥕 Organic Carrot</span>
+                                    </label>
+                                    <label class="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-amber-50/60 text-xs font-semibold flex items-center gap-2 cursor-pointer transition-all">
+                                        <input type="checkbox" value="Sweet Pineapple" onchange="updateCustomJuicePreview()" class="custom-ingredient rounded text-brand-orange focus:ring-brand-orange">
+                                        <span>🍍 Pineapple</span>
+                                    </label>
+                                    <label class="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-amber-50/60 text-xs font-semibold flex items-center gap-2 cursor-pointer transition-all">
+                                        <input type="checkbox" value="Crisp Celery" onchange="updateCustomJuicePreview()" class="custom-ingredient rounded text-brand-orange focus:ring-brand-orange">
+                                        <span>🥬 Crisp Celery</span>
+                                    </label>
+                                    <label class="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-amber-50/60 text-xs font-semibold flex items-center gap-2 cursor-pointer transition-all">
+                                        <input type="checkbox" value="Beetroot" onchange="updateCustomJuicePreview()" class="custom-ingredient rounded text-brand-orange focus:ring-brand-orange">
+                                        <span>🔴 Beetroot</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <!-- 3. Superfood Boosters -->
+                            <div>
+                                <label class="block text-xs font-extrabold text-slate-800 uppercase tracking-wider mb-2">3. Add Boosters (+$1.00 each)</label>
+                                <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                                    <label class="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-amber-50/60 text-xs font-semibold flex items-center gap-2 cursor-pointer transition-all">
+                                        <input type="checkbox" value="Fresh Ginger Root" data-booster="1.00" onchange="updateCustomJuicePreview()" class="custom-booster rounded text-brand-orange focus:ring-brand-orange" checked>
+                                        <span>🫚 Fresh Ginger</span>
+                                    </label>
+                                    <label class="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-amber-50/60 text-xs font-semibold flex items-center gap-2 cursor-pointer transition-all">
+                                        <input type="checkbox" value="Organic Turmeric" data-booster="1.00" onchange="updateCustomJuicePreview()" class="custom-booster rounded text-brand-orange focus:ring-brand-orange">
+                                        <span>🟡 Turmeric</span>
+                                    </label>
+                                    <label class="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-amber-50/60 text-xs font-semibold flex items-center gap-2 cursor-pointer transition-all">
+                                        <input type="checkbox" value="Chia Seeds" data-booster="1.00" onchange="updateCustomJuicePreview()" class="custom-booster rounded text-brand-orange focus:ring-brand-orange">
+                                        <span>🌱 Chia Seeds</span>
+                                    </label>
+                                    <label class="p-3 rounded-xl border border-slate-200 bg-slate-50 hover:bg-amber-50/60 text-xs font-semibold flex items-center gap-2 cursor-pointer transition-all">
+                                        <input type="checkbox" value="Cayenne Pepper" data-booster="1.00" onchange="updateCustomJuicePreview()" class="custom-booster rounded text-brand-orange focus:ring-brand-orange">
+                                        <span>🌶️ Cayenne</span>
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- Custom Summary Card (Right 4 Columns) -->
+                        <div class="lg:col-span-4 bg-slate-900 text-white rounded-2xl p-6 shadow-xl space-y-4">
+                            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                                <span class="font-heading font-black text-lg text-brand-orange">Custom Recipe</span>
+                                <span class="text-xs bg-brand-green/20 text-brand-green font-bold px-2.5 py-0.5 rounded-full">Your Creation</span>
+                            </div>
+
+                            <div class="space-y-3 text-xs">
+                                <div>
+                                    <span class="text-slate-400 font-semibold block">Liquid Base:</span>
+                                    <span id="custom-summary-base" class="font-bold text-amber-300">Fresh Coconut Water</span>
+                                </div>
+
+                                <div>
+                                    <span class="text-slate-400 font-semibold block">Selected Ingredients:</span>
+                                    <p id="custom-summary-ingredients" class="text-slate-200 leading-relaxed font-medium">Organic Kale, Baby Spinach, Organic Carrot, Fresh Ginger Root</p>
+                                </div>
+
+                                <div class="pt-2 border-t border-slate-800">
+                                    <label class="text-slate-400 font-semibold block mb-1">Bottle Size:</label>
+                                    <select id="custom-size-select" onchange="updateCustomJuicePreview()" class="w-full bg-slate-800 border border-slate-700 text-white rounded-lg p-2.5 text-xs font-bold focus:outline-none focus:border-brand-orange">
+                                        <option value="12 oz" data-baseprice="6.00">12 oz Bottle ($6.00 Base)</option>
+                                        <option value="16 oz" data-baseprice="9.50" selected>16 oz Bottle ($9.50 Base)</option>
+                                        <option value="32 oz" data-baseprice="17.00">32 oz Bottle ($17.00 Base)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="pt-3 border-t border-slate-800 flex items-center justify-between">
+                                <span class="text-xs text-slate-400 font-bold">Calculated Total</span>
+                                <span id="custom-calculated-price" class="font-heading font-black text-2xl text-brand-orange">$10.50</span>
+                            </div>
+
+                            <button onclick="addCustomJuiceToCart()" class="w-full py-3.5 rounded-xl bg-brand-orange hover:bg-brand-orangeHover text-white font-extrabold text-xs shadow-glow-orange flex items-center justify-center gap-2 transition-all">
+                                <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                                <span>Add Custom Juice To Phone Order</span>
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
         </section>
 
         <!-- LOCAL DELIVERY AREA CHECKER -->
-        <section id="delivery" class="py-16 bg-gradient-to-tr from-emerald-900 via-slate-900 to-slate-900 text-white relative overflow-hidden">
+        <section id="delivery" class="py-16 bg-gradient-to-tr from-emerald-950 via-slate-900 to-slate-900 text-white relative overflow-hidden">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 
                 <div class="grid lg:grid-cols-12 gap-12 items-center">
                     
                     <div class="lg:col-span-6 space-y-6">
-                        <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 font-bold text-xs uppercase tracking-wider border border-emerald-500/30">Local Service Area</span>
+                        <span class="px-3.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 font-extrabold text-xs uppercase tracking-wider border border-emerald-500/30">Local Doorstep Service</span>
                         <h2 class="text-3xl sm:text-4xl font-black tracking-tight leading-tight">
                             Check If We Deliver To Your Neighborhood
                         </h2>
                         <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
-                            We currently deliver to select local neighborhoods to guarantee maximum cold freshness. Enter your ZIP code below to see if your address is in our daily delivery route!
+                            We deliver directly to local homes and offices in chilled totes to guarantee maximum cold freshness. Enter your ZIP code below to check our route!
                         </p>
 
-                        <!-- Interactive Zip Checker Tool -->
-                        <div class="bg-slate-800/80 p-3 sm:p-4 rounded-2xl border border-slate-700 shadow-xl space-y-3">
-                            <div class="flex flex-col sm:flex-row gap-2">
+                        <!-- ZIP Code Checker Form -->
+                        <div class="bg-slate-800/90 p-4 rounded-2xl border border-slate-700 shadow-xl space-y-3">
+                            <div class="flex flex-col sm:flex-row gap-2.5">
                                 <div class="relative flex-1">
-                                    <i data-lucide="map-pin" class="w-5 h-5 text-slate-400 absolute left-3 top-3.5"></i>
+                                    <i data-lucide="map-pin" class="w-5 h-5 text-slate-400 absolute left-3.5 top-3.5"></i>
                                     <input type="text" id="zip-input" placeholder="Enter your 5-digit ZIP code (e.g. 90210)" class="w-full bg-slate-900 border border-slate-700 rounded-xl pl-10 pr-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brand-green">
                                 </div>
-                                <button onclick="checkDeliveryZip()" class="px-6 py-3 rounded-xl bg-brand-green hover:bg-brand-greenHover text-white font-extrabold text-sm flex items-center justify-center gap-2 transition-all">
-                                    <span>Check Area</span>
+                                <button onclick="checkDeliveryZip()" class="px-6 py-3 rounded-xl bg-brand-green hover:bg-brand-greenHover text-white font-extrabold text-sm flex items-center justify-center gap-2 transition-all shadow-md">
+                                    <span>Check Route</span>
                                     <i data-lucide="search" class="w-4 h-4"></i>
                                 </button>
                             </div>
 
-                            <!-- Result Alert Box -->
-                            <div id="zip-result" class="hidden p-3 rounded-xl text-xs font-semibold"></div>
+                            <!-- Zip Result Alert -->
+                            <div id="zip-result" class="hidden p-3.5 rounded-xl text-xs font-semibold"></div>
                         </div>
 
-                        <!-- Schedule Info -->
+                        <!-- Schedule Metrics -->
                         <div class="grid grid-cols-2 gap-4 text-xs">
-                            <div class="p-3 rounded-xl bg-slate-800/50 border border-slate-700/60">
-                                <div class="text-slate-400 uppercase font-bold text-[10px] mb-1">Delivery Hours</div>
-                                <div class="font-bold text-white">Mon – Sat: 7:00 AM – 1:00 PM</div>
+                            <div class="p-3.5 rounded-xl bg-slate-800/50 border border-slate-700">
+                                <div class="text-slate-400 uppercase font-bold text-[10px] mb-1">Morning Delivery Hours</div>
+                                <div class="font-extrabold text-white">Mon – Sat: 7:00 AM – 1:00 PM</div>
                             </div>
-                            <div class="p-3 rounded-xl bg-slate-800/50 border border-slate-700/60">
-                                <div class="text-slate-400 uppercase font-bold text-[10px] mb-1">Free Delivery Threshold</div>
-                                <div class="font-bold text-emerald-400">Free on orders $<span class="bind-min-val">25</span>+</div>
+                            <div class="p-3.5 rounded-xl bg-slate-800/50 border border-slate-700">
+                                <div class="text-slate-400 uppercase font-bold text-[10px] mb-1">Free Delivery Minimum</div>
+                                <div class="font-extrabold text-emerald-400">Free on orders $<span class="bind-min-val">25</span>+</div>
                             </div>
                         </div>
 
                     </div>
 
-                    <!-- Visual Delivery Map Illustration Card -->
+                    <!-- Right Delivery Information Card -->
                     <div class="lg:col-span-6">
-                        <div class="bg-slate-800/90 rounded-3xl p-6 sm:p-8 border border-slate-700 shadow-2xl relative">
-                            <div class="flex items-center justify-between mb-6 border-b border-slate-700 pb-4">
+                        <div class="bg-slate-800/90 rounded-3xl p-6 sm:p-8 border border-slate-700 shadow-2xl space-y-6">
+                            <div class="flex items-center justify-between border-b border-slate-700 pb-4">
                                 <div class="flex items-center gap-3">
                                     <div class="w-10 h-10 rounded-xl bg-brand-orange text-white flex items-center justify-center">
                                         <i data-lucide="truck" class="w-5 h-5"></i>
                                     </div>
                                     <div>
-                                        <div class="font-bold text-white text-sm">Doorstep Cold-Bag Drop</div>
-                                        <div class="text-xs text-slate-400">Insulated temperature-controlled totes</div>
+                                        <div class="font-bold text-white text-sm">Insulated Doorstep Drop</div>
+                                        <div class="text-xs text-slate-400">Ice-pack cold totes included</div>
                                     </div>
                                 </div>
-                                <span class="px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-[11px] font-bold">Active Route</span>
+                                <span class="px-3 py-1 rounded-full bg-emerald-500/20 text-emerald-400 text-[11px] font-bold">Active Local Route</span>
                             </div>
 
-                            <ul class="space-y-3 text-xs text-slate-300">
+                            <ul class="space-y-3.5 text-xs text-slate-300">
                                 <li class="flex items-start gap-3">
                                     <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green shrink-0 mt-0.5"></i>
-                                    <span><strong>Same-Day Morning Pressing:</strong> Juices are extracted between 4:00 AM and 6:30 AM every morning.</span>
+                                    <span><strong>Same-Day Extraction:</strong> Vegetables & fruits are cold-pressed strictly on order day.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green shrink-0 mt-0.5"></i>
-                                    <span><strong>Insulated Packaging:</strong> Delivered with ice packs so your juice stays ice-cold even if you're not home.</span>
+                                    <span><strong>Temperature Control:</strong> Left at your porch in chilled insulated totes with reusable ice packs.</span>
                                 </li>
                                 <li class="flex items-start gap-3">
                                     <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-green shrink-0 mt-0.5"></i>
-                                    <span><strong>Phone Order Confirmation:</strong> Call or text us to lock in your preferred morning delivery slot.</span>
+                                    <span><strong>Direct Phone Confirmation:</strong> We text you a photo and arrival time when dropped off!</span>
                                 </li>
                             </ul>
 
-                            <div class="mt-6 p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-200 text-xs flex items-center justify-between gap-3">
-                                <span>Outside our zip radius? Call us for custom party orders!</span>
+                            <div class="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-200 text-xs flex items-center justify-between gap-3">
+                                <span>Outside our default zip radius? Call us for custom party orders!</span>
                                 <a href="tel:5550192834" class="bind-phone-link text-white font-bold underline shrink-0">Call Us</a>
                             </div>
                         </div>
@@ -507,36 +646,34 @@
             </div>
         </section>
 
-        <!-- ABOUT OUR HOMEMADE JUICES & QUALITY GUARANTEE -->
-        <section id="about" class="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- COLD-PRESSED PROCESS & STORAGE GUIDE -->
+        <section id="process" class="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid lg:grid-cols-12 gap-12 items-center">
                 
                 <div class="lg:col-span-6 relative">
-                    <div class="glass-card-orange rounded-3xl p-8 border border-orange-200 relative shadow-xl">
-                        <div class="space-y-6">
-                            <span class="px-3 py-1 rounded-full bg-brand-orange text-white text-xs font-bold uppercase tracking-wider">Our Philosophy</span>
-                            <h2 class="text-3xl font-black text-slate-900 leading-tight">Small Batches. Real Fruit. Pure Passion.</h2>
-                            <p class="text-slate-600 text-sm leading-relaxed">
-                                <strong class="bind-biz-name">Squeeze & Soul</strong> started right in our home kitchen with a simple mission: to create raw, nutrient-rich juices without the preservatives, high-heat pasteurization, or added sugars found in supermarket bottles.
-                            </p>
+                    <div class="glass-card-orange rounded-3xl p-8 border border-orange-200 shadow-xl space-y-6">
+                        <span class="px-3 py-1 rounded-full bg-brand-orange text-white text-xs font-bold uppercase tracking-wider">Quality Guarantee</span>
+                        <h2 class="text-3xl font-black text-slate-900 leading-tight">Freshly Pressed On Order. Unprocessed & Raw.</h2>
+                        <p class="text-slate-600 text-sm leading-relaxed">
+                            At <strong class="bind-biz-name">Custom Juice</strong>, we never pre-bottle juices to sit on store shelves. Every single bottle is juiced strictly after your phone order is confirmed to keep live enzymes, vivid color, and fresh natural taste intact.
+                        </p>
 
-                            <!-- Shelf Life Guide Grid -->
-                            <div class="p-5 rounded-2xl bg-white/90 border border-amber-200 space-y-3">
-                                <h4 class="font-heading font-bold text-slate-900 text-sm flex items-center gap-2">
-                                    <i data-lucide="shield-check" class="w-4 h-4 text-brand-green"></i>
-                                    <span>Freshness & Storage Guide</span>
-                                </h4>
-                                <div class="grid grid-cols-2 gap-3 text-xs">
-                                    <div class="p-3 rounded-xl bg-amber-50 border border-amber-100">
-                                        <div class="font-bold text-brand-orange">Consume Within</div>
-                                        <div class="text-slate-700 font-extrabold text-sm">3 – 4 Days</div>
-                                        <div class="text-[10px] text-slate-500 mt-0.5">Keep refrigerated at all times</div>
-                                    </div>
-                                    <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-100">
-                                        <div class="font-bold text-brand-green">Zero Pasteurization</div>
-                                        <div class="text-slate-700 font-extrabold text-sm">100% Raw</div>
-                                        <div class="text-[10px] text-slate-500 mt-0.5">Preserves live enzymes</div>
-                                    </div>
+                        <!-- Storage & Shelf Life Box -->
+                        <div class="p-5 rounded-2xl bg-white/90 border border-amber-200 space-y-3">
+                            <h3 class="font-heading font-bold text-slate-900 text-sm flex items-center gap-2">
+                                <i data-lucide="shield-check" class="w-4 h-4 text-brand-green"></i>
+                                <span>Freshness & Storage Guide</span>
+                            </h3>
+                            <div class="grid grid-cols-2 gap-3 text-xs">
+                                <div class="p-3 rounded-xl bg-amber-50 border border-amber-100">
+                                    <div class="font-bold text-brand-orange">Consume Within</div>
+                                    <div class="text-slate-800 font-extrabold text-sm">3 – 4 Days</div>
+                                    <div class="text-[10px] text-slate-500 mt-0.5">Keep chilled at 36°F - 38°F</div>
+                                </div>
+                                <div class="p-3 rounded-xl bg-emerald-50 border border-emerald-100">
+                                    <div class="font-bold text-brand-green">Zero Pasteurization</div>
+                                    <div class="text-slate-800 font-extrabold text-sm">100% Raw</div>
+                                    <div class="text-[10px] text-slate-500 mt-0.5">Retains vitamins & enzymes</div>
                                 </div>
                             </div>
                         </div>
@@ -544,37 +681,37 @@
                 </div>
 
                 <div class="lg:col-span-6 space-y-6">
-                    <span class="px-3 py-1 rounded-full bg-purple-100 text-brand-purple font-bold text-xs uppercase tracking-wider">Why Choose Homemade</span>
-                    <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">The Pure Difference</h2>
+                    <span class="px-3 py-1 rounded-full bg-purple-100 text-brand-purple font-extrabold text-xs uppercase tracking-wider">Why Choose Us</span>
+                    <h2 class="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">The Cold-Pressed Standard</h2>
                     
                     <div class="space-y-4">
-                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-white border border-amber-100 shadow-sm">
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-white border border-amber-100 shadow-xs">
                             <div class="w-10 h-10 rounded-xl bg-orange-100 text-brand-orange flex items-center justify-center shrink-0 mt-1">
                                 <i data-lucide="leaf" class="w-5 h-5"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-slate-900 text-base">Local Produce Sourcing</h4>
-                                <p class="text-xs text-slate-600 mt-1">We partner with local farmers markets to pick sweet, ripe citrus, crisp apples, and dark leafy greens every week.</p>
+                                <h4 class="font-bold text-slate-900 text-base">Local Organic Produce</h4>
+                                <p class="text-xs text-slate-600 mt-1">We source organic carrots, crisp apples, ginger root, and leafy greens from local markets every week.</p>
                             </div>
                         </div>
 
-                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-white border border-amber-100 shadow-sm">
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-white border border-amber-100 shadow-xs">
                             <div class="w-10 h-10 rounded-xl bg-emerald-100 text-brand-green flex items-center justify-center shrink-0 mt-1">
                                 <i data-lucide="droplet" class="w-5 h-5"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-slate-900 text-base">Cold-Press Extraction</h4>
-                                <p class="text-xs text-slate-600 mt-1">Hydraulic cold pressing crushes fruit gently without friction heat, locking in maximum vitamins, minerals, and flavor.</p>
+                                <h4 class="font-bold text-slate-900 text-base">Hydraulic Extraction</h4>
+                                <p class="text-xs text-slate-600 mt-1">Hydraulic pressing eliminates heat buildup, preserving delicate vitamins and antioxidants.</p>
                             </div>
                         </div>
 
-                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-white border border-amber-100 shadow-sm">
+                        <div class="flex items-start gap-4 p-4 rounded-2xl bg-white border border-amber-100 shadow-xs">
                             <div class="w-10 h-10 rounded-xl bg-purple-100 text-brand-purple flex items-center justify-center shrink-0 mt-1">
-                                <i data-lucide="heart" class="w-5 h-5"></i>
+                                <i data-lucide="phone" class="w-5 h-5"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-slate-900 text-base">Personal Neighborhood Service</h4>
-                                <p class="text-xs text-slate-600 mt-1">No complicated corporate apps. When you call, you speak directly to our juice makers who prepare your order with care.</p>
+                                <h4 class="font-bold text-slate-900 text-base">Direct Phone & Text Service</h4>
+                                <p class="text-xs text-slate-600 mt-1">Talk or text directly with your juice maker. No middleman third-party apps!</p>
                             </div>
                         </div>
                     </div>
@@ -584,22 +721,22 @@
             </div>
         </section>
 
-        <!-- CATERING & CUSTOM REQUEST FORM -->
+        <!-- CATERING & BULK EVENTS FORM -->
         <section id="catering" class="py-16 bg-amber-50/70 border-y border-amber-200/60">
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="bg-white rounded-3xl p-8 sm:p-12 border border-amber-200 shadow-xl relative">
                     
                     <div class="text-center max-w-xl mx-auto mb-8 space-y-2">
-                        <span class="px-3 py-1 rounded-full bg-brand-orange text-white text-xs font-bold uppercase tracking-wider">Party & Events</span>
-                        <h2 class="text-3xl font-black text-slate-900">Custom Juice Request & Catering</h2>
-                        <p class="text-slate-600 text-xs sm:text-sm">Planning a brunch, workout event, or corporate meeting? Send us a request for bulk pricing or custom flavor blends!</p>
+                        <span class="px-3 py-1 rounded-full bg-brand-orange text-white text-xs font-extrabold uppercase tracking-wider">Events & Cleanse Packs</span>
+                        <h2 class="text-3xl font-black text-slate-900"><span class="bind-biz-name">Custom Juice</span> Catering</h2>
+                        <p class="text-slate-600 text-xs sm:text-sm">Hosting an office meeting, fitness session, brunch, or detox cleanse group? Request bulk bottle rates or custom flavor menus!</p>
                     </div>
 
                     <form onsubmit="handleCateringSubmit(event)" class="space-y-4">
                         <div class="grid sm:grid-cols-2 gap-4">
                             <div>
                                 <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Your Name *</label>
-                                <input type="text" required placeholder="Jane Doe" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange">
+                                <input type="text" required placeholder="Alex Morgan" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange">
                             </div>
                             <div>
                                 <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Phone Number *</label>
@@ -613,18 +750,18 @@
                                 <input type="date" class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange">
                             </div>
                             <div>
-                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Estimated Quantity (Bottles)</label>
-                                <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange">
+                                <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Estimated Quantity</label>
+                                <select class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange font-bold">
                                     <option>10 - 25 Bottles</option>
                                     <option>25 - 50 Bottles</option>
-                                    <option>50+ Bottles (Custom Event)</option>
+                                    <option>50+ Bottles (Bulk Discount)</option>
                                 </select>
                             </div>
                         </div>
 
                         <div>
-                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Special Requests or Dietary Notes</label>
-                            <textarea rows="3" placeholder="Tell us about your event, preferred flavors, or dietary preferences..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange resize-none"></textarea>
+                            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Custom Notes & Recipe Preferences</label>
+                            <textarea rows="3" placeholder="Tell us about custom ingredients, flavor preferences, or delivery location..." class="w-full bg-slate-50 border border-slate-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-orange resize-none"></textarea>
                         </div>
 
                         <button type="submit" class="w-full py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-sm shadow-lg transition-all flex items-center justify-center gap-2">
@@ -637,95 +774,85 @@
             </div>
         </section>
 
-        <!-- TESTIMONIALS & FAQ -->
+        <!-- FAQ & TESTIMONIALS SECTION -->
         <section id="faq" class="py-16 lg:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
             
-            <!-- Customer Reviews -->
+            <!-- Customer Testimonials -->
             <div>
                 <div class="text-center max-w-xl mx-auto space-y-2 mb-10">
-                    <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-700 font-bold text-xs uppercase tracking-wider">Customer Love</span>
+                    <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-700 font-extrabold text-xs uppercase tracking-wider">Local Love</span>
                     <h2 class="text-3xl font-black text-slate-900">What Our Neighbors Say</h2>
                 </div>
 
                 <div class="grid md:grid-cols-3 gap-6">
-                    <div class="bg-white p-6 rounded-3xl border border-amber-100 shadow-soft space-y-3">
+                    <div class="bg-white p-6 rounded-3xl border border-amber-200 shadow-soft space-y-3">
                         <div class="flex text-amber-400 gap-1 text-sm">
                             ★ ★ ★ ★ ★
                         </div>
                         <p class="text-xs text-slate-600 leading-relaxed">
-                            "The Citrus Sunshine Boost is incredible! Calling my order in takes 30 seconds and having cold fresh juice brought right to my door every Wednesday morning has changed my routine."
+                            "The Custom Glow juice is divine! I text my order on Tuesday evening and have ice-cold juice waiting at my door early Wednesday morning."
                         </p>
-                        <div class="font-bold text-slate-900 text-xs">— Sarah M., Local Resident</div>
+                        <div class="font-extrabold text-slate-900 text-xs">— Sarah M., Regular Customer</div>
                     </div>
 
-                    <div class="bg-white p-6 rounded-3xl border border-amber-100 shadow-soft space-y-3">
+                    <div class="bg-white p-6 rounded-3xl border border-amber-200 shadow-soft space-y-3">
                         <div class="flex text-amber-400 gap-1 text-sm">
                             ★ ★ ★ ★ ★
                         </div>
                         <p class="text-xs text-slate-600 leading-relaxed">
-                            "You can really taste the difference between real homemade cold-pressed juice and store-bought. No extra sugar, super fresh ingredients, and super friendly owners!"
+                            "Being able to custom pick kale, spinach, and double ginger in a 32 oz bottle is a total game changer. Unbeatable cold-pressed quality."
                         </p>
-                        <div class="font-bold text-slate-900 text-xs">— Marcus T., Fitness Coach</div>
+                        <div class="font-extrabold text-slate-900 text-xs">— Marcus T., Fitness Trainer</div>
                     </div>
 
-                    <div class="bg-white p-6 rounded-3xl border border-amber-100 shadow-soft space-y-3">
+                    <div class="bg-white p-6 rounded-3xl border border-amber-200 shadow-soft space-y-3">
                         <div class="flex text-amber-400 gap-1 text-sm">
                             ★ ★ ★ ★ ★
                         </div>
                         <p class="text-xs text-slate-600 leading-relaxed">
-                            "Ordered 30 immunity shots for our company wellness week. Delivery was right on time and everyone loved the ginger cayenne bomb!"
+                            "Super convenient phone ordering! I copy the SMS order summary directly from this web app and text it over. Easiest juice delivery ever."
                         </p>
-                        <div class="font-bold text-slate-900 text-xs">— Elena R., Office Manager</div>
+                        <div class="font-extrabold text-slate-900 text-xs">— Elena R., Local Resident</div>
                     </div>
                 </div>
             </div>
 
-            <!-- FAQs -->
+            <!-- FAQ Accordion -->
             <div class="max-w-3xl mx-auto">
                 <div class="text-center space-y-2 mb-8">
                     <h2 class="text-3xl font-black text-slate-900">Frequently Asked Questions</h2>
-                    <p class="text-slate-600 text-xs">Got questions about ordering or delivery? We've got answers!</p>
+                    <p class="text-slate-600 text-xs">Everything you need to know about ordering and delivery.</p>
                 </div>
 
                 <div class="space-y-3" id="faq-container">
                     
-                    <div class="bg-white rounded-2xl border border-amber-200/80 overflow-hidden">
+                    <div class="bg-white rounded-2xl border border-amber-200 overflow-hidden">
                         <button onclick="toggleFaq(this)" class="w-full p-4 text-left font-bold text-sm text-slate-900 flex justify-between items-center hover:bg-amber-50/50">
                             <span>How do I pay for my phone order?</span>
                             <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform"></i>
                         </button>
-                        <div class="faq-answer hidden px-4 pb-4 text-xs text-slate-600 leading-relaxed">
-                            We accept Cash on Delivery, Zelle, Venmo, or Credit Card payments over the phone when you place your order!
+                        <div class="faq-answer hidden px-4 pb-4 text-xs text-slate-600 leading-relaxed border-t border-amber-100 pt-3">
+                            We accept Zelle, Venmo, Cash on Delivery, or credit cards over the phone when we confirm your order!
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-2xl border border-amber-200/80 overflow-hidden">
+                    <div class="bg-white rounded-2xl border border-amber-200 overflow-hidden">
                         <button onclick="toggleFaq(this)" class="w-full p-4 text-left font-bold text-sm text-slate-900 flex justify-between items-center hover:bg-amber-50/50">
-                            <span>How far in advance should I call in my order?</span>
+                            <span>When are the juices pressed?</span>
                             <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform"></i>
                         </button>
-                        <div class="faq-answer hidden px-4 pb-4 text-xs text-slate-600 leading-relaxed">
-                            For same-day morning delivery, please call before 8:00 AM! Calls received later in the day will be scheduled for next-morning press & delivery.
+                        <div class="faq-answer hidden px-4 pb-4 text-xs text-slate-600 leading-relaxed border-t border-amber-100 pt-3">
+                            All juices are cold-pressed strictly after your phone order is confirmed to ensure maximum nutrient concentration and cold freshness upon delivery.
                         </div>
                     </div>
 
-                    <div class="bg-white rounded-2xl border border-amber-200/80 overflow-hidden">
+                    <div class="bg-white rounded-2xl border border-amber-200 overflow-hidden">
                         <button onclick="toggleFaq(this)" class="w-full p-4 text-left font-bold text-sm text-slate-900 flex justify-between items-center hover:bg-amber-50/50">
-                            <span>Are there any added sugars or preservatives?</span>
+                            <span>How does the 1-click SMS order summary work?</span>
                             <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform"></i>
                         </button>
-                        <div class="faq-answer hidden px-4 pb-4 text-xs text-slate-600 leading-relaxed">
-                            Never! Our juices contain 100% pure raw fruit and vegetables. No water dilution, no sugar, and no chemical preservatives.
-                        </div>
-                    </div>
-
-                    <div class="bg-white rounded-2xl border border-amber-200/80 overflow-hidden">
-                        <button onclick="toggleFaq(this)" class="w-full p-4 text-left font-bold text-sm text-slate-900 flex justify-between items-center hover:bg-amber-50/50">
-                            <span>What happens to the glass bottles?</span>
-                            <i data-lucide="chevron-down" class="w-4 h-4 text-slate-400 transition-transform"></i>
-                        </button>
-                        <div class="faq-answer hidden px-4 pb-4 text-xs text-slate-600 leading-relaxed">
-                            We love sustainability! Leave your rinsed glass bottles on your porch on delivery morning and receive $0.50 credit off your next order per bottle returned.
+                        <div class="faq-answer hidden px-4 pb-4 text-xs text-slate-600 leading-relaxed border-t border-amber-100 pt-3">
+                            As you add items or custom blends to your Order Helper, click "Copy Order SMS" in the drawer. You can then paste it directly into an SMS text message to our phone number!
                         </div>
                     </div>
 
@@ -742,31 +869,110 @@
             
             <div class="flex items-center gap-3">
                 <div class="w-10 h-10 rounded-xl bg-brand-orange text-white flex items-center justify-center">
-                    <i data-lucide="citrus" class="w-5 h-5"></i>
+                    <i data-lucide="cup-soda" class="w-5 h-5"></i>
                 </div>
                 <div>
-                    <span class="bind-biz-name font-heading text-lg font-black text-white block">Squeeze & Soul</span>
-                    <span class="text-xs text-slate-500">Homemade Juice Delivery • Call <span class="bind-phone-text">(555) 019-2834</span></span>
+                    <span class="bind-biz-name font-heading text-lg font-black text-white block">Custom Juice</span>
+                    <span class="text-xs text-slate-500">Fresh Cold-Pressed Delivery • Call <span class="bind-phone-text">(555) 019-2834</span></span>
                 </div>
             </div>
 
             <div class="flex flex-wrap items-center justify-center gap-6 text-xs font-semibold text-slate-300">
                 <a href="#menu" class="hover:text-brand-orange">Juice Menu</a>
+                <a href="#custom-builder" class="hover:text-brand-orange">Custom Builder</a>
                 <a href="#how-it-works" class="hover:text-brand-orange">How To Order</a>
                 <a href="#delivery" class="hover:text-brand-orange">Delivery Area</a>
-                <a href="#about" class="hover:text-brand-orange">Process</a>
+                <a href="#process" class="hover:text-brand-orange">Process</a>
                 <a href="#catering" class="hover:text-brand-orange">Catering</a>
             </div>
 
             <div class="text-xs text-slate-500 text-center md:text-right">
-                &copy; <span id="year-label"></span> <span class="bind-biz-name">Squeeze & Soul</span>. All rights reserved.
+                &copy; <span id="year-label"></span> <span class="bind-biz-name">Custom Juice</span>. All rights reserved.
             </div>
 
         </div>
     </footer>
 
-    <!-- LIVE PHONE ORDER HELPER DRAWER -->
-    <div id="cart-drawer-backdrop" onclick="toggleCartDrawer(false)" class="fixed inset-0 bg-slate-950/60 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <!-- OWNER LIVE MENU MANAGER & ADMIN DRAWER -->
+    <div id="admin-drawer-backdrop" onclick="toggleOwnerAdminDrawer(false)" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+
+    <aside id="admin-drawer" class="fixed top-0 left-0 h-full w-full max-w-xl bg-slate-900 text-white z-50 shadow-2xl transform -translate-x-full transition-transform duration-300 ease-out flex flex-col">
+        
+        <!-- Admin Header -->
+        <div class="p-5 border-b border-slate-800 flex items-center justify-between bg-slate-950">
+            <div class="flex items-center gap-2">
+                <div class="p-2 rounded-xl bg-brand-orange/20 text-brand-orange border border-brand-orange/30">
+                    <i data-lucide="shield-check" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <h3 class="font-heading font-black text-white text-base">Owner Menu & Store Manager</h3>
+                    <p class="text-[11px] text-slate-400">Add, edit menu items, update prices, or paste text from Canva!</p>
+                </div>
+            </div>
+            <button onclick="toggleOwnerAdminDrawer(false)" class="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Admin Content Body -->
+        <div class="p-5 overflow-y-auto flex-1 space-y-6">
+            
+            <!-- Store Settings Box -->
+            <div class="p-4 rounded-2xl bg-slate-800/80 border border-slate-700 space-y-3">
+                <h4 class="font-heading text-xs font-black uppercase text-brand-orange tracking-wider flex items-center gap-1.5">
+                    <i data-lucide="sliders" class="w-4 h-4"></i>
+                    <span>Store General Info</span>
+                </h4>
+                <div class="grid grid-cols-2 gap-3 text-xs">
+                    <div>
+                        <label class="block text-[10px] text-slate-400 font-bold mb-1">Business Name</label>
+                        <input type="text" id="owner-biz-name" value="Custom Juice" oninput="updateOwnerConfig()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-white font-bold focus:outline-none focus:border-brand-orange">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-slate-400 font-bold mb-1">Phone Number</label>
+                        <input type="text" id="owner-phone" value="(555) 019-2834" oninput="updateOwnerConfig()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-white font-bold focus:outline-none focus:border-brand-orange">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-slate-400 font-bold mb-1">Free Delivery Min ($)</label>
+                        <input type="number" id="owner-min-delivery" value="25" oninput="updateOwnerConfig()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-white font-bold focus:outline-none focus:border-brand-orange">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-slate-400 font-bold mb-1">Allowed ZIPs (comma separated)</label>
+                        <input type="text" id="owner-zips" value="90210, 90211, 10001, 30301, 60601, 75001" oninput="updateOwnerConfig()" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2.5 py-1.5 text-white font-bold focus:outline-none focus:border-brand-orange">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons: Add Item & Bulk Paste -->
+            <div class="grid grid-cols-2 gap-3">
+                <button onclick="openAddItemModal()" class="py-3 px-4 rounded-xl bg-brand-orange hover:bg-brand-orangeHover text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow-md transition-all">
+                    <i data-lucide="plus-circle" class="w-4 h-4"></i>
+                    <span>+ Add New Juice</span>
+                </button>
+                <button onclick="openBulkPasteModal()" class="py-3 px-4 rounded-xl bg-brand-green hover:bg-brand-greenHover text-white font-extrabold text-xs flex items-center justify-center gap-2 shadow-md transition-all">
+                    <i data-lucide="file-text" class="w-4 h-4"></i>
+                    <span>Paste / Bulk Import</span>
+                </button>
+            </div>
+
+            <!-- Current Menu Items Table / List -->
+            <div>
+                <h4 class="font-heading text-xs font-black uppercase text-slate-400 tracking-wider mb-3 flex items-center justify-between">
+                    <span>Active Menu Items (<span id="admin-item-count">0</span>)</span>
+                    <button onclick="resetMenuToDefaults()" class="text-[10px] text-amber-400 hover:underline">Reset Defaults</button>
+                </h4>
+
+                <div class="space-y-2.5" id="admin-items-list">
+                    <!-- Dynamic Items List -->
+                </div>
+            </div>
+
+        </div>
+
+    </aside>
+
+    <!-- PHONE ORDER HELPER CART DRAWER -->
+    <div id="cart-drawer-backdrop" onclick="toggleCartDrawer(false)" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
 
     <aside id="cart-drawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-out flex flex-col">
         
@@ -778,29 +984,29 @@
                 </div>
                 <div>
                     <h3 class="font-heading font-black text-slate-900 text-base">Phone Order Helper</h3>
-                    <p class="text-[11px] text-slate-500">Assemble your items then call or text us!</p>
+                    <p class="text-[11px] text-slate-500">Assemble your juices, then call or text us!</p>
                 </div>
             </div>
-            <button onclick="toggleCartDrawer(false)" class="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-slate-100">
+            <button onclick="toggleCartDrawer(false)" class="p-2 rounded-xl text-slate-400 hover:text-slate-800 hover:bg-slate-100">
                 <i data-lucide="x" class="w-5 h-5"></i>
             </button>
         </div>
 
-        <!-- Drawer Body -->
+        <!-- Drawer Body Items -->
         <div class="p-5 overflow-y-auto flex-1 space-y-4" id="cart-items-container">
             <!-- Rendered JS Items -->
         </div>
 
-        <!-- Drawer Footer & Delivery Threshold Indicator -->
-        <div class="p-5 border-t border-amber-100 bg-brand-cream/80 space-y-4">
+        <!-- Drawer Footer & Delivery Threshold Progress -->
+        <div class="p-5 border-t border-amber-100 bg-brand-cream/90 space-y-4">
             
-            <!-- Delivery Threshold Progress Bar -->
+            <!-- Delivery Threshold Bar -->
             <div class="space-y-1.5">
                 <div class="flex justify-between text-xs font-bold">
                     <span class="text-slate-700">Free Delivery Status:</span>
                     <span id="delivery-threshold-label" class="text-brand-orange">$0 / $<span class="bind-min-val">25</span></span>
                 </div>
-                <div class="w-full h-2 rounded-full bg-slate-200 overflow-hidden">
+                <div class="w-full h-2.5 rounded-full bg-slate-200 overflow-hidden">
                     <div id="delivery-progress-bar" class="h-full bg-brand-green transition-all duration-300 w-0"></div>
                 </div>
             </div>
@@ -811,7 +1017,7 @@
                 <span id="cart-total-price" class="font-heading font-black text-2xl text-brand-orange">$0.00</span>
             </div>
 
-            <!-- Primary Phone CTAs -->
+            <!-- Direct Actions -->
             <div class="space-y-2">
                 <!-- Direct Call Button -->
                 <a href="tel:5550192834" id="drawer-call-btn" class="bind-phone-link w-full py-3.5 rounded-xl bg-brand-orange hover:bg-brand-orangeHover text-white font-black text-sm shadow-glow-orange flex items-center justify-center gap-2 transition-all">
@@ -822,7 +1028,7 @@
                 <!-- Copy SMS Order Summary Button -->
                 <button onclick="copySmsSummary()" class="w-full py-3 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs flex items-center justify-center gap-2 transition-all">
                     <i data-lucide="message-square" class="w-4 h-4 text-brand-green"></i>
-                    <span>Copy Text/SMS Summary to Clipboard</span>
+                    <span>Copy Order SMS To Clipboard</span>
                 </button>
             </div>
 
@@ -830,120 +1036,231 @@
 
     </aside>
 
-    <!-- TOAST CONTAINER -->
+    <!-- ADD / EDIT MENU ITEM MODAL -->
+    <div id="item-modal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 text-white rounded-3xl p-6 max-w-lg w-full border border-slate-700 shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <h3 id="item-modal-title" class="font-heading font-black text-lg text-brand-orange">Add New Menu Item</h3>
+                <button onclick="closeItemModal()" class="text-slate-400 hover:text-white">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <form onsubmit="handleSaveItem(event)" class="space-y-3 text-xs">
+                <input type="hidden" id="edit-item-id">
+                
+                <div>
+                    <label class="block text-slate-400 font-bold mb-1">Juice / Item Name *</label>
+                    <input type="text" id="modal-item-name" required placeholder="e.g. Citrus Glow Spark" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-orange">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-slate-400 font-bold mb-1">Category *</label>
+                        <select id="modal-item-cat" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-orange font-bold">
+                            <option value="Cold-Pressed Juices">Cold-Pressed Juices</option>
+                            <option value="Wellness Shots">Wellness Shots</option>
+                            <option value="Smoothies & Blends">Smoothies & Blends</option>
+                            <option value="Detox Cleanses">Detox Cleanses</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-slate-400 font-bold mb-1">Badge (Optional)</label>
+                        <input type="text" id="modal-item-badge" placeholder="e.g. Customer Favorite" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-orange">
+                    </div>
+                </div>
+
+                <!-- Bottle Prices -->
+                <div class="grid grid-cols-3 gap-2 bg-slate-800/60 p-3 rounded-xl border border-slate-700">
+                    <div>
+                        <label class="block text-slate-400 font-bold mb-1">12 oz Price ($)</label>
+                        <input type="number" step="0.25" id="modal-item-p12" required placeholder="5.50" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-white font-bold focus:outline-none focus:border-brand-orange">
+                    </div>
+                    <div>
+                        <label class="block text-slate-400 font-bold mb-1">16 oz Price ($)</label>
+                        <input type="number" step="0.25" id="modal-item-p16" required placeholder="8.50" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-white font-bold focus:outline-none focus:border-brand-orange">
+                    </div>
+                    <div>
+                        <label class="block text-slate-400 font-bold mb-1">32 oz Price ($)</label>
+                        <input type="number" step="0.25" id="modal-item-p32" required placeholder="15.00" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-2 py-1.5 text-white font-bold focus:outline-none focus:border-brand-orange">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-slate-400 font-bold mb-1">Ingredients (comma separated)</label>
+                    <input type="text" id="modal-item-ingredients" placeholder="Valencia Orange, Carrot, Ginger, Turmeric" class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-orange">
+                </div>
+
+                <div>
+                    <label class="block text-slate-400 font-bold mb-1">Description</label>
+                    <textarea id="modal-item-desc" rows="2" placeholder="Freshly squeezed organic ingredients..." class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-orange resize-none"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-slate-400 font-bold mb-1">Unsplash Image URL (Optional)</label>
+                    <input type="url" id="modal-item-img" placeholder="https://images.unsplash.com/..." class="w-full bg-slate-800 border border-slate-700 rounded-xl px-3 py-2 text-white focus:outline-none focus:border-brand-orange">
+                </div>
+
+                <div class="pt-3 flex gap-2">
+                    <button type="button" onclick="closeItemModal()" class="flex-1 py-2.5 rounded-xl bg-slate-800 text-slate-300 font-bold hover:bg-slate-700">Cancel</button>
+                    <button type="submit" class="flex-1 py-2.5 rounded-xl bg-brand-orange text-white font-extrabold hover:bg-brand-orangeHover shadow-md">Save Item</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- BULK IMPORT / PASTE FROM CANVA MODAL -->
+    <div id="bulk-modal" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 text-white rounded-3xl p-6 max-w-lg w-full border border-slate-700 shadow-2xl space-y-4">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                <div class="flex items-center gap-2">
+                    <i data-lucide="file-text" class="w-5 h-5 text-brand-green"></i>
+                    <h3 class="font-heading font-black text-lg text-brand-green">Paste / Bulk Import Menu</h3>
+                </div>
+                <button onclick="closeBulkModal()" class="text-slate-400 hover:text-white">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <p class="text-xs text-slate-300 leading-relaxed">
+                Paste text from Canva, notes, or raw item lists. The smart parser will extract names, prices ($), and ingredients!
+            </p>
+
+            <textarea id="bulk-text-input" rows="6" placeholder="Example format:&#10;Citrus Glow Shot - $4.50 - Ginger, Lemon, Honey&#10;Green Machine Cleanser - $8.50 - Kale, Spinach, Cucumber, Apple&#10;Berry Power Smoothie - $9.00 - Blueberry, Coconut Water, Mint" class="w-full bg-slate-800 border border-slate-700 rounded-xl p-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-brand-green font-mono"></textarea>
+
+            <div class="flex items-center justify-between pt-2">
+                <label class="flex items-center gap-2 text-xs text-slate-400 cursor-pointer">
+                    <input type="checkbox" id="bulk-replace-check" class="rounded text-brand-green focus:ring-brand-green">
+                    <span>Replace existing menu (uncheck to append)</span>
+                </label>
+            </div>
+
+            <div class="flex gap-2 pt-2">
+                <button type="button" onclick="closeBulkModal()" class="flex-1 py-2.5 rounded-xl bg-slate-800 text-slate-300 font-bold hover:bg-slate-700">Cancel</button>
+                <button type="button" onclick="executeBulkImport()" class="flex-1 py-2.5 rounded-xl bg-brand-green text-white font-extrabold hover:bg-brand-greenHover shadow-md">Import & Parse Menu</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION CONTAINER -->
     <div id="toast-container" class="fixed top-20 right-4 z-50 flex flex-col gap-2 pointer-events-none"></div>
 
-    <!-- JAVASCRIPT APP LOGIC -->
+    <!-- JAVASCRIPT APPLICATION ENGINE -->
     <script>
-        /* JUICE MENU DATA SOURCE */
-        const juiceMenu = [
+        /* INITIAL DEFAULT JUICE MENU DATA */
+        let juiceMenu = [
             {
-                id: 'j1',
-                name: 'Citrus Sunshine Boost',
-                category: 'citrus',
-                description: 'A vibrant burst of Valencia oranges, organic carrots, fresh ginger, and turmeric.',
-                ingredients: 'Orange, Carrot, Ginger, Turmeric, Lemon',
-                benefits: ['Immunity', 'High Vit-C', 'Glowing Skin'],
-                basePrice250: 5.00,
-                basePrice500: 8.50,
-                basePrice1000: 15.00,
+                id: 'cj1',
+                name: 'Custom Glow Signature',
+                category: 'Cold-Pressed Juices',
+                description: 'Our flagship golden blend of Valencia oranges, organic carrots, fresh ginger root, turmeric, and key lime.',
+                ingredients: ['Valencia Orange', 'Organic Carrot', 'Fresh Ginger', 'Turmeric', 'Key Lime'],
+                benefits: ['Radiant Skin', 'Immunity Boost', 'Antioxidants'],
+                p12: 5.50,
+                p16: 8.50,
+                p32: 15.50,
                 badge: 'Best Seller',
-                color: 'from-amber-400 via-orange-500 to-amber-600',
+                image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=800&q=80',
                 textColor: 'text-amber-500'
             },
             {
-                id: 'j2',
-                name: 'Green Goddess Detox',
-                category: 'green',
-                description: 'Deep alkalizing blend of fresh kale, green apple, cucumber, celery, and a squeeze of lime.',
-                ingredients: 'Kale, Cucumber, Celery, Green Apple, Lime, Parsley',
-                benefits: ['Detox', 'Alkalizing', 'Energy'],
-                basePrice250: 5.50,
-                basePrice500: 9.00,
-                basePrice1000: 16.50,
-                badge: 'Customer Fav',
-                color: 'from-emerald-400 via-green-600 to-teal-700',
+                id: 'cj2',
+                name: 'Deep Green Cleanse',
+                category: 'Detox Cleanses',
+                description: 'Super alkalizing cold-pressed kale, spinach, cucumber, celery, crisp green apple, and fresh lime juice.',
+                ingredients: ['Kale', 'Spinach', 'Cucumber', 'Celery', 'Green Apple', 'Lime'],
+                benefits: ['Heavy Detox', 'Alkalizing', 'Natural Energy'],
+                p12: 6.00,
+                p16: 9.00,
+                p32: 16.50,
+                badge: '100% Organic',
+                image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=800&q=80',
                 textColor: 'text-emerald-600'
             },
             {
-                id: 'j3',
-                name: 'Velvet Berry Blast',
-                category: 'berry',
-                description: 'Rich antioxidant blend of blueberries, wild blackberries, red apple, and fresh mint leaves.',
-                ingredients: 'Blackberry, Blueberry, Red Apple, Lemon, Mint',
-                benefits: ['Antioxidants', 'Heart Health', 'Hydration'],
-                basePrice250: 6.00,
-                basePrice500: 9.50,
-                basePrice1000: 17.50,
-                badge: 'Rich & Sweet',
-                color: 'from-purple-500 via-indigo-600 to-pink-600',
+                id: 'cj3',
+                name: 'Berry Vitality Blend',
+                category: 'Smoothies & Blends',
+                description: 'Rich antioxidant powerhouse packed with wild blueberries, blackberries, red apple, and fresh mint leaves.',
+                ingredients: ['Blueberry', 'Blackberry', 'Red Apple', 'Mint'],
+                benefits: ['Heart Health', 'Brain Power', 'Hydration'],
+                p12: 6.50,
+                p16: 9.50,
+                p32: 17.50,
+                badge: 'Customer Favorite',
+                image: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=800&q=80',
                 textColor: 'text-purple-600'
             },
             {
-                id: 'j4',
-                name: 'Ginger Cayenne Immunity Bomb',
-                category: 'shots',
-                description: 'Intense 2oz concentrated shot packed with ginger root, raw honey, lemon juice, and cayenne pepper.',
-                ingredients: 'Concentrated Ginger, Lemon, Raw Honey, Cayenne',
-                benefits: ['Metabolism', 'Immunity Boost', 'Gut Health'],
-                basePrice250: 4.00,
-                basePrice500: 7.00,
-                basePrice1000: 12.00,
-                badge: '2oz Concentrated Shot',
-                color: 'from-red-500 via-orange-600 to-yellow-500',
+                id: 'cj4',
+                name: 'Ginger Cayenne Immunity Shot',
+                category: 'Wellness Shots',
+                description: 'Intense concentrated booster shot loaded with fresh ginger, raw honey, lemon, and cayenne pepper.',
+                ingredients: ['Concentrated Ginger', 'Lemon Juice', 'Raw Honey', 'Cayenne'],
+                benefits: ['Metabolism', 'Gut Health', 'Immunity Boost'],
+                p12: 4.50,
+                p16: 7.00,
+                p32: 12.00,
+                badge: 'Immunity Boost',
+                image: 'https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=800&q=80',
                 textColor: 'text-red-500'
             },
             {
-                id: 'j5',
+                id: 'cj5',
                 name: 'Tropical Hydrator',
-                category: 'citrus',
-                description: 'Pure cold-pressed golden pineapple, fresh coconut water, and key lime.',
-                ingredients: 'Pineapple, Coconut Water, Lime, Mint',
-                benefits: ['Hydration', 'Electrolytes', 'Digestion'],
-                basePrice250: 5.25,
-                basePrice500: 8.75,
-                basePrice1000: 15.50,
-                badge: 'Refreshing',
-                color: 'from-yellow-400 via-amber-500 to-orange-400',
+                category: 'Cold-Pressed Juices',
+                description: 'Golden cold-pressed pineapple, fresh raw coconut water, passion fruit, and key lime.',
+                ingredients: ['Pineapple', 'Coconut Water', 'Passion Fruit', 'Lime'],
+                benefits: ['Electrolytes', 'Digestion', 'Refreshing'],
+                p12: 5.75,
+                p16: 8.75,
+                p32: 15.50,
+                badge: 'Ultra Hydrating',
+                image: 'https://images.unsplash.com/photo-1622597467836-f3285f2131b7?auto=format&fit=crop&w=800&q=80',
                 textColor: 'text-amber-600'
             },
             {
-                id: 'j6',
-                name: 'Deep Beet Vitality',
-                category: 'berry',
-                description: 'Earthy organic beetroots combined with crisp apples, carrots, and a touch of lemon.',
-                ingredients: 'Beetroot, Carrot, Green Apple, Lemon, Ginger',
-                benefits: ['Stamina', 'Blood Flow', 'Vitality'],
-                basePrice250: 5.50,
-                basePrice500: 9.00,
-                basePrice1000: 16.00,
+                id: 'cj6',
+                name: 'Beetroot Stamina Power',
+                category: 'Detox Cleanses',
+                description: 'Earthy organic beetroots combined with crisp carrots, green apples, and a touch of fresh ginger.',
+                ingredients: ['Beetroot', 'Carrot', 'Green Apple', 'Ginger'],
+                benefits: ['Stamina', 'Blood Circulation', 'Vitality'],
+                p12: 6.00,
+                p16: 9.00,
+                p32: 16.00,
                 badge: 'Superfood',
-                color: 'from-rose-700 via-red-800 to-purple-900',
+                image: 'https://images.unsplash.com/photo-1597481499750-3e6b22637e12?auto=format&fit=crop&w=800&q=80',
                 textColor: 'text-rose-700'
             }
         ];
 
-        /* APPLICATION STATE */
+        /* STATE MANAGEMENT */
         let cart = [];
+        let activeCategoryFilter = 'all';
+        let searchQuery = '';
+        let selectedCustomBase = 'Fresh Coconut Water';
         let ownerConfig = {
-            bizName: 'Squeeze & Soul',
+            bizName: 'Custom Juice',
             phone: '(555) 019-2834',
             minDelivery: 25,
             zips: ['90210', '90211', '10001', '30301', '60601', '75001']
         };
 
-        /* INITIALIZATION ON LOAD */
+        /* INITIALIZATION */
         window.addEventListener('DOMContentLoaded', () => {
             document.getElementById('year-label').textContent = new Date().getFullYear();
             lucide.createIcons();
-            renderMenuGrid('all');
+            renderMenuGrid();
+            updateCustomJuicePreview();
             updateCartUI();
             updateOwnerConfig();
+            renderAdminItemsList();
         });
 
-        /* OWNER TOOLBAR CONFIGURATION ENGINE */
+        /* OWNER CONFIG & TOOLBAR ENGINE */
         function updateOwnerConfig() {
-            const name = document.getElementById('owner-biz-name').value.trim() || 'Squeeze & Soul';
+            const name = document.getElementById('owner-biz-name').value.trim() || 'Custom Juice';
             const phone = document.getElementById('owner-phone').value.trim() || '(555) 019-2834';
             const minDelivery = parseFloat(document.getElementById('owner-min-delivery').value) || 25;
             const zipsStr = document.getElementById('owner-zips').value;
@@ -953,14 +1270,12 @@
             ownerConfig.minDelivery = minDelivery;
             ownerConfig.zips = zipsStr.split(',').map(z => z.trim().toLowerCase());
 
-            // Update DOM Elements bound to Config
-            document.title = `${name} - Homemade Fresh Juice Delivery`;
+            document.title = `${name} - Homemade Juice Delivery`;
             
             document.querySelectorAll('.bind-biz-name').forEach(el => el.textContent = name);
             document.querySelectorAll('.bind-phone-text').forEach(el => el.textContent = phone);
             document.querySelectorAll('.bind-min-val').forEach(el => el.textContent = minDelivery);
 
-            // Sanitize clean phone for tel: links
             const cleanPhone = phone.replace(/[^0-9+]/g, '');
             document.querySelectorAll('.bind-phone-link').forEach(el => {
                 el.setAttribute('href', `tel:${cleanPhone}`);
@@ -969,115 +1284,222 @@
             updateCartUI();
         }
 
-        function toggleToolbarCollapse() {
-            const toolbar = document.getElementById('owner-toolbar');
-            const chevron = document.getElementById('toolbar-chevron');
-            const isMin = toolbar.classList.toggle('translate-y-28');
-            chevron.style.transform = isMin ? 'rotate(180deg)' : 'rotate(0deg)';
+        function toggleOwnerAdminDrawer(open) {
+            const drawer = document.getElementById('admin-drawer');
+            const backdrop = document.getElementById('admin-drawer-backdrop');
+
+            if (open) {
+                renderAdminItemsList();
+                backdrop.classList.remove('opacity-0', 'pointer-events-none');
+                drawer.classList.remove('-translate-x-full');
+            } else {
+                backdrop.classList.add('opacity-0', 'pointer-events-none');
+                drawer.classList.add('-translate-x-full');
+            }
         }
 
-        /* MENU FILTERING & RENDERING */
-        function renderMenuGrid(cat = 'all') {
+        /* MENU SHOWCASE ENGINE */
+        function renderMenuGrid() {
             const container = document.getElementById('juice-grid');
+            const noResults = document.getElementById('no-menu-results');
+            const countLabel = document.getElementById('menu-item-count-label');
+
             container.innerHTML = '';
 
-            const filtered = cat === 'all' ? juiceMenu : juiceMenu.filter(j => j.category === cat);
+            let filtered = juiceMenu;
 
-            filtered.forEach(item => {
-                const card = document.createElement('div');
-                card.className = 'bg-white rounded-3xl p-6 border border-amber-100 shadow-soft hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative';
-                
-                card.innerHTML = `
-                    <div>
-                        <!-- Header Badge & Category -->
-                        <div class="flex items-center justify-between mb-4">
-                            <span class="px-3 py-1 rounded-full bg-slate-100 text-slate-700 text-[10px] font-bold uppercase tracking-wider">${item.badge}</span>
-                            <span class="text-xs font-bold ${item.textColor}">${item.category.toUpperCase()}</span>
+            // Apply category filter
+            if (activeCategoryFilter !== 'all') {
+                filtered = filtered.filter(j => j.category === activeCategoryFilter);
+            }
+
+            // Apply search query
+            if (searchQuery) {
+                const q = searchQuery.toLowerCase();
+                filtered = filtered.filter(j => 
+                    j.name.toLowerCase().includes(q) ||
+                    j.description.toLowerCase().includes(q) ||
+                    j.ingredients.some(i => i.toLowerCase().includes(q)) ||
+                    (j.badge && j.badge.toLowerCase().includes(q))
+                );
+            }
+
+            countLabel.textContent = `${filtered.length} Live Items`;
+
+            if (filtered.length === 0) {
+                noResults.classList.remove('hidden');
+            } else {
+                noResults.classList.add('hidden');
+                filtered.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = 'bg-white rounded-3xl p-5 border border-amber-200/80 shadow-soft hover:shadow-xl transition-all duration-300 flex flex-col justify-between group relative';
+                    
+                    const ingredientChips = item.ingredients.map(ing => `<span class="px-2 py-0.5 rounded-md bg-slate-100 text-slate-700 text-[10px] font-semibold">${ing}</span>`).join(' ');
+                    const benefitChips = item.benefits ? item.benefits.map(b => `<span class="px-2 py-0.5 rounded-md bg-amber-50 border border-amber-200 text-amber-800 text-[10px] font-bold">✓ ${b}</span>`).join(' ') : '';
+
+                    card.innerHTML = `
+                        <div>
+                            <!-- Header Badge & Category -->
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="px-3 py-1 rounded-full bg-orange-100 text-brand-orange text-[10px] font-extrabold uppercase tracking-wider">${item.badge || 'Fresh Juice'}</span>
+                                <span class="text-xs font-bold text-slate-500">${item.category}</span>
+                            </div>
+
+                            <!-- Unsplash Image Showcase -->
+                            <div class="w-full h-48 rounded-2xl overflow-hidden relative shadow-xs mb-4 group-hover:scale-[1.02] transition-transform duration-300">
+                                <img src="${item.image || 'https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=800&q=80'}" alt="${item.name}" class="w-full h-full object-cover" onerror="this.onerror=null; this.src='https://placehold.co/600x400/FF6B35/FFFFFF?text=${encodeURIComponent(item.name)}';">
+                                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-transparent flex items-end p-3.5">
+                                    <span class="font-heading text-lg font-black text-white leading-tight">${item.name}</span>
+                                </div>
+                            </div>
+
+                            <!-- Description -->
+                            <p class="text-xs text-slate-600 leading-relaxed mb-3">${item.description}</p>
+                            
+                            <!-- Ingredients -->
+                            <div class="space-y-1 mb-4">
+                                <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Ingredients:</div>
+                                <div class="flex flex-wrap gap-1">${ingredientChips}</div>
+                            </div>
+
+                            ${benefitChips ? `<div class="flex flex-wrap gap-1 mb-4">${benefitChips}</div>` : ''}
                         </div>
 
-                        <!-- Juice Graphic Illustration -->
-                        <div class="w-full h-36 rounded-2xl bg-gradient-to-tr ${item.color} flex items-center justify-center p-4 shadow-sm mb-5 group-hover:scale-[1.02] transition-transform">
-                            <div class="text-center text-white">
-                                <i data-lucide="citrus" class="w-10 h-10 mx-auto mb-1 opacity-90 animate-float"></i>
-                                <div class="font-heading font-black text-lg leading-tight uppercase tracking-wider">${item.name}</div>
+                        <!-- Size Dropdown & Add to Order Button -->
+                        <div class="pt-4 border-t border-amber-100 space-y-3">
+                            <div class="flex items-center justify-between">
+                                <label class="text-xs font-bold text-slate-700">Select Bottle Size:</label>
+                                <select id="size-select-${item.id}" onchange="updateCardPrice('${item.id}')" class="bg-slate-100 border border-slate-200 rounded-lg px-2.5 py-1 text-xs font-bold text-slate-800 focus:outline-none">
+                                    <option value="12 oz" data-price="${item.p12}">12 oz ($${item.p12.toFixed(2)})</option>
+                                    <option value="16 oz" selected data-price="${item.p16}">16 oz ($${item.p16.toFixed(2)})</option>
+                                    <option value="32 oz" data-price="${item.p32}">32 oz ($${item.p32.toFixed(2)})</option>
+                                </select>
+                            </div>
+
+                            <div class="flex items-center justify-between gap-3 pt-1">
+                                <div>
+                                    <span class="text-[10px] text-slate-400 font-bold block">Bottle Price</span>
+                                    <span id="card-price-${item.id}" class="font-heading font-black text-xl text-brand-orange">$${item.p16.toFixed(2)}</span>
+                                </div>
+                                <button onclick="addToCartFromCard('${item.id}')" class="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-brand-orange text-white font-extrabold text-xs flex items-center gap-1.5 transition-all shadow-md hover:scale-105">
+                                    <i data-lucide="plus" class="w-4 h-4"></i>
+                                    <span>Add To Order</span>
+                                </button>
                             </div>
                         </div>
+                    `;
 
-                        <!-- Title & Description -->
-                        <h3 class="font-heading text-xl font-extrabold text-slate-900 mb-2">${item.name}</h3>
-                        <p class="text-xs text-slate-600 leading-relaxed mb-3">${item.description}</p>
-                        
-                        <!-- Ingredients -->
-                        <div class="text-[11px] text-slate-500 mb-4">
-                            <strong class="text-slate-700">Ingredients:</strong> ${item.ingredients}
-                        </div>
-
-                        <!-- Benefit Tags -->
-                        <div class="flex flex-wrap gap-1.5 mb-6">
-                            ${item.benefits.map(b => `<span class="px-2 py-0.5 rounded-md bg-amber-50 border border-amber-200/80 text-amber-800 text-[10px] font-bold">✓ ${b}</span>`).join('')}
-                        </div>
-                    </div>
-
-                    <!-- Size Selector & Add to Order -->
-                    <div class="pt-4 border-t border-amber-100 space-y-3">
-                        <div class="flex items-center justify-between">
-                            <label class="text-xs font-bold text-slate-700">Select Size:</label>
-                            <select id="size-select-${item.id}" onchange="updateCardPrice('${item.id}')" class="bg-slate-100 border border-slate-200 rounded-lg px-2 py-1 text-xs font-bold text-slate-800 focus:outline-none">
-                                <option value="250" data-price="${item.basePrice250}">250ml ($${item.basePrice250.toFixed(2)})</option>
-                                <option value="500" selected data-price="${item.basePrice500}">500ml ($${item.basePrice500.toFixed(2)})</option>
-                                <option value="1000" data-price="${item.basePrice1000}">1 Liter ($${item.basePrice1000.toFixed(2)})</option>
-                            </select>
-                        </div>
-
-                        <div class="flex items-center justify-between gap-3 pt-1">
-                            <div>
-                                <span class="text-[10px] text-slate-400 font-bold block">Price</span>
-                                <span id="card-price-${item.id}" class="font-heading font-black text-xl text-brand-orange">$${item.basePrice500.toFixed(2)}</span>
-                            </div>
-                            <button onclick="addToCartFromCard('${item.id}')" class="px-5 py-2.5 rounded-xl bg-slate-900 hover:bg-brand-orange text-white font-bold text-xs flex items-center gap-1.5 transition-all shadow-md">
-                                <i data-lucide="plus" class="w-4 h-4"></i>
-                                <span>Add To Order</span>
-                            </button>
-                        </div>
-                    </div>
-                `;
-
-                container.appendChild(card);
-            });
+                    container.appendChild(card);
+                });
+            }
 
             lucide.createIcons();
         }
 
         function filterCategory(cat) {
+            activeCategoryFilter = cat;
             document.querySelectorAll('.cat-btn').forEach(btn => {
                 if (btn.dataset.cat === cat) {
-                    btn.className = 'cat-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-slate-900 text-white shadow-md';
+                    btn.className = 'cat-btn px-4 py-2 rounded-xl text-xs font-extrabold transition-all bg-slate-900 text-white shadow-md';
                 } else {
                     btn.className = 'cat-btn px-4 py-2 rounded-xl text-xs font-bold transition-all bg-white text-slate-700 border border-slate-200 hover:border-brand-orange';
                 }
             });
-            renderMenuGrid(cat);
+            renderMenuGrid();
+        }
+
+        function handleMenuSearch() {
+            searchQuery = document.getElementById('menu-search-input').value.trim();
+            renderMenuGrid();
+        }
+
+        function resetMenuFilter() {
+            searchQuery = '';
+            activeCategoryFilter = 'all';
+            document.getElementById('menu-search-input').value = '';
+            filterCategory('all');
         }
 
         function updateCardPrice(itemId) {
             const select = document.getElementById(`size-select-${itemId}`);
+            if (!select) return;
             const selectedOpt = select.options[select.selectedIndex];
             const price = parseFloat(selectedOpt.dataset.price);
             document.getElementById(`card-price-${itemId}`).textContent = `$${price.toFixed(2)}`;
         }
 
-        /* CART / ORDER HELPER LOGIC */
+        /* BUILD YOUR OWN CUSTOM JUICE ENGINE */
+        function selectCustomBase(baseName) {
+            selectedCustomBase = baseName;
+            document.querySelectorAll('.custom-base-btn').forEach(btn => {
+                if (btn.dataset.value === baseName) {
+                    btn.className = 'custom-base-btn p-3 rounded-xl border text-xs font-bold text-left transition-all border-brand-orange bg-orange-50 text-brand-orange shadow-xs';
+                } else {
+                    btn.className = 'custom-base-btn p-3 rounded-xl border text-xs font-bold text-left transition-all border-slate-200 bg-slate-50 text-slate-700 hover:border-brand-orange';
+                }
+            });
+            updateCustomJuicePreview();
+        }
+
+        function updateCustomJuicePreview() {
+            const sizeSelect = document.getElementById('custom-size-select');
+            const selectedOpt = sizeSelect.options[sizeSelect.selectedIndex];
+            let basePrice = parseFloat(selectedOpt.dataset.baseprice);
+
+            const selectedIngredients = [];
+            document.querySelectorAll('.custom-ingredient:checked').forEach(cb => {
+                selectedIngredients.push(cb.value);
+            });
+
+            const selectedBoosters = [];
+            document.querySelectorAll('.custom-booster:checked').forEach(cb => {
+                selectedBoosters.push(cb.value);
+                basePrice += parseFloat(cb.dataset.booster || 1.00);
+            });
+
+            document.getElementById('custom-summary-base').textContent = selectedCustomBase;
+            
+            const allItems = [...selectedIngredients, ...selectedBoosters];
+            document.getElementById('custom-summary-ingredients').textContent = allItems.length > 0 ? allItems.join(', ') : 'No extra ingredients chosen';
+            
+            document.getElementById('custom-calculated-price').textContent = `$${basePrice.toFixed(2)}`;
+        }
+
+        function addCustomJuiceToCart() {
+            const sizeSelect = document.getElementById('custom-size-select');
+            const sizeLabel = sizeSelect.value;
+            const price = parseFloat(document.getElementById('custom-calculated-price').textContent.replace('$', ''));
+
+            const ingredients = [];
+            document.querySelectorAll('.custom-ingredient:checked').forEach(cb => ingredients.push(cb.value));
+            document.querySelectorAll('.custom-booster:checked').forEach(cb => ingredients.push(`+${cb.value}`));
+
+            const customName = `Custom Recipe (${selectedCustomBase})`;
+
+            cart.push({
+                id: `custom-${Date.now()}`,
+                name: customName,
+                size: sizeLabel,
+                price: price,
+                qty: 1,
+                details: ingredients.join(', ')
+            });
+
+            updateCartUI();
+            toggleCartDrawer(true);
+            showToast('Added custom juice blend to phone order!', 'success');
+        }
+
+        /* PHONE ORDER HELPER CART ENGINE */
         function addToCartFromCard(itemId) {
             const item = juiceMenu.find(j => j.id === itemId);
             if (!item) return;
 
             const select = document.getElementById(`size-select-${itemId}`);
-            const sizeVal = select.value;
-            const selectedOpt = select.options[select.selectedIndex];
-            const price = parseFloat(selectedOpt.dataset.price);
-            const sizeLabel = sizeVal === '1000' ? '1 Liter' : `${sizeVal}ml`;
+            const sizeLabel = select ? select.value : '16 oz';
+            const selectedOpt = select ? select.options[select.selectedIndex] : null;
+            const price = selectedOpt ? parseFloat(selectedOpt.dataset.price) : item.p16;
 
-            // Check existing item with same size
             const existingIndex = cart.findIndex(c => c.id === itemId && c.size === sizeLabel);
             if (existingIndex > -1) {
                 cart[existingIndex].qty += 1;
@@ -1092,11 +1514,11 @@
             }
 
             updateCartUI();
-            showToast(`Added ${item.name} (${sizeLabel}) to order!`, 'success');
+            showToast(`Added ${item.name} (${sizeLabel}) to phone order!`, 'success');
         }
 
         function quickAddHeroItem() {
-            addToCartFromCard('j1');
+            addToCartFromCard('cj1');
             toggleCartDrawer(true);
         }
 
@@ -1117,7 +1539,7 @@
                     <div class="text-center py-12 text-slate-400 space-y-3">
                         <i data-lucide="shopping-bag" class="w-12 h-12 mx-auto text-slate-300"></i>
                         <p class="text-xs font-bold">Your phone order helper is empty.</p>
-                        <p class="text-[11px] text-slate-400">Add juices from the menu to calculate total and place your phone order!</p>
+                        <p class="text-[11px] text-slate-400">Add juices from the menu or build a custom blend to assemble your order!</p>
                     </div>
                 `;
             } else {
@@ -1131,6 +1553,7 @@
                         <div class="flex-1">
                             <div class="font-bold text-slate-900">${item.name}</div>
                             <div class="text-[10px] text-brand-orange font-bold">${item.size} • $${item.price.toFixed(2)} each</div>
+                            ${item.details ? `<div class="text-[10px] text-slate-500 italic mt-0.5">${item.details}</div>` : ''}
                         </div>
 
                         <div class="flex items-center gap-2">
@@ -1151,7 +1574,7 @@
             badge.textContent = totalItemsCount;
             totalPriceEl.textContent = `$${total.toFixed(2)}`;
 
-            // Delivery threshold bar
+            // Delivery threshold progress
             const minReq = ownerConfig.minDelivery;
             const pct = Math.min(100, (total / minReq) * 100);
             progressEl.style.width = `${pct}%`;
@@ -1194,23 +1617,24 @@
 
         function copySmsSummary() {
             if (cart.length === 0) {
-                showToast('Your order helper is empty! Add items first.', 'error');
+                showToast('Your phone order helper is empty! Add items first.', 'error');
                 return;
             }
 
-            let summary = `Hi ${ownerConfig.bizName}! I would like to place a fresh juice order for home delivery:\n\n`;
+            let summary = `Hi ${ownerConfig.bizName}! I'd like to place a fresh juice order for doorstep delivery:\n\n`;
             let total = 0;
 
             cart.forEach(item => {
                 const itemTotal = item.price * item.qty;
                 total += itemTotal;
                 summary += `• ${item.qty}x ${item.name} (${item.size}) - $${itemTotal.toFixed(2)}\n`;
+                if (item.details) summary += `  - Details: ${item.details}\n`;
             });
 
             summary += `\nEstimated Total: $${total.toFixed(2)}`;
-            summary += `\nMy Delivery Address: [Type Your Address Here]`;
+            summary += `\nDelivery Address: [Type Your Address Here]`;
 
-            // Copy to clipboard
+            // Clipboard fallback
             const dummy = document.createElement('textarea');
             document.body.appendChild(dummy);
             dummy.value = summary;
@@ -1218,16 +1642,223 @@
             document.execCommand('copy');
             document.body.removeChild(dummy);
 
-            showToast('Order summary copied! Paste it in your text message to us.', 'success');
+            showToast('Order summary copied to clipboard! Paste into SMS text.', 'success');
         }
 
-        /* LOCAL ZIP CODE DELIVERY CHECKER */
+        /* OWNER ADMIN & LIVE MENU MANAGER ENGINE */
+        function renderAdminItemsList() {
+            const container = document.getElementById('admin-items-list');
+            const countLabel = document.getElementById('admin-item-count');
+            countLabel.textContent = juiceMenu.length;
+            container.innerHTML = '';
+
+            juiceMenu.forEach((item, index) => {
+                const row = document.createElement('div');
+                row.className = 'p-3 rounded-xl bg-slate-800 border border-slate-700 flex items-center justify-between gap-3 text-xs';
+                row.innerHTML = `
+                    <div class="flex items-center gap-3 overflow-hidden">
+                        <img src="${item.image || 'https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=800&q=80'}" class="w-10 h-10 rounded-lg object-cover shrink-0">
+                        <div class="truncate">
+                            <div class="font-bold text-white truncate">${item.name}</div>
+                            <div class="text-[10px] text-slate-400">${item.category} • 16oz: $${item.p16.toFixed(2)}</div>
+                        </div>
+                    </div>
+
+                    <div class="flex items-center gap-1.5 shrink-0">
+                        <button onclick="editMenuItem('${item.id}')" class="p-1.5 rounded-lg bg-slate-700 hover:bg-slate-600 text-amber-300" title="Edit Item">
+                            <i data-lucide="edit-3" class="w-4 h-4"></i>
+                        </button>
+                        <button onclick="deleteMenuItem('${item.id}')" class="p-1.5 rounded-lg bg-slate-700 hover:bg-red-900 text-red-300" title="Delete Item">
+                            <i data-lucide="trash-2" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                `;
+                container.appendChild(row);
+            });
+
+            lucide.createIcons();
+        }
+
+        function openAddItemModal() {
+            document.getElementById('item-modal-title').textContent = 'Add New Menu Item';
+            document.getElementById('edit-item-id').value = '';
+            document.getElementById('modal-item-name').value = '';
+            document.getElementById('modal-item-cat').value = 'Cold-Pressed Juices';
+            document.getElementById('modal-item-badge').value = 'Fresh Juice';
+            document.getElementById('modal-item-p12').value = '5.50';
+            document.getElementById('modal-item-p16').value = '8.50';
+            document.getElementById('modal-item-p32').value = '15.00';
+            document.getElementById('modal-item-ingredients').value = '';
+            document.getElementById('modal-item-desc').value = '';
+            document.getElementById('modal-item-img').value = '';
+
+            document.getElementById('item-modal').classList.remove('hidden');
+        }
+
+        function editMenuItem(id) {
+            const item = juiceMenu.find(j => j.id === id);
+            if (!item) return;
+
+            document.getElementById('item-modal-title').textContent = 'Edit Menu Item';
+            document.getElementById('edit-item-id').value = item.id;
+            document.getElementById('modal-item-name').value = item.name;
+            document.getElementById('modal-item-cat').value = item.category;
+            document.getElementById('modal-item-badge').value = item.badge || '';
+            document.getElementById('modal-item-p12').value = item.p12;
+            document.getElementById('modal-item-p16').value = item.p16;
+            document.getElementById('modal-item-p32').value = item.p32;
+            document.getElementById('modal-item-ingredients').value = item.ingredients.join(', ');
+            document.getElementById('modal-item-desc').value = item.description || '';
+            document.getElementById('modal-item-img').value = item.image || '';
+
+            document.getElementById('item-modal').classList.remove('hidden');
+        }
+
+        function closeItemModal() {
+            document.getElementById('item-modal').classList.add('hidden');
+        }
+
+        function handleSaveItem(e) {
+            e.preventDefault();
+            const editId = document.getElementById('edit-item-id').value;
+            const name = document.getElementById('modal-item-name').value.trim();
+            const cat = document.getElementById('modal-item-cat').value;
+            const badge = document.getElementById('modal-item-badge').value.trim();
+            const p12 = parseFloat(document.getElementById('modal-item-p12').value) || 5.50;
+            const p16 = parseFloat(document.getElementById('modal-item-p16').value) || 8.50;
+            const p32 = parseFloat(document.getElementById('modal-item-p32').value) || 15.00;
+            const rawIngredients = document.getElementById('modal-item-ingredients').value;
+            const desc = document.getElementById('modal-item-desc').value.trim();
+            const img = document.getElementById('modal-item-img').value.trim();
+
+            const ingredients = rawIngredients.split(',').map(i => i.trim()).filter(i => i.length > 0);
+
+            if (editId) {
+                // Update existing
+                const index = juiceMenu.findIndex(j => j.id === editId);
+                if (index > -1) {
+                    juiceMenu[index] = {
+                        ...juiceMenu[index],
+                        name, category: cat, badge, p12, p16, p32,
+                        ingredients: ingredients.length > 0 ? ingredients : ['Fresh Produce'],
+                        description: desc || 'Cold-pressed homemade juice.',
+                        image: img || juiceMenu[index].image
+                    };
+                }
+            } else {
+                // Create new
+                juiceMenu.push({
+                    id: `cj-custom-${Date.now()}`,
+                    name,
+                    category: cat,
+                    badge: badge || 'New Arrival',
+                    p12, p16, p32,
+                    ingredients: ingredients.length > 0 ? ingredients : ['Organic Produce'],
+                    description: desc || 'Freshly juiced homemade cold-pressed bottle.',
+                    benefits: ['Immunity', 'Freshness'],
+                    image: img || 'https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=800&q=80'
+                });
+            }
+
+            closeItemModal();
+            renderAdminItemsList();
+            renderMenuGrid();
+            showToast('Live menu updated successfully!', 'success');
+        }
+
+        function deleteMenuItem(id) {
+            juiceMenu = juiceMenu.filter(j => j.id !== id);
+            renderAdminItemsList();
+            renderMenuGrid();
+            showToast('Item deleted from menu.', 'info');
+        }
+
+        function resetMenuToDefaults() {
+            location.reload();
+        }
+
+        /* BULK IMPORT / TEXT PARSER ENGINE */
+        function openBulkPasteModal() {
+            document.getElementById('bulk-modal').classList.remove('hidden');
+        }
+
+        function closeBulkModal() {
+            document.getElementById('bulk-modal').classList.add('hidden');
+        }
+
+        function executeBulkImport() {
+            const rawText = document.getElementById('bulk-text-input').value.trim();
+            const shouldReplace = document.getElementById('bulk-replace-check').checked;
+
+            if (!rawText) {
+                showToast('Please paste text or item lists first.', 'error');
+                return;
+            }
+
+            const lines = rawText.split('\n');
+            const importedItems = [];
+
+            lines.forEach((line, idx) => {
+                const cleaned = line.trim();
+                if (!cleaned) return;
+
+                // Extract prices ($)
+                const priceMatches = cleaned.match(/\$\d+(\.\d+)?/g);
+                let baseP16 = 8.50;
+                if (priceMatches && priceMatches.length > 0) {
+                    baseP16 = parseFloat(priceMatches[0].replace('$', ''));
+                }
+
+                // Extract parts separated by dash or pipe
+                const parts = cleaned.split(/[-|–]/).map(p => p.trim());
+                const itemName = parts[0].replace(/\$\d+(\.\d+)?/g, '').trim() || `Juice Special ${idx + 1}`;
+                
+                let ingredients = ['Fresh Organic Produce'];
+                if (parts.length > 2) {
+                    ingredients = parts[2].split(',').map(i => i.trim());
+                } else if (parts.length === 2 && !parts[1].includes('$')) {
+                    ingredients = parts[1].split(',').map(i => i.trim());
+                }
+
+                importedItems.push({
+                    id: `bulk-${Date.now()}-${idx}`,
+                    name: itemName,
+                    category: 'Cold-Pressed Juices',
+                    badge: 'Imported Recipe',
+                    p12: parseFloat((baseP16 * 0.65).toFixed(2)),
+                    p16: baseP16,
+                    p32: parseFloat((baseP16 * 1.8).toFixed(2)),
+                    ingredients: ingredients,
+                    description: `Custom bulk imported recipe: ${itemName}.`,
+                    benefits: ['Cold-Pressed', 'Homemade'],
+                    image: 'https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=800&q=80'
+                });
+            });
+
+            if (importedItems.length === 0) {
+                showToast('Could not parse items. Please check format.', 'error');
+                return;
+            }
+
+            if (shouldReplace) {
+                juiceMenu = importedItems;
+            } else {
+                juiceMenu = [...juiceMenu, ...importedItems];
+            }
+
+            closeBulkModal();
+            renderAdminItemsList();
+            renderMenuGrid();
+            showToast(`Successfully parsed and imported ${importedItems.length} menu items!`, 'success');
+        }
+
+        /* LOCAL ZIP CHECKER ENGINE */
         function checkDeliveryZip() {
             const input = document.getElementById('zip-input').value.trim().toLowerCase();
             const resultBox = document.getElementById('zip-result');
 
             if (!input || input.length < 3) {
-                resultBox.className = 'p-3 rounded-xl text-xs font-semibold bg-red-500/20 text-red-300 border border-red-500/30';
+                resultBox.className = 'p-3.5 rounded-xl text-xs font-semibold bg-red-500/20 text-red-300 border border-red-500/30';
                 resultBox.innerHTML = '⚠️ Please enter a valid ZIP code.';
                 resultBox.classList.remove('hidden');
                 return;
@@ -1236,24 +1867,24 @@
             const isAvailable = ownerConfig.zips.includes(input);
 
             if (isAvailable) {
-                resultBox.className = 'p-3 rounded-xl text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30';
+                resultBox.className = 'p-3.5 rounded-xl text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30';
                 resultBox.innerHTML = `🎉 <strong>Great news!</strong> We deliver to <strong>${input.toUpperCase()}</strong> every morning between 7:00 AM – 1:00 PM!`;
             } else {
-                resultBox.className = 'p-3 rounded-xl text-xs font-semibold bg-amber-500/20 text-amber-200 border border-amber-500/30';
-                resultBox.innerHTML = `📍 <strong>${input.toUpperCase()}</strong> is outside our standard route, but we take special party requests! Call us at <a href="tel:${ownerConfig.phone}" class="underline font-bold">${ownerConfig.phone}</a>.`;
+                resultBox.className = 'p-3.5 rounded-xl text-xs font-semibold bg-amber-500/20 text-amber-200 border border-amber-500/30';
+                resultBox.innerHTML = `📍 <strong>${input.toUpperCase()}</strong> is outside our default route, but we take custom party requests! Call us at <a href="tel:${ownerConfig.phone}" class="underline font-bold">${ownerConfig.phone}</a>.`;
             }
 
             resultBox.classList.remove('hidden');
         }
 
-        /* CATERING FORM SUBMIT */
+        /* CATERING SUBMIT */
         function handleCateringSubmit(e) {
             e.preventDefault();
-            showToast('Thank you! Your catering inquiry has been received. We will call you back shortly!', 'success');
+            showToast('Thank you! Your catering request has been received. We will call you shortly!', 'success');
             e.target.reset();
         }
 
-        /* FAQ ACCORDION TOGGLE */
+        /* FAQ ACCORDION */
         function toggleFaq(btn) {
             const answer = btn.nextElementSibling;
             const icon = btn.querySelector('[data-lucide="chevron-down"]');
@@ -1269,13 +1900,13 @@
             }
         }
 
-        /* MOBILE NAV TOGGLE */
+        /* MOBILE NAV */
         function toggleMobileNav() {
             const nav = document.getElementById('mobile-nav');
             nav.classList.toggle('hidden');
         }
 
-        /* TOAST NOTIFICATION UTILITY */
+        /* TOAST UTILITY */
         function showToast(message, type = 'info') {
             const container = document.getElementById('toast-container');
             const toast = document.createElement('div');
