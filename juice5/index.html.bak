@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Juice | Fresh, Made-To-Order Juices Delivered to Your Door</title>
+     
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS File -->
+    <link rel="stylesheet" href="styles.css">
+	 <!-- Load custom JavaScript config after Tailwind CDN -->
+    <script src="script.js"></script>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- Top Announcement Bar -->
+    <div id="top-bar" class="bg-brand-900 text-brand-100 text-xs sm:text-sm py-2 px-6 text-center font-medium flex justify-between items-center">
+        <div class="hidden md:block"></div>
+        <div class="flex items-center justify-center gap-2 mx-auto md:mx-0">
+            <span class="inline-block w-2 h-2 rounded-full bg-brand-400 animate-ping"></span>
+            <span>Made fresh on order! Delivered straight to your doorstep.</span>
+        </div>
+        <div class="flex items-center gap-4 text-xs">
+            <button onclick="toggleAdminDrawer()" class="hover:text-brand-300 transition-colors flex items-center gap-1 opacity-80 hover:opacity-100">
+                <i class="fa-solid fa-gear text-xs"></i> Owner Config
+            </button>
+        </div>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header class="sticky top-0 z-40 bg-glass border-b border-slate-200/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+			
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-brand-600 via-brand-500 to-citrus-400 flex items-center justify-center text-white text-2xl shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
+				<img src="images/logo-fruits.png" alt="A descriptive text of the image">
+                   <!-- <i class="fa-solid fa-citrus"></i> -->
+                </div>
+                <div>
+				
+                    <span class="text-2xl font-extrabold tracking-tight text-slate-900 font-heading block leading-none site-name-text">Custom Juice</span>
+                    <span class="text-xs font-semibold text-brand-600 tracking-wider uppercase mt-1 block">Raw • Real • Refreshing</span>
+			
+				
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-slate-600 text-sm">
+                <a href="#hero" class="hover:text-brand-600 transition-colors">Home</a>
+                <a href="#about" class="hover:text-brand-600 transition-colors">About Us</a>
+                <a href="#menu" class="hover:text-brand-600 transition-colors">Our Menu</a>
+                <a href="#custom-builder" class="hover:text-brand-600 transition-colors">Build Your Own</a>
+                <a href="#ordering" class="hover:text-brand-600 transition-colors">How to Order</a>
+				<!--
+                <a href="#catering" class="hover:text-brand-600 transition-colors">Catering & Cleanses</a>
+				-->
+            </nav>
+
+            <!-- Action Buttons -->
+            <div class="flex items-center gap-3">
+                <a href="tel:8472710521" class="site-phone-link hidden sm:inline-flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-800 font-semibold px-4 py-2.5 rounded-full text-sm transition-all border border-slate-200">
+                    <i class="fa-solid fa-phone text-brand-600"></i>
+                    <span class="site-phone-display">(847) 271-0521</span>
+                </a>
+
+                <!-- Cart / Order Drawer Button -->
+                <button onclick="toggleCartDrawer()" class="relative bg-brand-600 hover:bg-brand-700 text-white font-semibold px-4 py-2.5 rounded-full text-sm transition-all flex items-center gap-2 shadow-md shadow-brand-500/20 hover:scale-105">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    <span class="hidden sm:inline">Phone Order</span>
+                    <span id="cart-count" class="bg-white text-brand-700 rounded-full w-5 h-5 flex items-center justify-center text-xs font-bold">0</span>
+                </button>
+
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleMobileMenu()" class="md:hidden text-slate-700 p-2 rounded-lg hover:bg-slate-100">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Drawer -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-slate-200 bg-white px-4 pt-2 pb-6 space-y-3">
+            <a href="#hero" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium border-b border-slate-100">Home</a>
+            <a href="#about" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium border-b border-slate-100">About Us</a>
+            <a href="#menu" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium border-b border-slate-100">Our Menu</a>
+            <a href="#custom-builder" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium border-b border-slate-100">Build Your Own</a>
+            <a href="#ordering" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium border-b border-slate-100">How to Order</a>
+			<!--
+            <a href="#catering" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium">Catering & Cleanses</a> 
+			-->
+            <div class="pt-2">
+                <a href="tel:8472710521" class="site-phone-link flex items-center justify-center gap-2 w-full bg-brand-50 text-brand-700 font-semibold py-3 rounded-xl border border-brand-200">
+                    <i class="fa-solid fa-phone"></i>
+                    <span>Call to Order: <span class="site-phone-display">(847) 271-0521</span></span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="hero" class="relative overflow-hidden pt-12 pb-20 lg:pt-20 lg:pb-28 bg-gradient-to-b from-brand-50/60 via-slate-50 to-slate-50">
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-citrus-400/10 blur-3xl pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-96 h-96 rounded-full bg-brand-500/10 blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-brand-100/80 text-brand-800 text-xs sm:text-sm font-semibold px-4 py-2 rounded-full border border-brand-200 shadow-sm">
+                        <i class="fa-solid fa-leaf text-brand-600"></i>
+                        <span>100% Organic, Pure & Homemade Cold Pressed</span>
+                    </div>
+
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                        Fresh. Custom. <br class="hidden sm:inline">
+                        <span class="bg-gradient-to-r from-brand-600 via-brand-500 to-citrus-500 bg-clip-text text-transparent">Made for You.</span>
+                    </h1>
+
+                    <p class="text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        At <span class="site-name-text font-bold text-slate-800">Custom Juice</span>, we believe great juice starts with fresh ingredients and your own taste. We create delicious fruit and vegetable juices made to order, using creative combinations designed to give you something fresh and flavorful in every bottle.
+                    </p>
+
+                    <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-xl shadow-slate-200/50 space-y-4">
+                        <div class="space-y-1">
+                            <h3 class="text-xl font-bold text-slate-900 font-heading">Choose your juice. Make it your own.</h3>
+                            <p class="text-sm text-slate-600">Browse our menu or call us to create your own custom combination.</p>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                            <a href="#menu" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-brand-600 hover:bg-brand-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg shadow-brand-500/25 transition-all hover:scale-[1.02] text-base">
+                                <i class="fa-solid fa-wine-bottle"></i>
+                                Browse Menu
+                            </a>
+                            <a href="tel:8472710521" class="site-phone-link w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-900 hover:bg-slate-800 text-white font-bold px-8 py-4 rounded-xl shadow-md transition-all hover:scale-[1.02] text-base">
+                                <i class="fa-solid fa-phone text-brand-400"></i>
+                                Call to Order: <span class="site-phone-display">(847) 271-0521</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="pt-2 grid grid-cols-3 gap-4 border-t border-slate-200/80 text-center">
+                        <div>
+                            <div class="text-2xl font-bold text-slate-900 font-heading">100%</div>
+                            <div class="text-xs text-slate-500 font-medium">Fresh Ingredients</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-slate-900 font-heading">Made Fresh</div>
+                            <div class="text-xs text-slate-500 font-medium">After You Order</div>
+                        </div>
+                        <div>
+                            <div class="text-2xl font-bold text-slate-900 font-heading">Direct</div>
+                            <div class="text-xs text-slate-500 font-medium">Doorstep Delivery</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-5 relative">
+                    <div class="relative mx-auto max-w-md lg:max-w-none">
+                        <div class="relative bg-white p-4 rounded-3xl shadow-2xl border border-slate-100 overflow-hidden transform lg:rotate-1 hover:rotate-0 transition-transform duration-500">
+                            <img src="https://images.unsplash.com/photo-1618046364546-81e9d03d39a6?auto=format&fit=crop&w=800&q=80" alt="Fresh Custom Juice" class="w-full h-80 sm:h-96 object-cover rounded-2xl">
+                            
+                            <div class="absolute top-8 left-8 bg-glass p-3 rounded-2xl shadow-lg border border-white/60 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-citrus-500 text-white flex items-center justify-center text-lg font-bold">
+                                    <i class="fa-solid fa-bolt"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-bold text-slate-800">Energy & Immunity</div>
+                                    <div class="text-[10px] text-slate-500">No added sugars or preservatives</div>
+                                </div>
+                            </div>
+
+                            <div class="absolute bottom-8 right-8 bg-glass p-3 rounded-2xl shadow-lg border border-white/60 flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-brand-600 text-white flex items-center justify-center text-lg">
+                                    <i class="fa-solid fa-truck-fast"></i>
+                                </div>
+                                <div>
+                                    <div class="text-xs font-bold text-slate-800">Home Delivery</div>
+                                    <div class="text-[10px] text-slate-500">Delivered ice-cold</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTEGRATED ABOUT US SECTION -->
+    <section id="about" class="py-20 bg-white border-y border-slate-200/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
+            
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span class="text-brand-600 font-bold text-sm tracking-wider uppercase">Our Story & Promise</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading">Pure Ingredients. Zero Shortcuts.</h2>
+                <p class="text-slate-600 text-base sm:text-lg">We started Custom Juice with a single premise: real juice should be raw, handcrafted, and tailored precisely to what your body craves.</p>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                <div class="lg:col-span-6 relative">
+                    <div class="relative bg-slate-900 rounded-3xl p-3 shadow-2xl overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=80" alt="Preparing Fresh Juices" class="w-full h-80 sm:h-96 object-cover rounded-2xl opacity-90">
+                        
+                        <div class="absolute bottom-8 left-8 right-8 bg-glass p-5 rounded-2xl border border-white/50 shadow-xl">
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 rounded-xl bg-brand-600 text-white flex items-center justify-center text-xl font-bold flex-shrink-0">
+                                    <i class="fa-solid fa-droplet"></i>
+                                </div>
+                                <div>
+                                    <div class="text-sm font-bold text-slate-900 font-heading">Cold-Pressed Fresh Everyday</div>
+                                    <div class="text-xs text-slate-600">Preserving maximum enzymes, antioxidants & natural flavors.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lg:col-span-6 space-y-6">
+                    <h3 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-heading">A little juice business with a lot of heart.</h3>
+                    <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                        We're a small, home-based business dedicated to making fresh fruit and vegetable juices to order. Rather than operating a traditional juice bar, we focus on what matters most to us—fresh ingredients, creative combinations, and personal service.
+
+
+                    </p>
+                    <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                        We love experimenting with different fruits and vegetables to discover combinations that are refreshing, flavorful, and a little different from the ordinary.
+                    </p>
+
+                    <div class="pt-2 grid grid-cols-2 gap-4">
+                        <div class="bg-brand-50 p-4 rounded-2xl border border-brand-100">
+                            <div class="text-brand-700 font-bold text-sm mb-1 flex items-center gap-2">
+                                <i class="fa-solid fa-shield-halved"></i> 0% Added Water
+                            </div>
+                            <p class="text-xs text-slate-600">Pure liquid extract straight from fresh fruits and vegetables.</p>
+                        </div>
+                        <div class="bg-citrus-50 p-4 rounded-2xl border border-citrus-100">
+                            <div class="text-citrus-700 font-bold text-sm mb-1 flex items-center gap-2">
+                                <i class="fa-solid fa-leaf"></i> 100% Organic
+                            </div>
+                            <p class="text-xs text-slate-600">Carefully selected non-GMO organic produce in every batch.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 pt-6">
+                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200/80 space-y-3 hover:shadow-lg transition-all">
+                    
+					<div class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-700 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-seedling"></i>
+                    </div>
+					
+                    <h4 class="text-lg font-bold text-slate-900 font-heading">Locally Sourced</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">We buy the crisp greens and vibrant fruits from local local stores and farms.</p>
+				
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200/80 space-y-3 hover:shadow-lg transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-citrus-100 text-citrus-700 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-clock"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 font-heading">Pressed On Order</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">We don't press until you order, ensuring peak nutrient activity and taste vibrancy.</p>
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200/80 space-y-3 hover:shadow-lg transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-berry-500/10 text-berry-600 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-sliders"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 font-heading">Custom Blending</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">Tailor your base, fruits, greens, and superfood boosters to suit your unique palate.</p>
+                </div>
+
+                <div class="bg-slate-50 p-6 rounded-3xl border border-slate-200/80 space-y-3 hover:shadow-lg transition-all">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-100 text-brand-700 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-truck-ramp-box"></i>
+                    </div>
+                    <h4 class="text-lg font-bold text-slate-900 font-heading">Chilled Delivery</h4>
+                    <p class="text-xs text-slate-600 leading-relaxed">Delivered directly to your home or office in insulated, ice-chilled cooler packs.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ORDERING SECTION BANNER -->
+    <section id="ordering" class="py-12 bg-gradient-to-r from-brand-800 via-brand-700 to-brand-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-8 bg-white/10 backdrop-blur-md p-8 sm:p-10 rounded-3xl border border-white/20">
+                <div class="space-y-3 text-center md:text-left max-w-2xl">
+                    <span class="inline-block px-3 py-1 bg-citrus-500 text-slate-900 font-extrabold text-xs tracking-wider uppercase rounded-full">Fast Phone Ordering</span>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight font-heading">Ready for a fresh juice?</h2>
+                    <p class="text-lg text-brand-100 leading-relaxed">
+                        Give us a call and place your order. We'll prepare your juice fresh and ready for you.
+                    </p>
+                </div>
+
+                <div class="flex flex-col sm:flex-row items-center gap-4 w-full md:w-auto">
+                    <a href="tel:8472710521" class="site-phone-link w-full sm:w-auto inline-flex items-center justify-center gap-3 bg-citrus-400 hover:bg-citrus-500 text-slate-900 font-extrabold px-8 py-4 rounded-2xl shadow-xl transition-all hover:scale-105 text-lg">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>Call <span class="site-phone-display">(847) 271-0521</span></span>
+                    </a>
+                    <button onclick="toggleCartDrawer()" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-white/20 hover:bg-white/30 text-white font-semibold px-6 py-4 rounded-2xl border border-white/30 transition-all text-base">
+                        <i class="fa-solid fa-list-check"></i>
+                        <span>Review Order List</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- JUICE MENU SECTION -->
+    <section id="menu" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span class="text-brand-600 font-bold text-sm tracking-wider uppercase">Made Fresh On Order</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 font-heading">Our Handcrafted Menu</h2>
+                <p class="text-slate-600 text-base sm:text-lg">Select your favorites below to build your phone order list or call us to customize any recipe.</p>
+            </div>
+
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 border-b border-slate-200 pb-6">
+                <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0 custom-scrollbar">
+                    <button onclick="filterMenu('all')" class="menu-tab active bg-brand-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all shadow-sm">All Juices</button>
+					<button onclick="filterMenu('pure')" class="menu-tab bg-white text-slate-600 hover:bg-slate-100 px-5 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all border border-slate-200">Pure</button>
+                    <button onclick="filterMenu('blends')" class="menu-tab bg-white text-slate-600 hover:bg-slate-100 px-5 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all border border-slate-200">Blended</button>
+                    <button onclick="filterMenu('breakfast')" class="menu-tab bg-white text-slate-600 hover:bg-slate-100 px-5 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all border border-slate-200">Breakfast</button>
+                    <button onclick="filterMenu('wellness')" class="menu-tab bg-white text-slate-600 hover:bg-slate-100 px-5 py-2.5 rounded-full text-sm font-semibold whitespace-nowrap transition-all border border-slate-200">Wellness Shots</button>
+                </div>
+
+                <div class="relative w-full md:w-72">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400"></i>
+                    <input type="text" id="menu-search" oninput="searchMenu()" placeholder="Search ingredients or juices..." class="w-full pl-10 pr-4 py-2.5 bg-white rounded-full border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 shadow-sm">
+                </div>
+            </div>
+
+            <div id="menu-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Dynamic Content via script.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- BUILD YOUR OWN SECTION -->
+    <section id="custom-builder" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span class="text-citrus-400 font-bold text-sm tracking-wider uppercase">Your Taste • Your Blend</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold font-heading">Build Your Own Custom Juice</h2>
+                <p class="text-slate-300 text-base sm:text-lg">Pick your base, favorite greens, fruit flavors, and superfood boosts. We'll juice it fresh for you!</p>
+            </div>
+
+            <div class="bg-slate-800/80 rounded-3xl p-6 sm:p-10 border border-slate-700 shadow-2xl max-w-4xl mx-auto space-y-8">
+                <div class="space-y-3">
+                    <label class="block text-sm font-bold uppercase tracking-wider text-citrus-400">1. Select Bottle Size</label>
+                    <div class="grid grid-cols-3 gap-4">
+                        <button onclick="selectCustomSize('12 oz', 7.50)" class="custom-size-btn active p-4 rounded-2xl border-2 border-brand-500 bg-brand-500/10 text-center font-bold">
+                            <div class="text-lg">12 oz</div>
+                            <div class="text-xs text-slate-300">$7.50</div>
+                        </button>
+                        <button onclick="selectCustomSize('16 oz', 9.50)" class="custom-size-btn p-4 rounded-2xl border-2 border-slate-700 bg-slate-800 text-center font-bold">
+                            <div class="text-lg">16 oz</div>
+                            <div class="text-xs text-slate-300">$9.50</div>
+                        </button>
+                        <button onclick="selectCustomSize('32 oz', 16.00)" class="custom-size-btn p-4 rounded-2xl border-2 border-slate-700 bg-slate-800 text-center font-bold">
+                            <div class="text-lg">32 oz</div>
+                            <div class="text-xs text-slate-300">$16.00</div>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <label class="block text-sm font-bold uppercase tracking-wider text-citrus-400">2. Choose 1 Liquid Base</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
+                            <input type="radio" name="custom-base" value="Green Apple Base" checked class="text-brand-500">
+                            <span class="text-sm font-medium">Green Apple</span>
+                        </label>
+                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
+                            <input type="radio" name="custom-base" value="Coconut Water Base" class="text-brand-500">
+                            <span class="text-sm font-medium">Coconut Water</span>
+                        </label>
+                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
+                            <input type="radio" name="custom-base" value="Fresh Orange Juice Base" class="text-brand-500">
+                            <span class="text-sm font-medium">Fresh Orange</span>
+                        </label>
+                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
+                            <input type="radio" name="custom-base" value="Cucumber Base" class="text-brand-500">
+                            <span class="text-sm font-medium">Cucumber</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <label class="block text-sm font-bold uppercase tracking-wider text-citrus-400">3. Select Up to 3 Ingredients</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
+                            <input type="checkbox" name="custom-ingredient" value="Spinach" class="text-brand-500 rounded">
+                            <span class="text-sm font-medium">Organic Spinach</span>
+                        </label>
+                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
+                            <input type="checkbox" name="custom-ingredient" value="Kale" class="text-brand-500 rounded">
+                            <span class="text-sm font-medium">Fresh Kale</span>
+                        </label>
+                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
+                            <input type="checkbox" name="custom-ingredient" value="Pineapple" class="text-brand-500 rounded">
+                            <span class="text-sm font-medium">Sweet Pineapple</span>
+                        </label>
+                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
+                            <input type="checkbox" name="custom-ingredient" value="Celery" class="text-brand-500 rounded">
+                            <span class="text-sm font-medium">Crisp Celery</span>
+                        </label>
+                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
+                            <input type="checkbox" name="custom-ingredient" value="Beetroot" class="text-brand-500 rounded">
+                            <span class="text-sm font-medium">Red Beetroot</span>
+                        </label>
+                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
+                            <input type="checkbox" name="custom-ingredient" value="Carrot" class="text-brand-500 rounded">
+                            <span class="text-sm font-medium">Sweet Carrot</span>
+                        </label>
+                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
+                            <input type="checkbox" name="custom-ingredient" value="Lemon Juice" class="text-brand-500 rounded">
+                            <span class="text-sm font-medium">Zesty Lemon</span>
+                        </label>
+                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
+                            <input type="checkbox" name="custom-ingredient" value="Mint" class="text-brand-500 rounded">
+                            <span class="text-sm font-medium">Fresh Mint</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="space-y-3">
+                    <label class="block text-sm font-bold uppercase tracking-wider text-citrus-400">4. Superfood Boosters (+$1.00 each)</label>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
+                            <input type="checkbox" name="custom-booster" value="Raw Ginger" onchange="calculateCustomTotal()" class="text-brand-500 rounded">
+                            <span class="text-sm font-medium">Raw Ginger</span>
+                        </label>
+                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
+                            <input type="checkbox" name="custom-booster" value="Turmeric" onchange="calculateCustomTotal()" class="text-brand-500 rounded">
+                            <span class="text-sm font-medium">Fresh Turmeric</span>
+                        </label>
+                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
+                            <input type="checkbox" name="custom-booster" value="Chia Seeds" onchange="calculateCustomTotal()" class="text-brand-500 rounded">
+                            <span class="text-sm font-medium">Chia Seeds</span>
+                        </label>
+                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
+                            <input type="checkbox" name="custom-booster" value="Cayenne" onchange="calculateCustomTotal()" class="text-brand-500 rounded">
+                            <span class="text-sm font-medium">Cayenne Pepper</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="pt-6 border-t border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <div>
+                        <div class="text-xs text-slate-400 uppercase font-bold tracking-wider">Custom Blend Total</div>
+                        <div class="text-3xl font-extrabold text-white" id="custom-total-display">$7.50</div>
+                    </div>
+                    <button onclick="addCustomJuiceToCart()" class="w-full sm:w-auto bg-brand-500 hover:bg-brand-600 text-slate-950 font-extrabold px-8 py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 text-base">
+                        <i class="fa-solid fa-plus"></i>
+                        Add Custom Blend to Order
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCAL DELIVERY ZIP CHECKER -->
+    <section class="py-16 bg-brand-50/50 border-y border-brand-100">
+        <div class="max-w-4xl mx-auto px-4 text-center space-y-6">
+            <div class="inline-flex items-center gap-2 text-brand-700 bg-brand-100/80 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider">
+                <i class="fa-solid fa-map-location-dot"></i> Home Delivery Zone
+            </div>
+            <h2 class="text-3xl font-bold text-slate-900 font-heading">Check If We Deliver To Your Neighborhood</h2>
+            <p class="text-slate-600 text-sm sm:text-base max-w-xl mx-auto">We deliver homemade juices directly to your home in temperature-controlled cooler bags.</p>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3 max-w-md mx-auto">
+                <input type="text" id="zip-input" maxlength="5" placeholder="Enter your 5-digit ZIP code" class="w-full px-5 py-3.5 bg-white border border-slate-300 rounded-xl text-center text-slate-900 font-bold focus:outline-none focus:ring-2 focus:ring-brand-500">
+                <button onclick="checkZipCode()" class="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white font-bold px-6 py-3.5 rounded-xl transition-all whitespace-nowrap">
+                    Check Delivery
+                </button>
+            </div>
+            <div id="zip-result" class="text-sm font-semibold hidden"></div>
+        </div>
+    </section>
+
+   
+
+    <!-- FAQ SECTION -->
+
+    <section class="py-16 bg-white border-t border-slate-200">
+        <div class="max-w-3xl mx-auto px-4 space-y-8">
+            <div class="text-center space-y-2">
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-900 font-heading">Frequently Asked Questions</h2>
+                <p class="text-slate-500 text-sm">Everything you need to know about our fresh juices and doorstep delivery.</p>
+            </div>
+
+            <div class="space-y-4">
+                <div class="border border-slate-200 rounded-2xl p-5 bg-slate-50">
+                    <h3 class="font-bold text-slate-900 mb-1">How long do the juices last?</h3>
+                    <p class="text-sm text-slate-600">Because our juices are 100% natural without added preservatives, they stay freshest for 3 to 5 days when kept refrigerated.</p>
+                </div>
+                <div class="border border-slate-200 rounded-2xl p-5 bg-slate-50">
+                    <h3 class="font-bold text-slate-900 mb-1">How do I place my phone order?</h3>
+                    <p class="text-sm text-slate-600">Browse the menu, click "Add to Order" for your chosen items, then tap the Phone Order button to see your summary and call or text us directly!</p>
+                </div>
+                <div class="border border-slate-200 rounded-2xl p-5 bg-slate-50">
+                    <h3 class="font-bold text-slate-900 mb-1">Is there a minimum order for doorstep delivery?</h3>
+                    <p class="text-sm text-slate-600">Our standard delivery minimum is $20.00. Free delivery is applied for orders over $35.00 within our delivery zone.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-800">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-brand-500 text-slate-950 flex items-center justify-center text-xl font-bold">
+                        <i class="fa-solid fa-citrus"></i>
+                    </div>
+                    <span class="text-2xl font-bold text-white font-heading site-name-text">Custom Juice</span>
+                </div>
+                <div class="flex flex-wrap items-center justify-center gap-6 text-sm font-medium">
+                    <a href="#hero" class="hover:text-white transition-colors">Home</a>
+                    <a href="#about" class="hover:text-white transition-colors">About Us</a>
+                    <a href="#menu" class="hover:text-white transition-colors">Menu</a>
+                    <a href="#custom-builder" class="hover:text-white transition-colors">Custom Builder</a>
+                    <a href="#ordering" class="hover:text-white transition-colors">How to Order</a>
+                </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 text-center sm:text-left">
+                <p>&copy; 2026 <span class="site-name-text">Custom Juice</span>. All rights reserved. Made fresh to order.</p>
+                <div class="flex gap-4">
+                    <span>Call to Order: <a href="tel:8472710521" class="site-phone-link site-phone-display text-slate-300 underline">(847) 271-0521</a></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- CART DRAWER -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="toggleCartDrawer()"></div>
+        <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
+                <div class="p-6 bg-slate-900 text-white flex items-center justify-between">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-brand-500 text-slate-950 flex items-center justify-center text-lg font-bold">
+                            <i class="fa-solid fa-basket-shopping"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-lg font-heading">Your Order List</h3>
+                            <p class="text-xs text-slate-400">Ready to call in your order</p>
+                        </div>
+                    </div>
+                    <button onclick="toggleCartDrawer()" class="text-slate-400 hover:text-white p-2">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <div class="bg-brand-50 p-4 border-b border-brand-100 text-xs text-slate-700">
+                    <div class="flex justify-between font-bold mb-1">
+                        <span id="delivery-status-text">Add $25.00 for FREE delivery</span>
+                        <span id="delivery-status-percent">0%</span>
+                    </div>
+                    <div class="w-full bg-brand-200 h-2 rounded-full overflow-hidden">
+                        <div id="delivery-progress-bar" class="bg-brand-600 h-full transition-all duration-300" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div id="cart-items-container" class="flex-1 overflow-y-auto p-6 space-y-4 custom-scrollbar"></div>
+
+                <div class="p-6 bg-slate-50 border-t border-slate-200 space-y-4">
+                    <div class="space-y-1 text-sm">
+                        <div class="flex justify-between text-slate-600">
+                            <span>Subtotal</span>
+                            <span id="cart-subtotal" class="font-semibold">$0.00</span>
+                        </div>
+                        <div class="flex justify-between text-slate-600">
+                            <span>Est. Delivery</span>
+                            <span id="cart-delivery-fee" class="font-semibold">$4.00</span>
+                        </div>
+                        <div class="flex justify-between text-lg font-extrabold text-slate-900 pt-2 border-t border-slate-200">
+                            <span>Total</span>
+                            <span id="cart-total">$4.00</span>
+                        </div>
+                    </div>
+
+                    <div class="space-y-2">
+                        <a id="drawer-call-btn" href="tel:8472710521" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-extrabold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-3 text-base">
+                            <i class="fa-solid fa-phone"></i>
+                            Call In Order Now
+                        </a>
+                        <button onclick="copyOrderSummarySMS()" class="w-full bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-3 rounded-xl transition-all flex items-center justify-center gap-2 text-sm">
+                            <i class="fa-solid fa-copy"></i>
+                            Copy Text Summary to Clipboard
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ADMIN DRAWER -->
+    <div id="admin-drawer" class="fixed inset-0 z-50 overflow-hidden hidden">
+        <div class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm" onclick="toggleAdminDrawer()"></div>
+        <div class="absolute inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
+                <div class="p-6 bg-slate-900 text-white flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <i class="fa-solid fa-sliders text-brand-400"></i>
+                        <h3 class="font-bold text-lg font-heading">Owner Settings</h3>
+                    </div>
+                    <button onclick="toggleAdminDrawer()" class="text-slate-400 hover:text-white">
+                        <i class="fa-solid fa-xmark text-xl"></i>
+                    </button>
+                </div>
+
+                <div class="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar">
+                    <div class="space-y-4">
+                        <h4 class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Business Details</h4>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Business Name</label>
+                            <input type="text" id="admin-biz-name" value="Custom Juice" oninput="updateBusinessInfo()" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Order Phone Number</label>
+                            <input type="text" id="admin-biz-phone" value="(847) 271-0521" oninput="updateBusinessInfo()" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm">
+                        </div>
+                    </div>
+
+                    <div class="space-y-4 border-t border-slate-200 pt-6">
+                        <h4 class="text-xs font-extrabold uppercase tracking-wider text-slate-400">Add Custom Menu Item</h4>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Juice Name</label>
+                            <input type="text" id="new-juice-name" placeholder="e.g. Tropical Immunity" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Category</label>
+                            <select id="new-juice-cat" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm">
+                                <option value="green">Green Juices</option>
+                                <option value="citrus">Citrus & Roots</option>
+                                <option value="shots">Wellness Shots</option>
+                            </select>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3">
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">12 oz Price ($)</label>
+                                <input type="number" step="0.5" id="new-juice-price" value="7.50" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-bold text-slate-700 mb-1">Image Keyword/URL</label>
+                                <input type="text" id="new-juice-img" placeholder="juice, citrus, green" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-slate-700 mb-1">Ingredients (comma separated)</label>
+                            <input type="text" id="new-juice-ingredients" placeholder="Spinach, Green Apple, Ginger, Lemon" class="w-full px-3 py-2 border border-slate-300 rounded-lg text-sm">
+                        </div>
+                        <button onclick="addNewMenuItem()" class="w-full bg-brand-600 text-white font-bold py-3 rounded-lg hover:bg-brand-700 transition-all text-sm">
+                            Add Item to Live Menu
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 bg-slate-900 text-white px-5 py-3 rounded-xl shadow-2xl flex items-center gap-3 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <i id="toast-icon" class="fa-solid fa-circle-check text-brand-400"></i>
+        <span id="toast-message" class="text-sm font-semibold">Item added to order!</span>
+    </div>
+<script src="script.js"></script>
+</body>
+</html>
