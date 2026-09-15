@@ -564,7 +564,7 @@ function checkZipCode() {
 
 function updateBusinessInfo() {
     const bizName = document.getElementById('admin-biz-name').value || "Custom Juice";
-    const bizPhone = document.getElementById('admin-biz-phone').value || "(555) 019-2837";
+    const bizPhone = document.getElementById('admin-biz-phone').value || "(312) 358-2030";
 
     document.querySelectorAll('.site-name-text').forEach(el => el.textContent = bizName);
     document.querySelectorAll('.site-phone-display').forEach(el => el.textContent = bizPhone);

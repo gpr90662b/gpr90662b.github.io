@@ -36,7 +36,7 @@ let menuItems = [
     {
                 id: '1',
                 name: 'Pure Apple',
-                category: 'blends',
+                category: 'pure',
                 tag: 'Nature Core Crunch!',
                 ingredients: [ 'Apple'],
                 desc: 'A crisp, timeless classic that delivers a pure, hydrating splash of smooth orchard energy and simple refreshment.',
@@ -83,7 +83,7 @@ let menuItems = [
 {
                 id: '5',
                 name: 'Pure Carrot',
-                category: 'blends',
+                category: 'pure',
                 tag: 'Pure Golden Glow!',
                 ingredients: [ 'Carrot'],
                 desc: 'A smooth, naturally sweet roots classic that offers a crisp, glowing lift of wholesome daytime energy.',
@@ -127,7 +127,7 @@ let menuItems = [
 {
                 id: '9',
                 name: 'Pure orange',
-                category: 'blends',
+                category: 'pure',
                 tag: 'Liquid Sunshine Boost',
                 ingredients: ['Orange'],
                 desc: 'A timeless, brilliant classic bursting with bold citrus brightness to instantly wake up your senses and fuel your day.',
