@@ -558,13 +558,13 @@ function checkZipCode() {
         result.innerHTML = `<i class="fa-solid fa-circle-check"></i> Great news! We offer home delivery to ZIP code <strong>${zip}</strong>.`;
     } else {
         result.className = "text-sm font-semibold text-citrus-600 block bg-citrus-50 p-3 rounded-xl border border-citrus-200 mt-2";
-        result.innerHTML = `<i class="fa-solid fa-truck"></i> We can fulfill orders for <strong>${zip}</strong> via direct phone pickup or special courier request!`;
+        result.innerHTML = `<i class="fa-solid fa-truck"></i> Sorry <strong>${zip}</strong> is outside our delivery area but you can pick it up at our address if you like!`;
     }
 }
 
 function updateBusinessInfo() {
     const bizName = document.getElementById('admin-biz-name').value || "Custom Juice";
-    const bizPhone = document.getElementById('admin-biz-phone').value || "(555) 019-2837";
+    const bizPhone = document.getElementById('admin-biz-phone').value || "(312) 358-2030";
 
     document.querySelectorAll('.site-name-text').forEach(el => el.textContent = bizName);
     document.querySelectorAll('.site-phone-display').forEach(el => el.textContent = bizPhone);
