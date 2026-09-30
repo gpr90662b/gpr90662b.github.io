@@ -31,6 +31,7 @@ tailwind.config = {
     }
 };
 
+
 // Application State
 let menuItems = [
     {
@@ -41,7 +42,8 @@ let menuItems = [
                 ingredients: [ 'Apple'],
                 desc: 'A crisp, timeless classic that delivers a pure, hydrating splash of smooth orchard energy and simple refreshment.',
                 prices: { '4 oz': 5.00, '8 oz': 10.00, '16 oz': 12.00 },
-                image: 'https://images.unsplash.com/photo-1534336810865-0beae4c81278?auto=format&fit=crop&w=600&q=80'
+                image: 'images/pure-apple.jpg'
+		
             },
 
 
@@ -53,7 +55,7 @@ let menuItems = [
                 ingredients: [ 'Beets', 'Red Apple', 'Lemon'],
                 desc: 'An earthy yet crisp blend that pairs rich, ground-root nutrients with bright orchard sweetness for a deeply refreshing, detoxifying lift.',
                 prices: { '4 oz': 5.00, '8 oz': 10.00, '16 oz': 12.00 },
-                image: 'https://images.unsplash.com/photo-1626591425404-e001dfd87de2?q=80&w=387&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D?auto=format&fit=crop&w=600&q=80'
+                image: 'images/beet-the-day2.jpg'
             },
 
 
@@ -65,7 +67,7 @@ let menuItems = [
                 ingredients: [ 'Beet', 'Cucumber', 'Lime'],
                 desc: 'Earthy red beet softened by hydrating, crisp cucumber and finished with a bright, zesty squeeze of lime.',
                 prices: { '4 oz': 5.00, '8 oz': 10.00, '16 oz': 12.00 },
-                image: 'https://images.unsplash.com/photo-1753656512676-68af646ce776?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fEJlZXQlMkMlMjBBcHBsZSUyQyUyMExlbW9uJTIwYmxlbmQlMjBqdWljZSUyMHBpY3N8ZW58MHx8MHx8fDA%3D?auto=format&fit=crop&w=600&q=80'
+                image: 'images/cool-beet-clense.jpg'
             },
 
 {
@@ -76,7 +78,7 @@ let menuItems = [
                 ingredients: [ 'Blueberry', 'Strawberry', 'Red Grapes'],
                 desc: 'A deeply hydrating, earthy blend sharpened by a zesty citrus kick to deliver a clean, detoxifying splash of pure rejuvenation.',
                 prices: { '4 oz': 5.00, '8 oz': 10.00, '16 oz': 12.00 },
-                image: 'https://images.unsplash.com/photo-1553530666-ba11a7da3888?auto=format&fit=crop&w=600&q=80'
+                image: 'images/berry-grape-bliss.jpg'
             },
 
 
@@ -88,7 +90,7 @@ let menuItems = [
                 ingredients: [ 'Carrot'],
                 desc: 'A smooth, naturally sweet roots classic that offers a crisp, glowing lift of wholesome daytime energy.',
                 prices: { '4 oz': 5.00, '8 oz': 10.00, '16 oz': 12.00 },
-                image: 'https://images.unsplash.com/photo-1628961915805-4c92c885ce61?auto=format&fit=crop&w=600&q=80'
+                image: 'images/pure-carrot.jpg'
             },
 
 {
@@ -99,7 +101,7 @@ let menuItems = [
                 ingredients: [ 'Celery', 'Apple'],
                 desc: 'A ultra-crisp, light green pairing that effortlessly balances hydrating minerals with a clean, uplifting orchard sweetness.',
                 prices: { '4 oz': 5.00, '8 oz': 10.00, '16 oz': 12.00 },
-                image: 'https://plus.unsplash.com/premium_photo-1700084621249-b22c621ac4e9?auto=format&fit=crop&w=600&q=80'
+                image: 'images/green-apple-crisp.jpg'
             },
 
 {
@@ -110,7 +112,7 @@ let menuItems = [
                 ingredients: [ 'Kale', 'Lemon', 'Apple'],
                 desc: 'A vibrant leafy powerhouse softened by sweet apple and bright citrus for a smooth, approachable green energy lift.',
                 prices: { '4 oz': 5.00, '8 oz': 10.00, '16 oz': 12.00 },
-                image: 'https://images.pexels.com/photos/10047776/pexels-photo-10047776.jpeg?auto=format&fit=crop&w=600&q=80'
+                image: 'images/kale-me-fresh2.jpg'
             },
 
 {
@@ -121,7 +123,7 @@ let menuItems = [
                 ingredients: [ 'Kale', 'Apple', 'Spinach', 'Celery'],
                 desc: 'The ultimate nutrient-dense green field trip, providing a crisp, deeply revitalizing and detoxifying surge of natural energy.',
                 prices: { '4 oz': 5.00, '8 oz': 10.00, '16 oz': 12.00 },
-                image: 'https://images.unsplash.com/photo-1610622929850-77f505c3ce5a?auto=format&fit=crop&w=600&q=80'
+                image: 'images/all-green-everything2.jpg'
             },
 
 {
@@ -132,7 +134,7 @@ let menuItems = [
                 ingredients: ['Orange'],
                 desc: 'A timeless, brilliant classic bursting with bold citrus brightness to instantly wake up your senses and fuel your day.',
                 prices: { '4 oz': 5.00, '8 oz': 10.00, '16 oz': 12.00 },
-                image:'https://images.unsplash.com/photo-1613478223719-2ab802602423?auto=format&fit=crop&w=600&q=80'
+                image:'images/pure-orange.jpg'
             },
 
 {
@@ -143,7 +145,7 @@ let menuItems = [
                 ingredients: ['Red Grapes','Raspberry', 'Kale'],
                 desc: 'A clever, bold fusion where deep berry and grape sweetness flawlessly balance the rich, detoxifying power of leafy greens.',
                 prices: { '4 oz': 5.00, '8 oz': 10.00, '16 oz': 12.00 },
-                image:'https://images.pexels.com/photos/16052388/pexels-photo-16052388.jpeg?auto=format&fit=crop&w=600&q=80'
+                image:'images/ruby-green-rush.jpg'
             },
 
 {
@@ -154,10 +156,8 @@ let menuItems = [
                 ingredients: ['Red Grapes','Apple'],
                 desc: 'A crisp, velvety sweet orchard combination that delivers a smooth, delicious wave of sustained natural energy.',
                 prices: { '4 oz': 5.00, '8 oz': 10.00, '16 oz': 12.00 },
-                image:'https://images.pexels.com/photos/14337459/pexels-photo-14337459.jpeg?auto=format&fit=crop&w=600&q=80'
+                image:'images/grape-apple-crush.jpg'
             },
-
-
 {
                 id: '12',
                 name: 'Green Apple Zing',
@@ -166,7 +166,7 @@ let menuItems = [
                 ingredients: ['Spinach','Apple','Lemon'],
                 desc: 'A light, breezy green blend that pairs gentle leafy nutrients with a sharp, zesty finish for a fast-acting afternoon reset.',
                 prices: { '4 oz': 5.00, '8 oz': 10.00, '16 oz': 12.00 },
-                image:'https://images.unsplash.com/photo-1622597468666-27cb9cae0e45?auto=format&fit=crop&w=600&q=80'
+                image:'images/green-apple-zing.jpg'
             },
 
 {
@@ -177,7 +177,7 @@ let menuItems = [
                 ingredients: [ 'Turmeric','Lemon','Cayene Paper', 'Ginger'],
                 desc: 'A fiery, deeply revitalizing elixir designed to kickstart your metabolism and deliver a sharp, detoxifying jolt of clean energy.',
                 prices: { '4 oz': 5.00, '8 oz': 10.00, '16 oz': 12.00 },
-                image: 'https://plus.unsplash.com/premium_photo-1708985665217-edf6f05dd828?auto=format&fit=crop&w=600&q=80'
+                image: 'images/fire-shot.jpg'
             },
 
 {
@@ -188,11 +188,9 @@ let menuItems = [
                 ingredients: ['Grapfruit','Radishes', 'orange', 'Cayene Paper'],
                 desc: 'Tart grapefruit and sweet orange meet peppery radish and a pinch of cayenne to jumpstart your day.',
                 prices: { '4 oz': 5.00, '8 oz': 10.00, '16 oz': 12.00 },
-                image: 'https://images.pexels.com/photos/14898399/pexels-photo-14898399.jpeg?auto=format&fit=crop&w=600&q=80'
+                image: 'images/morning-fire-citrus.jpg'
             },
-
-
-
+			
 {
                 id: '15',
                 name: 'Sunshine Garden Breakfast',
@@ -201,7 +199,7 @@ let menuItems = [
                 ingredients: ['Yellow Paper','Kiwi', 'Cucumber', 'Corn'],
                 desc: 'Crisp cucumber and sweet corn blended with tangy kiwi and vibrant yellow pepper for a refreshing morning hydration boost.',
                 prices: { '4 oz': 5.00, '8 oz': 10.00, '16 oz': 12.00 },
-                image: 'https://images.pexels.com/photos/7674696/pexels-photo-7674696.jpeg?auto=format&fit=crop&w=600&q=80'
+                image: 'images/sunshine-garden-breakfast.jpg'
             },
 
 {
@@ -213,7 +211,7 @@ let menuItems = [
 				'Tomato','Asian Pear','Beet wirh Greens', 'Cauliflower','Broccoli'],
                 desc: 'Crisp Asian pear and sweet carrots soften a hearty, vibrant blend of nutrient-rich root vegetables and fresh garden greens.',
                 prices: { '4 oz': 5.00, '8 oz': 10.00, '16 oz': 12.00 },
-                image: 'https://images.pexels.com/photos/15362683/pexels-photo-15362683.jpeg?auto=format&fit=crop&w=600&q=80'
+                image: 'images/garden-breakfast-boost.jpg'
             },
 
 
@@ -225,7 +223,7 @@ let menuItems = [
                 ingredients: [ 'Mango','Orange', 'Pineapple'],
                 desc: 'A vibrant and refreshing tropical medley bursting with the sweet, sun-kissed flavors of tangy citrus and luscious exotic fruits.',
                 prices: { '4 oz': 5.00, '8 oz': 10.00, '16 oz': 12.00 },
-                image: 'https://images.pexels.com/photos/38233296/pexels-photo-38233296.jpeg?auto=format&fit=crop&w=600&q=80'
+                image: 'images/tropical-sunshine.jpg'
             },
 
 {
@@ -236,8 +234,8 @@ let menuItems = [
                 ingredients: ['Orange', 'Pineapple'],
                 desc: 'A bright, sunny duo that delivers a crisp splash of pure tropical energy and zesty refreshment.',
                 prices: { '4 oz': 5.00, '8 oz': 10.00, '16 oz': 12.00 },
-                image: 'https://images.pexels.com/photos/34339257/pexels-photo-34339257.jpeg?auto=format&fit=crop&w=600&q=80'
-            },
+                image: 'images/citrus-island.jpg'
+				},
 			
 			{
                 id: '19',
@@ -247,7 +245,7 @@ let menuItems = [
                 ingredients: ['Pineapple'],
                 desc: 'An intensely vibrant tropical escape that packs a bold, sweet punch of revitalizing island energy.',
                 prices: { '4 oz': 5.00, '8 oz': 10.00, '16 oz': 12.00 },
-                image: 'https://images.unsplash.com/photo-1705246535138-953e01125cb0?auto=format&fit=crop&w=600&q=80'
+                image: 'images/pure-pineapple.jpg'
             },
 			
 			
@@ -259,7 +257,7 @@ let menuItems = [
                 ingredients: ['Strawberry','Apple', 'Pineapple'],
                 desc: 'A sweet and tangy trio bursting with crisp orchard freshness and an uplifting splash of tropical energy.',
                 prices: { '4 oz': 5.00, '8 oz': 10.00, '16 oz': 12.00 },
-                image: 'https://images.pexels.com/photos/36845957/pexels-photo-36845957.jpeg?auto=format&fit=crop&w=600&q=80'
+                image: 'images/pink-pineapple-punch.jpg'
             },
 
 {
@@ -270,10 +268,10 @@ let menuItems = [
                 ingredients: ['Beets','Pineapple', 'Lemon'],
                 desc: 'An earthy yet vibrant blend where sweet tropical notes and zesty citrus create a crisp, detoxifying burst of natural energy.',
                 prices: { '4 oz': 5.00, '8 oz': 10.00, '16 oz': 12.00 },
-                image: 'https://images.pexels.com/photos/5668199/pexels-photo-5668199.jpeg?auto=format&fit=crop&w=600&q=80'
+                image: 'images/island-beet-boost.jpg'
             }
-
         ];
+		
 
 let cart = [];
 let currentCustomSize = '12 oz';
@@ -564,7 +562,7 @@ function checkZipCode() {
 
 function updateBusinessInfo() {
     const bizName = document.getElementById('admin-biz-name').value || "Custom Juice";
-    const bizPhone = document.getElementById('admin-biz-phone').value || "(312) 271-0521";
+    const bizPhone = document.getElementById('admin-biz-phone').value || "(847) 485-9146";
 
     document.querySelectorAll('.site-name-text').forEach(el => el.textContent = bizName);
     document.querySelectorAll('.site-phone-display').forEach(el => el.textContent = bizPhone);
