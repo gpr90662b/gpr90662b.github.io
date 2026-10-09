@@ -24,18 +24,12 @@
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
 
     <!-- Top Announcement Bar -->
-    <div id="top-bar" class="bg-brand-900 text-brand-100 text-xs sm:text-sm py-2 px-6 text-center font-medium flex justify-between items-center">
-        <div class="hidden md:block"></div>
-        <div class="flex items-center justify-center gap-2 mx-auto md:mx-0">
-            <span class="inline-block w-2 h-2 rounded-full bg-brand-400 animate-ping"></span>
-            <span>Made fresh on order! Delivered straight to your doorstep.</span>
-        </div>
-        <div class="flex items-center gap-4 text-xs">
-            <button onclick="toggleAdminDrawer()" class="hover:text-brand-300 transition-colors flex items-center gap-1 opacity-80 hover:opacity-100">
-                <i class="fa-solid fa-gear text-xs"></i> Owner Config
-            </button>
-        </div>
+    <div id="top-bar" class="bg-brand-900 text-brand-100 text-xs sm:text-sm py-2 px-6 text-center font-medium">
+    <div class="flex items-center justify-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-brand-400 animate-ping"></span>
+        <span>Made fresh on order! Delivered straight to your door!</span>
     </div>
+</div>
 
     <!-- Main Navigation Header -->
     <header class="sticky top-0 z-40 bg-glass border-b border-slate-200/80 transition-all duration-300">
@@ -61,8 +55,10 @@
                 <a href="#hero" class="hover:text-brand-600 transition-colors">Home</a>
                 
                 <a href="#menu" class="hover:text-brand-600 transition-colors">Our Menu</a>
-                <a href="#custom-builder" class="hover:text-brand-600 transition-colors">Build Your Own</a>
+                
                 <a href="#about" class="hover:text-brand-600 transition-colors">About Us</a>
+				
+				<a href="#contact-us" onclick="toggleMobileMenu()" class="block py-2 text-slate-700 font-medium border-b border-slate-100">Contact Us</a>
 				<a href="#ordering" class="hover:text-brand-600 transition-colors">How to Order</a>
 				
 				<!--
@@ -255,131 +251,7 @@
         </div>
     </section>
 
-    <!-- BUILD YOUR OWN SECTION -->
-    <section id="custom-builder" class="py-20 bg-slate-900 text-white relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-12">
-            <div class="text-center max-w-3xl mx-auto space-y-4">
-                <span class="text-citrus-400 font-bold text-sm tracking-wider uppercase">Your Taste • Your Blend</span>
-                <h2 class="text-3xl sm:text-4xl font-extrabold font-heading">Build Your Own Custom Juice</h2>
-                <p class="text-slate-300 text-base sm:text-lg">Pick your base, favorite greens, fruit flavors, and superfood boosts. We'll juice it fresh for you!</p>
-            </div>
-
-            <div class="bg-slate-800/80 rounded-3xl p-6 sm:p-10 border border-slate-700 shadow-2xl max-w-4xl mx-auto space-y-8">
-                <div class="space-y-3">
-                    <label class="block text-sm font-bold uppercase tracking-wider text-citrus-400">1. Select Bottle Size</label>
-                    <div class="grid grid-cols-3 gap-4">
-                        <button onclick="selectCustomSize('12 oz', 7.50)" class="custom-size-btn active p-4 rounded-2xl border-2 border-brand-500 bg-brand-500/10 text-center font-bold">
-                            <div class="text-lg">12 oz</div>
-                            <div class="text-xs text-slate-300">$7.50</div>
-                        </button>
-                        <button onclick="selectCustomSize('16 oz', 9.50)" class="custom-size-btn p-4 rounded-2xl border-2 border-slate-700 bg-slate-800 text-center font-bold">
-                            <div class="text-lg">16 oz</div>
-                            <div class="text-xs text-slate-300">$9.50</div>
-                        </button>
-                        <button onclick="selectCustomSize('32 oz', 16.00)" class="custom-size-btn p-4 rounded-2xl border-2 border-slate-700 bg-slate-800 text-center font-bold">
-                            <div class="text-lg">32 oz</div>
-                            <div class="text-xs text-slate-300">$16.00</div>
-                        </button>
-                    </div>
-                </div>
-
-                <div class="space-y-3">
-                    <label class="block text-sm font-bold uppercase tracking-wider text-citrus-400">2. Choose 1 Liquid Base</label>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
-                            <input type="radio" name="custom-base" value="Green Apple Base" checked class="text-brand-500">
-                            <span class="text-sm font-medium">Green Apple</span>
-                        </label>
-                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
-                            <input type="radio" name="custom-base" value="Coconut Water Base" class="text-brand-500">
-                            <span class="text-sm font-medium">Coconut Water</span>
-                        </label>
-                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
-                            <input type="radio" name="custom-base" value="Fresh Orange Juice Base" class="text-brand-500">
-                            <span class="text-sm font-medium">Fresh Orange</span>
-                        </label>
-                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
-                            <input type="radio" name="custom-base" value="Cucumber Base" class="text-brand-500">
-                            <span class="text-sm font-medium">Cucumber</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="space-y-3">
-                    <label class="block text-sm font-bold uppercase tracking-wider text-citrus-400">3. Select Up to 3 Ingredients</label>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
-                            <input type="checkbox" name="custom-ingredient" value="Spinach" class="text-brand-500 rounded">
-                            <span class="text-sm font-medium">Organic Spinach</span>
-                        </label>
-                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
-                            <input type="checkbox" name="custom-ingredient" value="Kale" class="text-brand-500 rounded">
-                            <span class="text-sm font-medium">Fresh Kale</span>
-                        </label>
-                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
-                            <input type="checkbox" name="custom-ingredient" value="Pineapple" class="text-brand-500 rounded">
-                            <span class="text-sm font-medium">Sweet Pineapple</span>
-                        </label>
-                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
-                            <input type="checkbox" name="custom-ingredient" value="Celery" class="text-brand-500 rounded">
-                            <span class="text-sm font-medium">Crisp Celery</span>
-                        </label>
-                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
-                            <input type="checkbox" name="custom-ingredient" value="Beetroot" class="text-brand-500 rounded">
-                            <span class="text-sm font-medium">Red Beetroot</span>
-                        </label>
-                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
-                            <input type="checkbox" name="custom-ingredient" value="Carrot" class="text-brand-500 rounded">
-                            <span class="text-sm font-medium">Sweet Carrot</span>
-                        </label>
-                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
-                            <input type="checkbox" name="custom-ingredient" value="Lemon Juice" class="text-brand-500 rounded">
-                            <span class="text-sm font-medium">Zesty Lemon</span>
-                        </label>
-                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
-                            <input type="checkbox" name="custom-ingredient" value="Mint" class="text-brand-500 rounded">
-                            <span class="text-sm font-medium">Fresh Mint</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="space-y-3">
-                    <label class="block text-sm font-bold uppercase tracking-wider text-citrus-400">4. Superfood Boosters (+$1.00 each)</label>
-                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
-                            <input type="checkbox" name="custom-booster" value="Raw Ginger" onchange="calculateCustomTotal()" class="text-brand-500 rounded">
-                            <span class="text-sm font-medium">Raw Ginger</span>
-                        </label>
-                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
-                            <input type="checkbox" name="custom-booster" value="Turmeric" onchange="calculateCustomTotal()" class="text-brand-500 rounded">
-                            <span class="text-sm font-medium">Fresh Turmeric</span>
-                        </label>
-                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
-                            <input type="checkbox" name="custom-booster" value="Chia Seeds" onchange="calculateCustomTotal()" class="text-brand-500 rounded">
-                            <span class="text-sm font-medium">Chia Seeds</span>
-                        </label>
-                        <label class="cursor-pointer bg-slate-700/50 hover:bg-slate-700 p-3 rounded-xl border border-slate-600 flex items-center gap-2">
-                            <input type="checkbox" name="custom-booster" value="Cayenne" onchange="calculateCustomTotal()" class="text-brand-500 rounded">
-                            <span class="text-sm font-medium">Cayenne Pepper</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="pt-6 border-t border-slate-700 flex flex-col sm:flex-row items-center justify-between gap-4">
-                    <div>
-                        <div class="text-xs text-slate-400 uppercase font-bold tracking-wider">Custom Blend Total</div>
-                        <div class="text-3xl font-extrabold text-white" id="custom-total-display">$7.50</div>
-                    </div>
-                    <button onclick="addCustomJuiceToCart()" class="w-full sm:w-auto bg-brand-500 hover:bg-brand-600 text-slate-950 font-extrabold px-8 py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2 text-base">
-                        <i class="fa-solid fa-plus"></i>
-                        Add Custom Blend to Order
-                    </button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-   
+    
 <!-- ABOUT US SECTION -->
     <section id="about" class="py-20 bg-white border-y border-slate-200/80">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
@@ -395,8 +267,10 @@
                     <div class="relative bg-slate-900 rounded-3xl p-3 shadow-2xl overflow-hidden">
 					<!--
                         <img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=800&q=80" alt="Preparing Fresh Juices" class="w-full h-80 sm:h-96 object-cover rounded-2xl opacity-90">
-					-->
+				
 						<img src="https://images.pexels.com/photos/3934679/pexels-photo-3934679.jpeg?auto=format&fit=crop&w=800&q=80" alt="Preparing Fresh Juices" class="w-full h-80 sm:h-96 object-cover rounded-2xl opacity-90">
+						-->
+						<img src="images/about-us.jpg"?auto=format&fit=crop&w=800&q=80" alt="Preparing Fresh Juices" class="w-full h-80 sm:h-96 object-cover rounded-2xl opacity-90">
                         
                         <div class="absolute bottom-8 left-8 right-8 bg-glass p-5 rounded-2xl border border-white/50 shadow-xl">
                             <div class="flex items-center gap-4">
@@ -479,6 +353,97 @@
 
         </div>
     </section>
+
+<!-- CONTACT US SECTION START -->
+<section id="contact-us" style="padding: 5rem 1rem; background-color: #f4f7f5; font-family: system-ui, -apple-system, sans-serif;">
+  <div style="max-width: 800px; margin: 0 auto; background: #ffffff; padding: 2.5rem; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border: 1px solid #e2ece6;">
+    
+    <!-- Section Heading -->
+    <div style="text-align: center; margin-bottom: 2.5rem;">
+      <h2 style="color: #1b4332; font-size: 2.25rem; font-weight: 700; margin-bottom: 0.75rem;">Have Questions? Drop Us a Line!</h2>
+      <p style="color: #526e5d; font-size: 1.1rem; line-height: 1.5;">Want to order a juice you don't see in our menu or ask about a subscription, or our delivery zone? Send us a message and we'll get right back to you.</p>
+    </div>
+
+    <!-- Contact Form -->
+    <form action="#" method="POST" style="display: flex; flex-direction: column; gap: 1.5rem;">
+      
+      <!-- Name & Email Row -->
+      <div style="display: grid; grid-template-columns: 1fr; gap: 1.5rem; width: 100%;">
+        <!-- For larger screens, turn this wrapper into a 2-column grid dynamically via a quick embedded style trick if desired, but native style inline flex/grid keeps it highly compatible -->
+        <script>
+          // Quick responsive utility to split the row on tablet/desktop to match the menu builder grid layout
+          document.addEventListener("DOMContentLoaded", function() {
+            const row = document.getElementById("form-row-split");
+            if (window.innerWidth > 640) { row.style.gridTemplateColumns = "1fr 1fr"; }
+          });
+        </script>
+        <div id="form-row-split" style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;">
+          <div>
+            <label for="contact-name" style="display: block; font-weight: 600; color: #1b4332; margin-bottom: 0.5rem; font-size: 0.95rem;">Full Name</label>
+            <input type="text" id="contact-name" name="name" required placeholder="Your name" 
+                   style="width: 100%; padding: 0.75rem 1rem; border: 2px solid #d1dfd6; border-radius: 8px; font-size: 1rem; color: #2d3748; background-color: #fafdfb; transition: border-color 0.2s; box-sizing: border-box;"
+                   onfocus="this.style.borderColor='#40916c'; this.style.outline='none';" 
+                   onblur="this.style.borderColor='#d1dfd6';">
+          </div>
+          <div>
+            <label for="contact-email" style="display: block; font-weight: 600; color: #1b4332; margin-bottom: 0.5rem; font-size: 0.95rem;">Email Address</label>
+            <input type="email" id="contact-email" name="email" required placeholder="you@example.com" 
+                   style="width: 100%; padding: 0.75rem 1rem; border: 2px solid #d1dfd6; border-radius: 8px; font-size: 1rem; color: #2d3748; background-color: #fafdfb; transition: border-color 0.2s; box-sizing: border-box;"
+                   onfocus="this.style.borderColor='#40916c'; this.style.outline='none';" 
+                   onblur="this.style.borderColor='#d1dfd6';">
+          </div>
+        </div>
+      </div>
+
+      <!-- Phone Number & Subject Row -->
+      <div id="form-row-split-2" style="display: grid; grid-template-columns: 1fr; gap: 1.5rem;">
+        <script>
+          document.addEventListener("DOMContentLoaded", function() {
+            const row2 = document.getElementById("form-row-split-2");
+            if (window.innerWidth > 640) { row2.style.gridTemplateColumns = "1fr 1fr"; }
+          });
+        </script>
+        <div>
+          <label for="contact-phone" style="display: block; font-weight: 600; color: #1b4332; margin-bottom: 0.5rem; font-size: 0.95rem;">Phone Number <span style="font-weight: normal; color: #718096; font-size: 0.85rem;">(Optional)</span></label>
+          <input type="tel" id="contact-phone" name="phone" placeholder="(847) 555-0123" 
+                 style="width: 100%; padding: 0.75rem 1rem; border: 2px solid #d1dfd6; border-radius: 8px; font-size: 1rem; color: #2d3748; background-color: #fafdfb; transition: border-color 0.2s; box-sizing: border-box;"
+                 onfocus="this.style.borderColor='#40916c'; this.style.outline='none';" 
+                 onblur="this.style.borderColor='#d1dfd6';">
+        </div>
+        <div>
+          <label for="contact-subject" style="display: block; font-weight: 600; color: #1b4332; margin-bottom: 0.5rem; font-size: 0.95rem;">Subject</label>
+          <input type="text" id="contact-subject" name="subject" required placeholder="How can we help?" 
+                 style="width: 100%; padding: 0.75rem 1rem; border: 2px solid #d1dfd6; border-radius: 8px; font-size: 1rem; color: #2d3748; background-color: #fafdfb; transition: border-color 0.2s; box-sizing: border-box;"
+                 onfocus="this.style.borderColor='#40916c'; this.style.outline='none';" 
+                 onblur="this.style.borderColor='#d1dfd6';">
+        </div>
+      </div>
+
+      <!-- Message -->
+      <div>
+        <label for="contact-message" style="display: block; font-weight: 600; color: #1b4332; margin-bottom: 0.5rem; font-size: 0.95rem;">Your Message</label>
+        <textarea id="contact-message" name="message" rows="5" required placeholder="Type your message details here..." 
+                  style="width: 100%; padding: 0.75rem 1rem; border: 2px solid #d1dfd6; border-radius: 8px; font-size: 1rem; color: #2d3748; background-color: #fafdfb; transition: border-color 0.2s; box-sizing: border-box; resize: vertical;"
+                  onfocus="this.style.borderColor='#40916c'; this.style.outline='none';" 
+                  onblur="this.style.borderColor='#d1dfd6';"></textarea>
+      </div>
+
+      <!-- Submit Button -->
+      <div style="text-align: center; margin-top: 0.5rem;">
+        <button type="submit" 
+                style="background-color: #15803D; color: #ffffff; font-size: 1.1rem; font-weight: 600; padding: 0.85rem 2.5rem; border: none; border-radius: 50px; cursor: pointer; transition: background-color 0.2s, transform 0.1s; box-shadow: 0 4px 12px rgba(27,67,50,0.2);"
+                onmouseover="this.style.backgroundColor='#2d6a4f';" 
+                onmouseout="this.style.backgroundColor='#15803D';"
+                onmousedown="this.style.transform='scale(0.98)';"
+                onmouseup="this.style.transform='scale(1)';">
+          Send Message
+        </button>
+      </div>
+
+    </form>
+  </div>
+</section>
+<!-- CONTACT US SECTION END -->
 	
 	 <!-- LOCAL DELIVERY ZIP CHECKER -->
     <section class="py-16 bg-brand-50/50 border-y border-brand-100">
