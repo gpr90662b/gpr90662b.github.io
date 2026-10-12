@@ -33,6 +33,8 @@ tailwind.config = {
 
 
 // Application State
+//''4 oz :5, 10 oz $10, 12 oz $13, 16 oz $18.
+//'4 oz': 5.00, '10 oz': 10.00, '12 oz': 13.00, '16 oz': 18.00
 let menuItems = [
     {
                 id: '1',
@@ -41,7 +43,7 @@ let menuItems = [
                 tag: 'Nature Core Crunch!',
                 ingredients: [ 'Apple'],
                 desc: 'A crisp, timeless classic that delivers a pure, hydrating splash of smooth orchard energy and simple refreshment.',
-                prices: { '8 oz': 5.00, '12 oz': 10.00, '18 oz': 12.00 },
+                prices: { '4 oz': 5.00, '10 oz': 10.00, '12 oz': 13.00, '16 oz': 18.00 },
                 image: 'images/pure-apple.jpg'
 		
             },
@@ -54,8 +56,8 @@ let menuItems = [
                 tag: 'Brilliant Beet Vitality!',
                 ingredients: [ 'Beets', 'Red Apple', 'Lemon'],
                 desc: 'An earthy yet crisp blend that pairs rich, ground-root nutrients with bright orchard sweetness for a deeply refreshing, detoxifying lift.',
-                prices: { '8 oz': 5.00, '12 oz': 10.00, '18 oz': 12.00 },
-                image: 'images/beet-the-day2.jpg'
+               prices: { '4 oz': 5.00, '10 oz': 10.00, '12 oz': 13.00, '16 oz': 18.00 },
+                image: 'images/beet-the-day.jpg'
             },
 
 
@@ -66,7 +68,7 @@ let menuItems = [
                 tag: 'Ruby Refresh!',
                 ingredients: [ 'Beet', 'Cucumber', 'Lime'],
                 desc: 'Earthy red beet softened by hydrating, crisp cucumber and finished with a bright, zesty squeeze of lime.',
-                prices: { '8 oz': 5.00, '12 oz': 10.00, '18 oz': 12.00 },
+                prices: { '4 oz': 5.00, '10 oz': 10.00, '12 oz': 13.00, '16 oz': 18.00 },
                 image: 'images/cool-beet-clense.jpg'
             },
 
@@ -77,7 +79,7 @@ let menuItems = [
                 tag: 'Anthem of Antioxidants!',
                 ingredients: [ 'Blueberry', 'Strawberry', 'Red Grapes'],
                 desc: 'A deeply hydrating, earthy blend sharpened by a zesty citrus kick to deliver a clean, detoxifying splash of pure rejuvenation.',
-                prices: { '8 oz': 5.00, '12 oz': 10.00, '18 oz': 12.00 },
+                prices: { '4 oz': 5.00, '10 oz': 10.00, '12 oz': 13.00, '16 oz': 18.00 },
                 image: 'images/berry-grape-bliss.jpg'
             },
 
@@ -89,7 +91,7 @@ let menuItems = [
                 tag: 'Pure Golden Glow!',
                 ingredients: [ 'Carrot'],
                 desc: 'A smooth, naturally sweet roots classic that offers a crisp, glowing lift of wholesome daytime energy.',
-                prices: { '8 oz': 5.00, '12 oz': 10.00, '18 oz': 12.00 },
+                prices: { '4 oz': 5.00, '10 oz': 10.00, '12 oz': 13.00, '16 oz': 18.00 },
                 image: 'images/pure-carrot.jpg'
             },
 
@@ -100,7 +102,7 @@ let menuItems = [
                 tag: 'Crisp Monrning Dew!',
                 ingredients: [ 'Celery', 'Apple'],
                 desc: 'A ultra-crisp, light green pairing that effortlessly balances hydrating minerals with a clean, uplifting orchard sweetness.',
-                prices: { '8 oz': 5.00, '12 oz': 10.00, '18 oz': 12.00 },
+                prices: { '4 oz': 5.00, '10 oz': 10.00, '12 oz': 13.00, '16 oz': 18.00 },
                 image: 'images/green-apple-crisp.jpg'
             },
 
@@ -111,7 +113,7 @@ let menuItems = [
                 tag: 'Bright & Mighty Green!',
                 ingredients: [ 'Kale', 'Lemon', 'Apple'],
                 desc: 'A vibrant leafy powerhouse softened by sweet apple and bright citrus for a smooth, approachable green energy lift.',
-                prices: { '8 oz': 5.00, '12 oz': 10.00, '18 oz': 12.00 },
+                prices: { '4 oz': 5.00, '10 oz': 10.00, '12 oz': 13.00, '16 oz': 18.00 },
                 image: 'images/kale-me-fresh2.jpg'
             },
 
@@ -122,7 +124,7 @@ let menuItems = [
                 tag: 'Emerald Power Surge!',
                 ingredients: [ 'Kale', 'Apple', 'Spinach', 'Celery'],
                 desc: 'The ultimate nutrient-dense green field trip, providing a crisp, deeply revitalizing and detoxifying surge of natural energy.',
-                prices: { '8 oz': 5.00, '12 oz': 10.00, '18 oz': 12.00 },
+                prices: { '4 oz': 5.00, '10 oz': 10.00, '12 oz': 13.00, '16 oz': 18.00 },
                 image: 'images/all-green-everything2.jpg'
             },
 
@@ -133,7 +135,7 @@ let menuItems = [
                 tag: 'Liquid Sunshine Boost',
                 ingredients: ['Orange'],
                 desc: 'A timeless, brilliant classic bursting with bold citrus brightness to instantly wake up your senses and fuel your day.',
-                prices: { '8 oz': 5.00, '12 oz': 10.00, '18 oz': 12.00 },
+                prices: { '4 oz': 5.00, '10 oz': 10.00, '12 oz': 13.00, '16 oz': 18.00 },
                 image:'images/pure-orange.jpg'
             },
 
@@ -144,7 +146,7 @@ let menuItems = [
                 tag: 'Velvet Green Vitality!',
                 ingredients: ['Red Grapes','Raspberry', 'Kale'],
                 desc: 'A clever, bold fusion where deep berry and grape sweetness flawlessly balance the rich, detoxifying power of leafy greens.',
-                prices: { '4 oz': 5.00, '8 oz': 10.00, '16 oz': 12.00 },
+                prices: { '4 oz': 5.00, '10 oz': 10.00, '12 oz': 13.00, '16 oz': 18.00 },
                 image:'images/ruby-green-rush.jpg'
             },
 
@@ -155,7 +157,7 @@ let menuItems = [
                 tag: 'Sweet Vineyard Rush!',
                 ingredients: ['Red Grapes','Apple'],
                 desc: 'A crisp, velvety sweet orchard combination that delivers a smooth, delicious wave of sustained natural energy.',
-                prices: { '8 oz': 5.00, '12 oz': 10.00, '18 oz': 12.00 },
+                prices: { '4 oz': 5.00, '10 oz': 10.00, '12 oz': 13.00, '16 oz': 18.00 },
                 image:'images/grape-apple-crush.jpg'
             },
 {
@@ -165,7 +167,7 @@ let menuItems = [
                 tag: 'Zesty Spinach Splash!',
                 ingredients: ['Spinach','Apple','Lemon'],
                 desc: 'A light, breezy green blend that pairs gentle leafy nutrients with a sharp, zesty finish for a fast-acting afternoon reset.',
-                prices: { '8 oz': 5.00, '12 oz': 10.00, '18 oz': 12.00 },
+                prices: { '4 oz': 5.00, '10 oz': 10.00, '12 oz': 13.00, '16 oz': 18.00 },
                 image:'images/green-apple-zing.jpg'
             },
 
@@ -176,7 +178,7 @@ let menuItems = [
                 tag: 'Fire Up Your Wellness!',
                 ingredients: [ 'Turmeric','Lemon','Cayene Paper', 'Ginger'],
                 desc: 'A fiery, deeply revitalizing elixir designed to kickstart your metabolism and deliver a sharp, detoxifying jolt of clean energy.',
-                prices: { '4 oz': 5.00 },
+                prices: { '4 oz': 5.00, '10 oz': 10.00, '12 oz': 13.00, '16 oz': 18.00 },
                 image: 'images/fire-shot.jpg'
             },
 
@@ -187,7 +189,7 @@ let menuItems = [
                 tag: 'Citrus & Spice!',
                 ingredients: ['Grapfruit','Radishes', 'orange', 'Cayene Paper'],
                 desc: 'Tart grapefruit and sweet orange meet peppery radish and a pinch of cayenne to jumpstart your day.',
-                prices: { '8 oz': 5.00, '12 oz': 10.00, '18 oz': 12.00 },
+                prices: { '4 oz': 6.00, '10 oz': 11.00, '12 oz': 14.00, '16 oz': 19.00 },
                 image: 'images/morning-fire-citrus.jpg'
             },
 			
@@ -198,7 +200,7 @@ let menuItems = [
                 tag: 'Sunshine Hydration!',
                 ingredients: ['Yellow Paper','Kiwi', 'Cucumber', 'Corn'],
                 desc: 'Crisp cucumber and sweet corn blended with tangy kiwi and vibrant yellow pepper for a refreshing morning hydration boost.',
-                prices: { '8 oz': 5.00, '12 oz': 10.00, '18 oz': 12.00 },
+                prices: { '4 oz': 5.00, '10 oz': 10.00, '12 oz': 13.00, '16 oz': 18.00 },
                 image: 'images/sunshine-garden-breakfast.jpg'
             },
 
@@ -210,7 +212,7 @@ let menuItems = [
                 ingredients: ['Carrot','Lemon','Red Apple','Brussel Sprouts',
 				'Tomato','Asian Pear','Beet wirh Greens', 'Cauliflower','Broccoli'],
                 desc: 'Crisp Asian pear and sweet carrots soften a hearty, vibrant blend of nutrient-rich root vegetables and fresh garden greens.',
-                prices: { '8 oz': 5.00, '12 oz': 10.00, '18 oz': 12.00 },
+                prices: { '4 oz': 6.00, '10 oz': 11.00, '12 oz': 14.00, '16 oz': 19.00 },
                 image: 'images/garden-breakfast-boost.jpg'
             },
 
@@ -222,8 +224,8 @@ let menuItems = [
                 tag: 'Immunity Boost',
                 ingredients: [ 'Mango','Orange', 'Pineapple'],
                 desc: 'A vibrant and refreshing tropical medley bursting with the sweet, sun-kissed flavors of tangy citrus and luscious exotic fruits.',
-                prices: { '8 oz': 5.00, '12 oz': 10.00, '18 oz': 12.00 },
-                image: 'images/tropical-sunshine.jpg'
+                prices: { '4 oz': 5.00, '10 oz': 10.00, '12 oz': 13.00, '16 oz': 18.00 },
+                image: 'images/tropical-sunrise.jpg'
             },
 
 {
@@ -233,7 +235,7 @@ let menuItems = [
                 tag: 'Sunshine in a Sip!',
                 ingredients: ['Orange', 'Pineapple'],
                 desc: 'A bright, sunny duo that delivers a crisp splash of pure tropical energy and zesty refreshment.',
-                prices: { '4 oz': 5.00, '8 oz': 10.00, '16 oz': 12.00 },
+                prices: { '4 oz': 5.00, '10 oz': 10.00, '12 oz': 13.00, '16 oz': 18.00 },
                 image: 'images/citrus-island.jpg'
 				},
 			
@@ -256,7 +258,7 @@ let menuItems = [
                 tag: 'Berry Tropical Boost!',
                 ingredients: ['Strawberry','Apple', 'Pineapple'],
                 desc: 'A sweet and tangy trio bursting with crisp orchard freshness and an uplifting splash of tropical energy.',
-                prices: { '8 oz': 5.00, '12 oz': 10.00, '18 oz': 12.00 },
+                prices: { '4 oz': 5.00, '10 oz': 10.00, '12 oz': 13.00, '16 oz': 18.00 },
                 image: 'images/pink-pineapple-punch.jpg'
             },
 
@@ -267,7 +269,7 @@ let menuItems = [
                 tag: 'Tropical Boost!',
                 ingredients: ['Beets','Pineapple', 'Lemon'],
                 desc: 'An earthy yet vibrant blend where sweet tropical notes and zesty citrus create a crisp, detoxifying burst of natural energy.',
-                prices: { '8 oz': 5.00, '12 oz': 10.00, '18 oz': 12.00 },
+                prices: { '4 oz': 5.00, '10 oz': 10.00, '12 oz': 13.00, '16 oz': 18.00 },
                 image: 'images/island-beet-boost.jpg?auto=format&fit=crop&w=800&q=80'
             },
 			{
@@ -277,7 +279,7 @@ let menuItems = [
                 tag: 'Sweet,Tangy,Refreshing!',
                 ingredients: ['Pineapple', 'Strawberry'],
                 desc: 'A classic duo where the bold tang of pineapple meets the smooth sweetness of ripe strawberries for a perfect flavor splash.',
-                prices: { '8 oz': 5.00, '12 oz': 10.00, '18 oz': 12.00 },
+                prices: { '4 oz': 5.00, '10 oz': 10.00, '12 oz': 13.00, '16 oz': 18.00 },
                 image: 'images/pine-berry-pop.jpg?auto=format&fit=crop&w=800&q=80'
             },
 {
@@ -287,7 +289,7 @@ let menuItems = [
                 tag: ' Tropical warmth meets orchard crisp!',
                 ingredients: ['Pineapple', 'Pear'],
                 desc: 'A clean, refreshing fusion of hydrating pear and sun-ripened pineapple that delivers a light, uplifting splash of natural sweetness.',
-                prices: { '8 oz': 5.00, '12 oz': 10.00, '18 oz': 12.00 },
+                prices: { '4 oz': 5.00, '10 oz': 10.00, '12 oz': 13.00, '16 oz': 18.00 },
                 image: 'images/golden-orchard.jpg'
             }
         ];
@@ -397,17 +399,19 @@ function filterMenu(category) {
     event.target.classList.remove('bg-white', 'text-slate-600');
     event.target.classList.add('bg-brand-600', 'text-white');
 	
-	const filtered = filterByCategory(menuItems, category);
-    renderMenu(filtered);
+	//const filtered = filterByCategory(menuItems, category);
+    //renderMenu(filtered);
 
-    //if (category === 'all') {
-    //    renderMenu(menuItems);
-    //} else {
+    if (category === 'all') {
+        renderMenu(menuItems);
+    } else {
+		const filtered = filterByCategory(menuItems, category);
+		renderMenu(filtered);
 		
 		//const filtered = menuItems.filter(i => i.category === category);
 		//const filtered = filterByCategory(menuItems, category);
         //renderMenu(filtered);
-   // }
+    }
 }
 
 function searchMenu() {
@@ -498,7 +502,7 @@ function updateCartUI() {
     }
 
     const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
-    const freeDeliveryThreshold = 25.00;
+    const freeDeliveryThreshold = 40.00;
     const deliveryFee = subtotal >= freeDeliveryThreshold || subtotal === 0 ? 0.00 : 4.00;
     const total = subtotal + deliveryFee;
 

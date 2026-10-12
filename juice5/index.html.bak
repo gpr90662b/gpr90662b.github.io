@@ -24,22 +24,12 @@
 <body class="bg-slate-50 text-slate-800 antialiased selection:bg-brand-500 selection:text-white">
 
     <!-- Top Announcement Bar -->
-    <div id="top-bar" class="bg-brand-900 text-brand-100 text-xs sm:text-sm py-2 px-6 text-center font-medium flex justify-between items-center">
-        <div class="hidden md:block"></div>
-        <div class="flex items-center justify-center gap-2 mx-auto md:mx-0">
-            <span class="inline-block w-2 h-2 rounded-full bg-brand-400 animate-ping"></span>
-            <span>Made fresh on order! Delivered straight to your door!             </span>
-        </div>
-        <!--
-		<div class="flex items-center gap-4 text-xs">
-            <button onclick="toggleAdminDrawer()" class="hover:text-brand-300 transition-colors flex items-center gap-1 opacity-80 hover:opacity-100">
-                <i class="fa-solid fa-gear text-xs"></i>             
-            </button>
-		
-        </div>
-		-->
-		
+    <div id="top-bar" class="bg-brand-900 text-brand-100 text-xs sm:text-sm py-2 px-6 text-center font-medium">
+    <div class="flex items-center justify-center gap-2">
+        <span class="inline-block w-2 h-2 rounded-full bg-brand-400 animate-ping"></span>
+        <span>Made fresh on order! Delivered straight to your door!</span>
     </div>
+</div>
 
     <!-- Main Navigation Header -->
     <header class="sticky top-0 z-40 bg-glass border-b border-slate-200/80 transition-all duration-300">
@@ -48,7 +38,7 @@
 			
             <a href="#" class="flex items-center gap-3 group">
                 <div class="w-20 h-20 rounded-2xl bg-gradient-to-tr from-brand-600 via-brand-500 to-citrus-400 flex items-center justify-center text-white text-2xl shadow-lg shadow-brand-500/20 group-hover:scale-105 transition-transform">
-				<img src="images/logo-fruits.png" alt="A descriptive text of the image">
+				<img src="images/logo-fruits.png" alt="Bunch of fruits!">
                    <!-- <i class="fa-solid fa-citrus"></i> -->
                 </div>
                 <div>
@@ -494,8 +484,8 @@
                     <p class="text-sm text-slate-600">Browse the menu, click "Add to Order" for your chosen items, then tap the Phone Order button to see your summary and call or text us directly!</p>
                 </div>
                 <div class="border border-slate-200 rounded-2xl p-5 bg-slate-50">
-                    <h3 class="font-bold text-slate-900 mb-1">Is there a minimum order for doorstep delivery?</h3>
-                    <p class="text-sm text-slate-600">Our standard delivery minimum is $20.00. Free delivery is applied for orders over $35.00 within our delivery zone.</p>
+                    <h3 class="font-bold text-slate-900 mb-1">Is there a minimum order for doorstep delivery and delivery charge?</h3>
+                    <p class="text-sm text-slate-600">Our standard delivery minimum is $20.00. Delivery charge is fixed at $4.00. Free delivery is applied for orders over $40.00 within our delivery zone.</p>
                 </div>
             </div>
         </div>
@@ -505,17 +495,24 @@
     <footer class="bg-slate-950 text-slate-400 py-12 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
             <div class="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-slate-800">
+			
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-brand-500 text-slate-950 flex items-center justify-center text-xl font-bold">
+				
+				
+                    <div class="w-15 h-15 rounded-xl bg-brand-500 text-slate-950 flex items-center justify-center text-xl font-bold">
+					<img src="images/logo-fruits.png" alt="Bunch of fruits!">
                         <i class="fa-solid fa-citrus"></i>
+					
                     </div>
+			
                     <span class="text-2xl font-bold text-white font-heading site-name-text">Custom Juice</span>
                 </div>
                 <div class="flex flex-wrap items-center justify-center gap-6 text-sm font-medium">
                     <a href="#hero" class="hover:text-white transition-colors">Home</a>
-                    <a href="#about" class="hover:text-white transition-colors">About Us</a>
-                    <a href="#menu" class="hover:text-white transition-colors">Menu</a>
-                    <a href="#custom-builder" class="hover:text-white transition-colors">Custom Builder</a>
+                    
+                    <a href="#menu" class="hover:text-white transition-colors">Our Menu</a>
+					<a href="#about" class="hover:text-white transition-colors">About Us</a>
+                    <a href="#contact-us" class="hover:text-white transition-colors">Contact Us</a>
                     <a href="#ordering" class="hover:text-white transition-colors">How to Order</a>
                 </div>
             </div>
